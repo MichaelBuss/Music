@@ -10,8 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var scrubber: UISlider!
+    @IBOutlet weak var scrubberLabel: UILabel!
+    @IBAction func scrubberAction(_ sender: Scrubber) {
+        scrubberLabel.text = String(Int(scrubber.value))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrubber.translatesAutoresizingMaskIntoConstraints = true
+        scrubber.setThumbImage(#imageLiteral(resourceName: "Thumb"), for: .normal)
+        scrubberLabel.text = String(Int(scrubber.value))
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
