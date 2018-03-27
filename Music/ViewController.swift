@@ -7,20 +7,28 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var scrubber: UISlider!
-    @IBOutlet weak var scrubberLabel: UILabel!
+    // Instantiate a new music player
+    
+    let myMediaPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer
+    
     @IBAction func scrubberAction(_ sender: Scrubber) {
-        scrubberLabel.text = String(Int(scrubber.value))
+        // print("Scrubber changed value")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scrubber.translatesAutoresizingMaskIntoConstraints = true
-        scrubber.setThumbImage(#imageLiteral(resourceName: "Thumb"), for: .normal)
-        scrubberLabel.text = String(Int(scrubber.value))
+        scrubber.setThumbImage(#imageLiteral(resourceName: "Thumb"), for: .normal) // Sets Thumb image on scrubber
+
+        // Add a playback queue containing all songs on the device
+        // myMediaPlayer.setQueue(with: MPMediaQuery.songs())
+        // Start playing from the beginning of the queue
+        // myMediaPlayer.play()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
