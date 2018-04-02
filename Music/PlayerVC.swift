@@ -9,15 +9,12 @@
 import UIKit
 import MediaPlayer
 
-class ViewController: UIViewController {
+class PlayerVC: UIViewController {
 
     @IBOutlet weak var scrubber: UISlider!
     // Instantiate a new music player
     
     let myMediaPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
     
     @IBAction func scrubberAction(_ sender: Scrubber) {
         // print("Scrubber changed value")
@@ -35,10 +32,9 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
 
