@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -21,8 +21,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wds-5A-o9k">
-                                <rect key="frame" x="0.0" y="113" width="375" height="539"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="113" width="375" height="529"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="THa-po-UbH">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -30,7 +30,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dly-DH-LpZ">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CoverArt" id="dly-DH-LpZ">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -40,8 +40,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="HlD-uC-wav" userLabel="Player">
-                                <rect key="frame" x="8" y="660" width="359" height="118"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="HlD-uC-wav" userLabel="Player">
+                                <rect key="frame" x="8" y="650" width="359" height="112"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="KuM-gU-doB" customClass="Scrubber" customModule="Music" customModuleProvider="target">
                                         <rect key="frame" x="-2" y="0.0" width="363" height="47"/>
@@ -55,7 +55,7 @@
                                         </connections>
                                     </slider>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qic-7c-RwE" userLabel="Player BButtons">
-                                        <rect key="frame" x="38.666666666666657" y="68" width="282" height="50"/>
+                                        <rect key="frame" x="38.666666666666657" y="62" width="282" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18A-MH-aC6">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -151,7 +151,7 @@
                             <constraint firstItem="wds-5A-o9k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UMN-xV-cbP"/>
                             <constraint firstItem="HlD-uC-wav" firstAttribute="top" secondItem="wds-5A-o9k" secondAttribute="bottom" constant="8" id="YVV-HF-Zmf"/>
                             <constraint firstItem="wds-5A-o9k" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bKz-C6-bRL"/>
-                            <constraint firstItem="HlD-uC-wav" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mDx-xB-B6t"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HlD-uC-wav" secondAttribute="bottom" constant="16" id="kg0-zp-ucT"/>
                             <constraint firstItem="oBL-tl-nqe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tAF-qS-Pkl"/>
                             <constraint firstItem="HlD-uC-wav" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vRj-WW-air"/>
                             <constraint firstItem="wds-5A-o9k" firstAttribute="top" secondItem="oBL-tl-nqe" secondAttribute="bottom" constant="8" id="zQV-VN-hMd"/>
