@@ -29,9 +29,9 @@ class ViewController: UIViewController {
         scrubber.setThumbImage(#imageLiteral(resourceName: "Thumb"), for: .normal) // Sets Thumb image on scrubber
 
         // Add a playback queue containing all songs on the device
-        // myMediaPlayer.setQueue(with: MPMediaQuery.songs())
+         myMediaPlayer.setQueue(with: MPMediaQuery.songs())
         // Start playing from the beginning of the queue
-        // myMediaPlayer.play()
+         myMediaPlayer.play()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
