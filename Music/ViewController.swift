@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     // Instantiate a new music player
     
     let myMediaPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     @IBAction func scrubberAction(_ sender: Scrubber) {
         // print("Scrubber changed value")
