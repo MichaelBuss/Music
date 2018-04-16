@@ -1,14 +1,14 @@
 //
-//  LibraryVC.swift
+//  Albums.swift
 //  Music
 //
-//  Created by Michael Buss Andersen on 02/04/2018.
+//  Created by Michael Buss Andersen on 15/04/2018.
 //  Copyright © 2018 NoobLabs. All rights reserved.
 //
 
 import UIKit
 
-class LibraryVC: UIViewController {
+class AlbumsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,8 +16,9 @@ class LibraryVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 
