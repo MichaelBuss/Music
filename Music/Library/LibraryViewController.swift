@@ -9,9 +9,15 @@
 import UIKit
 
 class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("loaded")
+    }
 
     // MARK: - Outlets
     @IBOutlet weak var sortSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var libraryTableView: UITableView!
     
     // MARK: - Variables
     private let libraryCell = LibraryTableViewCell()
@@ -56,7 +62,8 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func updateTable() {
         print("Updating table")
-//        self.tableView.reloadData()
+        libraryTableView.reloadData()
+
     }
     
 

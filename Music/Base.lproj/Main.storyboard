@@ -334,6 +334,7 @@
                         </segmentedControl>
                     </navigationItem>
                     <connections>
+                        <outlet property="libraryTableView" destination="O9D-91-mY4" id="HbD-CT-aY3"/>
                         <outlet property="sortSegmentedControl" destination="JrG-eY-gY2" id="Lre-iW-igk"/>
                         <outlet property="view" destination="O9D-91-mY4" id="zJd-0M-Blg"/>
                     </connections>
