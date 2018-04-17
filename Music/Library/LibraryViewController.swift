@@ -8,10 +8,10 @@
 
 import UIKit
 
-class LibraryTableViewController: UITableViewController {
+class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - Outlets
-    @IBOutlet weak var sortControl: UINavigationItem!
+    @IBOutlet weak var sortSegmentedControl: UISegmentedControl!
     
     // MARK: - Variables
     private let libraryCell = LibraryTableViewCell()
@@ -24,21 +24,21 @@ class LibraryTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return songs.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LibraryCell", for: indexPath)
         if let libraryCell = cell as? LibraryTableViewCell {
-            switch sortControl.title{
-                case "Artists": print("Artists")
-                case "Albums": print("Albms")
-                case "Songs": print("Songs")
+            switch sortSegmentedControl.selectedSegmentIndex{
+                case 0: print("Artists")
+                case 1: print("Albms")
+                case 2: print("Songs")
             default: break
             }
             
@@ -50,13 +50,13 @@ class LibraryTableViewController: UITableViewController {
     
     // MARK: - Actions
     
-    @IBAction func sortControlDidChange(_ sender: UISegmentedControl) {
+    @IBAction func sortSegmentedControlDidChange(_ sender: UISegmentedControl) {
         updateTable()
     }
     
     private func updateTable() {
         print("Updating table")
-        self.tableView.reloadData()
+//        self.tableView.reloadData()
     }
     
 

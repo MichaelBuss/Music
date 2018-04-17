@@ -14,7 +14,7 @@
 		4C3670E12083783E007AC15C /* ArtistsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3670E02083783E007AC15C /* ArtistsVC.swift */; };
 		4C3670E42083786A007AC15C /* AlbumsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3670E32083786A007AC15C /* AlbumsVC.swift */; };
 		4C3670E62083787C007AC15C /* SongsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3670E52083787C007AC15C /* SongsVC.swift */; };
-		4C509BE82083AAA4009094DC /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C509BE72083AAA4009094DC /* LibraryTableViewController.swift */; };
+		4C509BE82083AAA4009094DC /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C509BE72083AAA4009094DC /* LibraryViewController.swift */; };
 		4C519E1020665A7400ADF48F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C519E0F20665A7400ADF48F /* AppDelegate.swift */; };
 		4C519E1220665A7400ADF48F /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C519E1120665A7400ADF48F /* PlayerVC.swift */; };
 		4C519E1520665A7500ADF48F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C519E1320665A7500ADF48F /* Main.storyboard */; };
@@ -31,7 +31,7 @@
 		4C3670E02083783E007AC15C /* ArtistsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsVC.swift; sourceTree = "<group>"; };
 		4C3670E32083786A007AC15C /* AlbumsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsVC.swift; sourceTree = "<group>"; };
 		4C3670E52083787C007AC15C /* SongsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsVC.swift; sourceTree = "<group>"; };
-		4C509BE72083AAA4009094DC /* LibraryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
+		4C509BE72083AAA4009094DC /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		4C519E0C20665A7400ADF48F /* Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Music.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C519E0F20665A7400ADF48F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C519E1120665A7400ADF48F /* PlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 		4C3670E220837854007AC15C /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				4C509BE72083AAA4009094DC /* LibraryTableViewController.swift */,
+				4C509BE72083AAA4009094DC /* LibraryViewController.swift */,
 				4C30F3E420839E020011BCCD /* LibraryTableViewCell.swift */,
 				4C3670E02083783E007AC15C /* ArtistsVC.swift */,
 				4C3670E32083786A007AC15C /* AlbumsVC.swift */,
@@ -184,7 +184,7 @@
 				4C519E1020665A7400ADF48F /* AppDelegate.swift in Sources */,
 				4C34FDDC2072C801001A3E01 /* ForYouVC.swift in Sources */,
 				4C34FDDE2072C818001A3E01 /* PlaylistsVC.swift in Sources */,
-				4C509BE82083AAA4009094DC /* LibraryTableViewController.swift in Sources */,
+				4C509BE82083AAA4009094DC /* LibraryViewController.swift in Sources */,
 				4C3670E42083786A007AC15C /* AlbumsVC.swift in Sources */,
 				4C30F3E520839E020011BCCD /* LibraryTableViewCell.swift in Sources */,
 				4C519E2220665FE800ADF48F /* Scrubber.swift in Sources */,
