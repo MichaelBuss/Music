@@ -174,9 +174,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3B-yx-zex">
-                                <rect key="frame" x="0.0" y="629" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="671" width="375" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="NgD-Nc-Xa2"/>
+                                    <constraint firstAttribute="height" constant="58" id="NgD-Nc-Xa2"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="PqF-fX-FKE" kind="embed" id="oKc-vf-BQL"/>
@@ -207,9 +207,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2P-Ii-S99">
-                                <rect key="frame" x="0.0" y="629" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="671" width="375" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="QG9-xY-hbH"/>
+                                    <constraint firstAttribute="height" constant="58" id="QG9-xY-hbH"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="PqF-fX-FKE" kind="embed" id="Hb0-RC-fAc"/>
@@ -239,8 +239,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lW4-c0-YBl">
+                                <rect key="frame" x="0.0" y="583" width="375" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="snp-8h-15W"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="PqF-fX-FKE" kind="embed" id="eg2-QE-C9x"/>
+                                </connections>
+                            </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O9D-91-mY4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="541"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LibraryCell" id="9jx-0w-ElY" customClass="LibraryTableViewCell" customModule="Music" customModuleProvider="target">
@@ -296,15 +305,6 @@
                                     <outlet property="delegate" destination="p0J-5V-j87" id="toH-WK-mzD"/>
                                 </connections>
                             </tableView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lW4-c0-YBl">
-                                <rect key="frame" x="0.0" y="541" width="375" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="snp-8h-15W"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="PqF-fX-FKE" kind="embed" id="eg2-QE-C9x"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -314,7 +314,7 @@
                             <constraint firstItem="O9D-91-mY4" firstAttribute="top" secondItem="FwF-ob-Az3" secondAttribute="top" id="Sfj-9p-MrD"/>
                             <constraint firstItem="O9D-91-mY4" firstAttribute="leading" secondItem="FwF-ob-Az3" secondAttribute="leading" id="UHp-Xy-MK8"/>
                             <constraint firstItem="O9D-91-mY4" firstAttribute="trailing" secondItem="FwF-ob-Az3" secondAttribute="trailing" id="pKg-LS-xEq"/>
-                            <constraint firstItem="FwF-ob-Az3" firstAttribute="bottom" secondItem="O9D-91-mY4" secondAttribute="bottom" constant="100" id="w6J-0F-8J4"/>
+                            <constraint firstItem="FwF-ob-Az3" firstAttribute="bottom" secondItem="O9D-91-mY4" secondAttribute="bottom" constant="58" id="w6J-0F-8J4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FwF-ob-Az3"/>
                     </view>
@@ -352,9 +352,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWM-mL-vdz">
-                                <rect key="frame" x="0.0" y="629" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="671" width="375" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="9nL-GL-cDc"/>
+                                    <constraint firstAttribute="height" constant="58" id="9nL-GL-cDc"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="PqF-fX-FKE" kind="embed" id="m7c-7K-eTf"/>
@@ -429,9 +429,19 @@
             <objects>
                 <viewController id="PqF-fX-FKE" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cn4-AR-yk1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yd7-xg-BEV">
+                                <rect key="frame" x="163" y="4" width="49" height="50"/>
+                                <state key="normal" image="Play Big"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yd7-xg-BEV" firstAttribute="centerX" secondItem="cn4-AR-yk1" secondAttribute="centerX" id="NJm-if-91Z"/>
+                            <constraint firstItem="yd7-xg-BEV" firstAttribute="centerY" secondItem="cn4-AR-yk1" secondAttribute="centerY" id="rqX-fI-hLu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="9fJ-us-Mku"/>
                     </view>
                 </viewController>
