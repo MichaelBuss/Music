@@ -172,7 +172,24 @@
                     <view key="view" contentMode="scaleToFill" id="kwV-9d-ZLc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3B-yx-zex">
+                                <rect key="frame" x="0.0" y="629" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="NgD-Nc-Xa2"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="PqF-fX-FKE" kind="embed" id="oKc-vf-BQL"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="luV-16-V3n" firstAttribute="bottom" secondItem="p3B-yx-zex" secondAttribute="bottom" id="HdQ-fY-h30"/>
+                            <constraint firstItem="luV-16-V3n" firstAttribute="trailing" secondItem="p3B-yx-zex" secondAttribute="trailing" id="SDT-M5-fsI"/>
+                            <constraint firstItem="p3B-yx-zex" firstAttribute="top" relation="greaterThanOrEqual" secondItem="luV-16-V3n" secondAttribute="top" id="tZX-l4-obl"/>
+                            <constraint firstItem="p3B-yx-zex" firstAttribute="leading" secondItem="luV-16-V3n" secondAttribute="leading" id="yRt-G3-Oiu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="luV-16-V3n"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Playlists" image="Playlists" id="cfY-8q-NlD" userLabel="Playlists"/>
@@ -188,14 +205,31 @@
                     <view key="view" contentMode="scaleToFill" id="SJM-tM-Z7e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2P-Ii-S99">
+                                <rect key="frame" x="0.0" y="629" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="QG9-xY-hbH"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="PqF-fX-FKE" kind="embed" id="Hb0-RC-fAc"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0PD-tO-LGX" firstAttribute="trailing" secondItem="H2P-Ii-S99" secondAttribute="trailing" id="RE0-X8-6Xz"/>
+                            <constraint firstItem="H2P-Ii-S99" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0PD-tO-LGX" secondAttribute="top" id="WsO-fk-NHo"/>
+                            <constraint firstItem="0PD-tO-LGX" firstAttribute="bottom" secondItem="H2P-Ii-S99" secondAttribute="bottom" id="Z4v-1O-SWA"/>
+                            <constraint firstItem="H2P-Ii-S99" firstAttribute="leading" secondItem="0PD-tO-LGX" secondAttribute="leading" id="aif-lj-Wza"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0PD-tO-LGX"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="For You" image="For You" id="5Nc-ZO-oNc" userLabel="For You"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLE-sx-5uQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713" y="-627"/>
+            <point key="canvasLocation" x="1712.8" y="-627.33990147783254"/>
         </scene>
         <!--Library Table View Controller-->
         <scene sceneID="i9A-gi-jP3">
@@ -290,7 +324,24 @@
                     <view key="view" contentMode="scaleToFill" id="UyQ-RK-0oh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWM-mL-vdz">
+                                <rect key="frame" x="0.0" y="629" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="9nL-GL-cDc"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="PqF-fX-FKE" kind="embed" id="m7c-7K-eTf"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PWM-mL-vdz" firstAttribute="leading" secondItem="G4U-NA-4bd" secondAttribute="leading" id="4lg-vs-lpE"/>
+                            <constraint firstItem="G4U-NA-4bd" firstAttribute="trailing" secondItem="PWM-mL-vdz" secondAttribute="trailing" id="DSf-g7-mXi"/>
+                            <constraint firstItem="PWM-mL-vdz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="G4U-NA-4bd" secondAttribute="top" id="Ytk-N8-YxY"/>
+                            <constraint firstItem="G4U-NA-4bd" firstAttribute="bottom" secondItem="PWM-mL-vdz" secondAttribute="bottom" id="ixt-wX-IYs"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="G4U-NA-4bd"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="Search" id="DH2-UT-Vjg" userLabel="Search"/>
@@ -347,6 +398,21 @@
             </objects>
             <point key="canvasLocation" x="1713" y="825"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="K3B-FF-IB4">
+            <objects>
+                <viewController id="PqF-fX-FKE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cn4-AR-yk1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="9fJ-us-Mku"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JJa-xP-VBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2681" y="-498"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Airplay" width="28" height="28"/>
@@ -362,4 +428,7 @@
         <image name="Shuffle Small" width="50" height="50"/>
         <image name="Skip Medium" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="m7c-7K-eTf"/>
+    </inferredMetricsTieBreakers>
 </document>
