@@ -19,6 +19,8 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Outlets
     @IBOutlet weak var sortSegmentedControl: UISegmentedControl!
     @IBOutlet weak var libraryTableView: UITableView!
+    @IBOutlet weak var playerView: UIView!
+    @IBOutlet weak var playerViewHeight: NSLayoutConstraint!
     
     // MARK: - Variables
     private let libraryCell = LibraryTableViewCell()
@@ -55,12 +57,25 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Actions
     @IBAction func sortSegmentedControlDidChange(_ sender: UISegmentedControl) {
         updateTable()
+        animatePlayerHeight(to: 400, withDuration: 0.5) // TODO: - Totally wierd place to put this, but I'm simply testing animation for the first time and didn't bother
     }
+    
+    @objc func checkAction(sender : UITapGestureRecognizer) {
+        // Do what you want
+    }
+    
+    // MARK: - Mathods
     
     private func updateTable() {
         print("Updating table")
         libraryTableView.reloadData()
-
+    }
+    
+    private func animatePlayerHeight(to height: Int, withDuration duration: Double) {
+        UIView.animate(withDuration: duration) {
+            self.playerViewHeight.constant = CGFloat(height)
+            self.view.layoutIfNeeded()
+        }
     }
 
 }

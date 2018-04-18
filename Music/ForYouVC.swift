@@ -10,9 +10,11 @@ import UIKit
 
 class ForYouVC: UIViewController {
 
+    @IBOutlet weak var playerViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var playerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
