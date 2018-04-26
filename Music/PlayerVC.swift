@@ -25,11 +25,9 @@ class PlayerVC: UIViewController {
         print("Play Pressed")
     }
     
-    
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Touches began")
-        let expandNotification: [String : Int] = ["height" : 400]
+        print("Touches began on Player View")
+        let expandNotification: [String : Int] = ["height" : 200]
         NotificationCenter.default.post(
             name: Notification.Name("ExpandPlayer"),
             object: self,
