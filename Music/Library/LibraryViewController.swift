@@ -10,6 +10,31 @@ import UIKit
 
 class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    private var playerObserver: NSObjectProtocol?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("View will appear")
+        playerObserver = NotificationCenter.default.addObserver(
+            forName: Notification.Name("ExpandPlayer"),
+            object: nil,
+            queue: OperationQueue.main,
+            using: {notification in
+                print("Recieved Notification with \(notification.name)")
+                self.animatePlayerHeight(to: 400, withDuration: 0.5)
+            }
+        )
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("View did disappear")
+        if let observer = self.playerObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("loaded")
@@ -71,11 +96,12 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         libraryTableView.reloadData()
     }
     
-    private func animatePlayerHeight(to height: Int, withDuration duration: Double) {
+    func animatePlayerHeight(to height: Int, withDuration duration: Double) {
         UIView.animate(withDuration: duration) {
             self.playerViewHeight.constant = CGFloat(height)
             self.view.layoutIfNeeded()
         }
     }
+
 
 }

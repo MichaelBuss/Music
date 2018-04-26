@@ -12,7 +12,7 @@ class PlayerVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -23,20 +23,20 @@ class PlayerVC: UIViewController {
     
     @IBAction func play(_ sender: Any) {
         print("Play Pressed")
-//        animatePlayerHeight(to: 300, withDuration: 0.5)
     }
     
     
-    private func animatePlayerHeight(to height: Int, withDuration duration: Double) {
-        UIView.animate(withDuration: duration) {
-            self.animatePlayerHeight(to: 300, withDuration: 0.5)
-            self.view.layoutIfNeeded()
-        }
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            print("Touches began")
+        print("Touches began")
+        let expandNotification: [String : Int] = ["height" : 400]
+        NotificationCenter.default.post(
+            name: Notification.Name("ExpandPlayer"),
+            object: self,
+            userInfo: expandNotification)
     }
+    
+
     
     /*
     // MARK: - Navigation

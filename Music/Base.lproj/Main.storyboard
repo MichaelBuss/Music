@@ -212,7 +212,7 @@
                                     <constraint firstAttribute="height" constant="58" id="QG9-xY-hbH"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="PqF-fX-FKE" kind="embed" id="Hb0-RC-fAc"/>
+                                    <segue destination="PqF-fX-FKE" kind="embed" identifier="ForYouPlayerEmbedSegue" id="Hb0-RC-fAc"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -249,7 +249,7 @@
                                     <constraint firstAttribute="height" constant="58" id="snp-8h-15W"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="PqF-fX-FKE" kind="embed" id="eg2-QE-C9x"/>
+                                    <segue destination="PqF-fX-FKE" kind="embed" identifier="LibraryPlayerEmbedSegue" id="eg2-QE-C9x"/>
                                 </connections>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O9D-91-mY4">
