@@ -16,11 +16,11 @@
 		4C3670E62083787C007AC15C /* SongsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3670E52083787C007AC15C /* SongsVC.swift */; };
 		4C509BE82083AAA4009094DC /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C509BE72083AAA4009094DC /* LibraryViewController.swift */; };
 		4C519E1020665A7400ADF48F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C519E0F20665A7400ADF48F /* AppDelegate.swift */; };
-		4C519E1220665A7400ADF48F /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C519E1120665A7400ADF48F /* PlayerVC.swift */; };
 		4C519E1520665A7500ADF48F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C519E1320665A7500ADF48F /* Main.storyboard */; };
 		4C519E1720665A7500ADF48F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C519E1620665A7500ADF48F /* Assets.xcassets */; };
 		4C519E1A20665A7500ADF48F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C519E1820665A7500ADF48F /* LaunchScreen.storyboard */; };
 		4C519E2220665FE800ADF48F /* Scrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C519E2120665FE800ADF48F /* Scrubber.swift */; };
+		4CA982F12091C1B900BACE5D /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA982F02091C1B900BACE5D /* PlayerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,12 +34,12 @@
 		4C509BE72083AAA4009094DC /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		4C519E0C20665A7400ADF48F /* Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Music.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C519E0F20665A7400ADF48F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C519E1120665A7400ADF48F /* PlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
 		4C519E1420665A7500ADF48F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C519E1620665A7500ADF48F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C519E1920665A7500ADF48F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C519E1B20665A7500ADF48F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C519E2120665FE800ADF48F /* Scrubber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrubber.swift; sourceTree = "<group>"; };
+		4CA982F02091C1B900BACE5D /* PlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				4C519E2320666B0D00ADF48F /* Supporting Files */,
-				4C519E1120665A7400ADF48F /* PlayerVC.swift */,
+				4CA982F02091C1B900BACE5D /* PlayerVC.swift */,
 				4C34FDDB2072C801001A3E01 /* ForYouVC.swift */,
 				4C34FDDD2072C818001A3E01 /* PlaylistsVC.swift */,
 				4C3670E220837854007AC15C /* Library */,
@@ -179,9 +179,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C519E1220665A7400ADF48F /* PlayerVC.swift in Sources */,
 				4C3670E12083783E007AC15C /* ArtistsVC.swift in Sources */,
 				4C519E1020665A7400ADF48F /* AppDelegate.swift in Sources */,
+				4CA982F12091C1B900BACE5D /* PlayerVC.swift in Sources */,
 				4C34FDDC2072C801001A3E01 /* ForYouVC.swift in Sources */,
 				4C34FDDE2072C818001A3E01 /* PlaylistsVC.swift in Sources */,
 				4C509BE82083AAA4009094DC /* LibraryViewController.swift in Sources */,
@@ -333,6 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FQ4T4QU544;
 				INFOPLIST_FILE = Music/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NoobLabs.Music;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,6 +349,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FQ4T4QU544;
 				INFOPLIST_FILE = Music/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NoobLabs.Music;
 				PRODUCT_NAME = "$(TARGET_NAME)";

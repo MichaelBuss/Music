@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SXi-hq-a9d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14111" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SXi-hq-a9d">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--PlayerVC-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PlayerVC" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -430,10 +430,10 @@
             </objects>
             <point key="canvasLocation" x="1713" y="825"/>
         </scene>
-        <!--View Controller-->
+        <!--PlayerVC-->
         <scene sceneID="K3B-FF-IB4">
             <objects>
-                <viewController id="PqF-fX-FKE" sceneMemberID="viewController">
+                <viewController id="PqF-fX-FKE" customClass="PlayerVC" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cn4-AR-yk1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -441,6 +441,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yd7-xg-BEV">
                                 <rect key="frame" x="163" y="4" width="49" height="50"/>
                                 <state key="normal" image="Play Big"/>
+                                <connections>
+                                    <action selector="play:" destination="PqF-fX-FKE" eventType="touchUpInside" id="2fY-g2-m2N"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -471,6 +474,6 @@
         <image name="Skip Medium" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eg2-QE-C9x"/>
+        <segue reference="oKc-vf-BQL"/>
     </inferredMetricsTieBreakers>
 </document>
