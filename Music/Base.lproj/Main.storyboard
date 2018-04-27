@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14111" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SXi-hq-a9d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SXi-hq-a9d">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -250,7 +250,7 @@
                                     <constraint firstAttribute="height" constant="58" id="snp-8h-15W"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="PqF-fX-FKE" kind="embed" identifier="LibraryPlayerEmbedSegue" id="eg2-QE-C9x"/>
+                                    <segue destination="PqF-fX-FKE" kind="embed" id="nvy-fp-4bD"/>
                                 </connections>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O9D-91-mY4">
@@ -314,12 +314,12 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FwF-ob-Az3" firstAttribute="trailing" secondItem="lW4-c0-YBl" secondAttribute="trailing" id="3KA-nq-BdT"/>
+                            <constraint firstItem="lW4-c0-YBl" firstAttribute="top" secondItem="O9D-91-mY4" secondAttribute="bottom" id="3Lk-OZ-QME"/>
                             <constraint firstItem="FwF-ob-Az3" firstAttribute="bottom" secondItem="lW4-c0-YBl" secondAttribute="bottom" id="EBb-m1-h5T"/>
                             <constraint firstItem="lW4-c0-YBl" firstAttribute="leading" secondItem="FwF-ob-Az3" secondAttribute="leading" id="Igs-Ww-D4x"/>
                             <constraint firstItem="O9D-91-mY4" firstAttribute="top" secondItem="FwF-ob-Az3" secondAttribute="top" id="Sfj-9p-MrD"/>
                             <constraint firstItem="O9D-91-mY4" firstAttribute="leading" secondItem="FwF-ob-Az3" secondAttribute="leading" id="UHp-Xy-MK8"/>
                             <constraint firstItem="O9D-91-mY4" firstAttribute="trailing" secondItem="FwF-ob-Az3" secondAttribute="trailing" id="pKg-LS-xEq"/>
-                            <constraint firstItem="FwF-ob-Az3" firstAttribute="bottom" secondItem="O9D-91-mY4" secondAttribute="bottom" constant="58" id="w6J-0F-8J4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FwF-ob-Az3"/>
                     </view>
@@ -365,7 +365,7 @@
                                     <constraint firstAttribute="height" constant="58" id="9nL-GL-cDc"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="PqF-fX-FKE" kind="embed" id="m7c-7K-eTf"/>
+                                    <segue destination="PqF-fX-FKE" kind="embed" id="QmG-K4-iAe"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -393,7 +393,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="UI Color on Dark"/>
-                        <color key="barTintColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" name="UI Color Dark"/>
                         <color key="selectedImageTintColor" name="UI Color on Dark"/>
                     </tabBar>
                     <userDefinedRuntimeAttributes>
@@ -423,7 +423,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" name="UI Color Dark"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CyT-Nc-t70">
@@ -453,7 +453,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="UI Color Dark"/>
                         <constraints>
                             <constraint firstItem="yd7-xg-BEV" firstAttribute="centerX" secondItem="cn4-AR-yk1" secondAttribute="centerX" id="NJm-if-91Z"/>
                             <constraint firstItem="yd7-xg-BEV" firstAttribute="centerY" secondItem="cn4-AR-yk1" secondAttribute="centerY" id="rqX-fI-hLu"/>
@@ -479,11 +479,14 @@
         <image name="Search" width="48" height="32"/>
         <image name="Shuffle Small" width="50" height="50"/>
         <image name="Skip Medium" width="50" height="50"/>
+        <namedColor name="UI Color Dark">
+            <color red="0.039000000804662704" green="0.039000000804662704" blue="0.039000000804662704" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="UI Color on Dark">
-            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="0.58399999141693115" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eg2-QE-C9x"/>
+        <segue reference="nvy-fp-4bD"/>
     </inferredMetricsTieBreakers>
 </document>

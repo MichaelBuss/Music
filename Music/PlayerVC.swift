@@ -7,33 +7,62 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class PlayerVC: UIViewController {
-
+    
+    var musicPlayer = MPMusicPlayerController.applicationMusicPlayer
+    
+    var parentHeight = 0
+    var targetHeight = 58
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidLayoutSubviews() {
+        parentHeight = Int((parent?.view.frame.height)!)
+        print("parentHeight: \(parentHeight)")
     }
     
     @IBAction func play(_ sender: Any) {
         print("Play Pressed")
+        playMusic(withTitle: "Burn (Gryffin Remix)")
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("Touches began on Player View")
-        let expandNotification: [String : Int] = ["height" : 200]
+        
+        if targetHeight == parentHeight{
+            targetHeight = 58
+        } else {
+            targetHeight = parentHeight
+        }
+        let expandNotification: [String : Int] = ["height" : targetHeight]
+
         NotificationCenter.default.post(
             name: Notification.Name("ExpandPlayer"),
             object: self,
             userInfo: expandNotification)
+        // MARK: - Bad implementation, needs fixing
+
     }
     
+
+    
+    func playMusic(withTitle title: String) {
+        
+        musicPlayer.stop()
+        
+        let query = MPMediaQuery()
+        let predicate = MPMediaPropertyPredicate(value: title, forProperty: MPMediaItemPropertyTitle)
+        
+        query.addFilterPredicate(predicate)
+        
+        musicPlayer.setQueue(with: query)
+        musicPlayer.play()
+    }
 
     
     /*
