@@ -14,6 +14,7 @@ class PlayerVC: UIViewController {
     @IBOutlet weak var topStackView: UIView!
     @IBOutlet weak var scrubber: UISlider!
     
+    @IBOutlet weak var playerStackView: UIStackView!
     // MARK: - Player buttons
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
@@ -26,10 +27,12 @@ class PlayerVC: UIViewController {
     var musicPlayer = MPMusicPlayerController.applicationMusicPlayer
     
     var parentHeight = 0
-    var targetHeight = 58
+    var targetHeight = 64
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrubber.translatesAutoresizingMaskIntoConstraints = true
+        scrubber.setThumbImage(#imageLiteral(resourceName: "Thumb"), for: .normal) // Sets Thumb image on scrubber
         // Do any additional setup after loading the view.
     }
     
@@ -47,7 +50,7 @@ class PlayerVC: UIViewController {
         print("Touches began on Player View")
         
         if targetHeight == parentHeight {
-            targetHeight = 58
+            targetHeight = 64
             controlsVisibility(isHidden: true)
         } else {
             targetHeight = parentHeight
@@ -67,8 +70,10 @@ class PlayerVC: UIViewController {
     private func controlsVisibility(isHidden hidden : Bool) {
         if hidden == true {
             queueCollectionViewSpacingConstraint.constant = 0
+            playerStackView.alignment = .trailing
         } else {
             queueCollectionViewSpacingConstraint.constant = 8
+            playerStackView.alignment = .center
         }
         shuffleButton.isHidden = hidden
         previousButton.isHidden = hidden

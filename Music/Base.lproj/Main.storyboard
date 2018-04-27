@@ -329,7 +329,7 @@
                                 <segment title="Albums"/>
                                 <segment title="Songs"/>
                             </segments>
-                            <color key="tintColor" name="UI Color on Dark"/>
+                            <color key="tintColor" name="UI Color Tint"/>
                             <connections>
                                 <action selector="sortSegmentedControlDidChange:" destination="p0J-5V-j87" eventType="valueChanged" id="YeQ-Yh-0dO"/>
                             </connections>
@@ -388,9 +388,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" name="UI Color on Dark"/>
+                        <color key="tintColor" name="UI Color Tint"/>
                         <color key="barTintColor" name="UI Color Dark"/>
-                        <color key="selectedImageTintColor" name="UI Color on Dark"/>
+                        <color key="selectedImageTintColor" name="UI Color Tint"/>
                     </tabBar>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
@@ -442,7 +442,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ROJ-GP-VbE">
-                                <rect key="frame" x="0.0" y="113" width="375" height="612"/>
+                                <rect key="frame" x="0.0" y="113" width="375" height="605"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dEi-U7-Xng">
                                     <size key="itemSize" width="50" height="50"/>
@@ -520,7 +520,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="N4K-zM-sQa" userLabel="Player">
-                                <rect key="frame" x="8" y="733" width="359" height="112"/>
+                                <rect key="frame" x="8" y="726" width="359" height="112"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="bbU-rQ-CLr" customClass="Scrubber" customModule="Music" customModuleProvider="target">
                                         <rect key="frame" x="-2" y="0.0" width="363" height="47"/>
@@ -533,8 +533,8 @@
                                             <action selector="scrubberAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="xMG-C7-4w2"/>
                                         </connections>
                                     </slider>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2lx-L9-fmb" userLabel="Player Buttons">
-                                        <rect key="frame" x="22.666666666666657" y="62" width="314" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2lx-L9-fmb" userLabel="Player Buttons">
+                                        <rect key="frame" x="23" y="62" width="313" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xH-05-fM5" userLabel="Shuffle">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -545,18 +545,18 @@
                                                 <state key="normal" image="Previous Medium"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yd7-xg-BEV" userLabel="Play">
-                                                <rect key="frame" x="132" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="132" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="Play Big"/>
                                                 <connections>
                                                     <action selector="play:" destination="PqF-fX-FKE" eventType="touchUpInside" id="2fY-g2-m2N"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqw-8D-fOX" userLabel="Skip">
-                                                <rect key="frame" x="198" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="197" y="0.0" width="50" height="50"/>
                                                 <state key="normal" image="Skip Medium"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2n-6O-ejq" userLabel="Repeat">
-                                                <rect key="frame" x="264" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="263" y="0.0" width="50" height="50"/>
                                                 <state key="normal" image="Repeat"/>
                                             </button>
                                         </subviews>
@@ -575,9 +575,9 @@
                             <constraint firstItem="W4E-RC-zqs" firstAttribute="leading" secondItem="9fJ-us-Mku" secondAttribute="leading" id="2CN-1M-kW6"/>
                             <constraint firstItem="ROJ-GP-VbE" firstAttribute="leading" secondItem="9fJ-us-Mku" secondAttribute="leading" id="2sA-PB-e2y"/>
                             <constraint firstItem="ROJ-GP-VbE" firstAttribute="top" secondItem="W4E-RC-zqs" secondAttribute="bottom" constant="8" id="3Vd-7T-DUo"/>
-                            <constraint firstItem="N4K-zM-sQa" firstAttribute="bottom" secondItem="9fJ-us-Mku" secondAttribute="bottom" constant="-1" id="9i5-1E-zZm"/>
                             <constraint firstItem="9fJ-us-Mku" firstAttribute="trailing" secondItem="N4K-zM-sQa" secondAttribute="trailing" constant="8" id="Rdm-Ch-8Ke"/>
                             <constraint firstItem="W4E-RC-zqs" firstAttribute="top" secondItem="9fJ-us-Mku" secondAttribute="top" id="UH6-Dg-VBq"/>
+                            <constraint firstItem="9fJ-us-Mku" firstAttribute="bottom" secondItem="N4K-zM-sQa" secondAttribute="bottom" constant="8" id="Yxe-Rr-JOM"/>
                             <constraint firstItem="N4K-zM-sQa" firstAttribute="top" secondItem="ROJ-GP-VbE" secondAttribute="bottom" constant="8" id="slE-FD-N6w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9fJ-us-Mku"/>
@@ -585,6 +585,7 @@
                     <size key="freeformSize" width="375" height="880"/>
                     <connections>
                         <outlet property="playButton" destination="yd7-xg-BEV" id="eUP-aP-D50"/>
+                        <outlet property="playerStackView" destination="N4K-zM-sQa" id="lEJ-1u-uXM"/>
                         <outlet property="previousButton" destination="QHG-11-BDj" id="XIl-S3-7wl"/>
                         <outlet property="queueCollectionView" destination="ROJ-GP-VbE" id="xZb-tw-hCm"/>
                         <outlet property="queueCollectionViewSpacingConstraint" destination="slE-FD-N6w" id="6CL-af-LiW"/>
@@ -616,11 +617,11 @@
         <namedColor name="UI Color Dark">
             <color red="0.039000000804662704" green="0.039000000804662704" blue="0.039000000804662704" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="UI Color on Dark">
+        <namedColor name="UI Color Tint">
             <color red="1" green="0.58399999141693115" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oKc-vf-BQL"/>
+        <segue reference="nvy-fp-4bD"/>
     </inferredMetricsTieBreakers>
 </document>
