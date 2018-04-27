@@ -538,26 +538,43 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xH-05-fM5" userLabel="Shuffle">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="shuffleButton"/>
                                                 <state key="normal" image="Shuffle Small"/>
+                                                <connections>
+                                                    <action selector="playerControls:" destination="PqF-fX-FKE" eventType="touchUpInside" id="2q8-7Z-2GW"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHG-11-BDj" userLabel="Previous">
                                                 <rect key="frame" x="66" y="0.0" width="50" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="previousButton"/>
                                                 <state key="normal" image="Previous Medium"/>
+                                                <connections>
+                                                    <action selector="playerControls:" destination="PqF-fX-FKE" eventType="touchUpInside" id="B9E-Sq-PkF"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yd7-xg-BEV" userLabel="Play">
                                                 <rect key="frame" x="132" y="0.0" width="49" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="playButton"/>
                                                 <state key="normal" image="Play Big"/>
                                                 <connections>
-                                                    <action selector="play:" destination="PqF-fX-FKE" eventType="touchUpInside" id="2fY-g2-m2N"/>
+                                                    <action selector="playerControls:" destination="PqF-fX-FKE" eventType="touchUpInside" id="f1h-1k-mAG"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqw-8D-fOX" userLabel="Skip">
                                                 <rect key="frame" x="197" y="0.0" width="50" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="skipButton"/>
                                                 <state key="normal" image="Skip Medium"/>
+                                                <connections>
+                                                    <action selector="playerControls:" destination="PqF-fX-FKE" eventType="touchUpInside" id="Aha-54-sxo"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2n-6O-ejq" userLabel="Repeat">
                                                 <rect key="frame" x="263" y="0.0" width="50" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="repeatButton"/>
                                                 <state key="normal" image="Repeat"/>
+                                                <connections>
+                                                    <action selector="playerControls:" destination="PqF-fX-FKE" eventType="touchUpInside" id="WJA-DE-xnM"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
