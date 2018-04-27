@@ -72,6 +72,7 @@ class PlayerVC: UIViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("Touches began on Player View")
         
+        // MARK: - Bad implementation, needs fixing
         if targetHeight == parentHeight {
             targetHeight = 64
             controlsVisibility(isHidden: true)
@@ -80,13 +81,12 @@ class PlayerVC: UIViewController {
             controlsVisibility(isHidden: false)
         }
         
-        let expandNotification: [String : Int] = ["height" : targetHeight]
+        let playerStateNotification: [String : Bool] = ["expanded" : true]
 
         NotificationCenter.default.post(
             name: Notification.Name("ExpandPlayer"),
             object: self,
-            userInfo: expandNotification)
-        // MARK: - Bad implementation, needs fixing
+            userInfo: playerStateNotification)
 
     }
     
