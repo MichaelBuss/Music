@@ -14,6 +14,8 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private var playerObserver: NSObjectProtocol?
     
+    @IBOutlet weak var navigationItemWithSegmentedControl: UINavigationItem!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("View will appear")
@@ -25,7 +27,9 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 print("Recieved Notification with \(notification.name)")
                 if let newHeight = notification.userInfo!["height"] {
                     self.animatePlayerHeight(to: newHeight as! Int, withDuration: 0.5)
-                } 
+                
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+                }
             }
         )
     }
@@ -42,6 +46,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         print("loaded")
+        
     }
 
     // MARK: - Outlets
