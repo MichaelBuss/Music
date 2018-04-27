@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SXi-hq-a9d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14111" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SXi-hq-a9d">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -337,6 +337,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="libraryTableView" destination="O9D-91-mY4" id="HbD-CT-aY3"/>
+                        <outlet property="navigationItemWithSegmentedControl" destination="sSU-xH-OcA" id="cV4-vd-BiA"/>
                         <outlet property="playerView" destination="lW4-c0-YBl" id="I6b-O2-2wZ"/>
                         <outlet property="playerViewHeight" destination="snp-8h-15W" id="RFX-5g-EH0"/>
                         <outlet property="sortSegmentedControl" destination="JrG-eY-gY2" id="Lre-iW-igk"/>
