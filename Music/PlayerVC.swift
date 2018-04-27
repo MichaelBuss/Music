@@ -41,10 +41,33 @@ class PlayerVC: UIViewController {
         print("parentHeight: \(parentHeight)")
     }
     
-    @IBAction func play(_ sender: Any) {
-        print("Play Pressed")
-        playMusic(withTitle: "Burn (Gryffin Remix)")
+
+    @IBAction func playerControls(_ sender: UIButton) {
+        switch sender {
+        case playButton:
+            print("Play Pressed")
+            playMusic(withTitle: "Burn (Gryffin Remix)")
+            
+        case skipButton:
+            print("Skip Pressed")
+            musicPlayer.skipToNextItem()
+            
+        case previousButton:
+            print("Previous Pressed")
+            musicPlayer.skipToPreviousItem()
+            
+        case shuffleButton:
+            print("Shuffle Pressed")
+            musicPlayer.shuffleMode = .songs
+            
+        case repeatButton:
+            print("Repeat Pressed")
+            
+        default:
+            print("did you just press me?")
+        }
     }
+    
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("Touches began on Player View")
