@@ -69,17 +69,19 @@ class PlayerVC: UIViewController {
         print("Touches began on Player View")
         
         let parentViewHeight = Int((parent?.view.frame.height)!)
-        let parentNavigationBarHeight = Int((parent?.navigationController?.navigationBar.frame.height)!)
+
+        if let parentNavigationBarHeight = parent?.navigationController?.navigationBar.frame.height {
+        
         print(parentNavigationBarHeight)
         // MARK: - Bad implementation, needs fixing
-        if targetHeight == parentViewHeight + parentNavigationBarHeight{
+        if targetHeight == parentViewHeight + Int(parentNavigationBarHeight) {
             targetHeight = 64
             controlsVisibility(isHidden: true)
         } else {
-            targetHeight = parentViewHeight + parentNavigationBarHeight
+            targetHeight = parentViewHeight + Int(parentNavigationBarHeight)
             controlsVisibility(isHidden: false)
         }
-
+        }
         let playerStateNotification: [String : Int] = ["targetHeight" : targetHeight]
 
         NotificationCenter.default.post(
