@@ -23,7 +23,8 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             queue: OperationQueue.main,
             using: {notification in
                 print("Recieved Notification with \(notification.name)")
-                if let isExpanded = notification.userInfo!["expanded"] {
+                if let height = notification.userInfo!["targetHeight"] as? Int {
+                    self.animatePlayerHeight(to: height, withDuration: 0.5)
                 }
             }
         )

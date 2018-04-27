@@ -26,22 +26,18 @@ class PlayerVC: UIViewController {
     
     var musicPlayer = MPMusicPlayerController.applicationMusicPlayer
     
-    var parentHeight = 0
     var targetHeight = 64
+
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         scrubber.translatesAutoresizingMaskIntoConstraints = true
         scrubber.setThumbImage(#imageLiteral(resourceName: "Thumb"), for: .normal) // Sets Thumb image on scrubber
+        controlsVisibility(isHidden: true)
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidLayoutSubviews() {
-        parentHeight = Int((parent?.view.frame.height)!)
-        print("parentHeight: \(parentHeight)")
-    }
-    
-
     @IBAction func playerControls(_ sender: UIButton) {
         switch sender {
         case playButton:
@@ -68,20 +64,23 @@ class PlayerVC: UIViewController {
         }
     }
     
-    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         print("Touches began on Player View")
         
+        let parentViewHeight = Int((parent?.view.frame.height)!)
+        let parentNavigationBarHeight = Int((parent?.navigationController?.navigationBar.frame.height)!)
+        print(parentNavigationBarHeight)
         // MARK: - Bad implementation, needs fixing
-        if targetHeight == parentHeight {
+        if targetHeight == parentViewHeight {
             targetHeight = 64
             controlsVisibility(isHidden: true)
         } else {
-            targetHeight = parentHeight
+            targetHeight = parentViewHeight + parentNavigationBarHeight
             controlsVisibility(isHidden: false)
         }
-        
-        let playerStateNotification: [String : Bool] = ["expanded" : true]
+
+        let playerStateNotification: [String : Int] = ["targetHeight" : targetHeight]
 
         NotificationCenter.default.post(
             name: Notification.Name("ExpandPlayer"),
