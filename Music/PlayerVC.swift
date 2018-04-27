@@ -10,6 +10,18 @@ import UIKit
 import MediaPlayer
 
 class PlayerVC: UIViewController {
+    @IBOutlet weak var queueCollectionView: UICollectionView!
+    @IBOutlet weak var topStackView: UIView!
+    @IBOutlet weak var scrubber: UISlider!
+    
+    // MARK: - Player buttons
+    @IBOutlet weak var shuffleButton: UIButton!
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var repeatButton: UIButton!
+    
+    @IBOutlet weak var queueCollectionViewSpacingConstraint: NSLayoutConstraint!
     
     var musicPlayer = MPMusicPlayerController.applicationMusicPlayer
     
@@ -34,11 +46,14 @@ class PlayerVC: UIViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("Touches began on Player View")
         
-        if targetHeight == parentHeight{
+        if targetHeight == parentHeight {
             targetHeight = 58
+            controlsVisibility(isHidden: true)
         } else {
             targetHeight = parentHeight
+            controlsVisibility(isHidden: false)
         }
+        
         let expandNotification: [String : Int] = ["height" : targetHeight]
 
         NotificationCenter.default.post(
@@ -49,9 +64,21 @@ class PlayerVC: UIViewController {
 
     }
     
-
+    private func controlsVisibility(isHidden hidden : Bool) {
+        if hidden == true {
+            queueCollectionViewSpacingConstraint.constant = 0
+        } else {
+            queueCollectionViewSpacingConstraint.constant = 8
+        }
+        shuffleButton.isHidden = hidden
+        previousButton.isHidden = hidden
+        repeatButton.isHidden = hidden
+        queueCollectionView.isHidden = hidden
+        topStackView.isHidden = hidden
+        scrubber.isHidden = hidden
+    }
     
-    func playMusic(withTitle title: String) {
+    private func playMusic(withTitle title: String) {
         
         musicPlayer.stop()
         
