@@ -72,7 +72,7 @@ class PlayerVC: UIViewController {
         let parentNavigationBarHeight = Int((parent?.navigationController?.navigationBar.frame.height)!)
         print(parentNavigationBarHeight)
         // MARK: - Bad implementation, needs fixing
-        if targetHeight == parentViewHeight {
+        if targetHeight == parentViewHeight + parentNavigationBarHeight{
             targetHeight = 64
             controlsVisibility(isHidden: true)
         } else {
