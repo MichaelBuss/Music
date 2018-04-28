@@ -26,7 +26,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             using: {notification in
                 print("Recieved Notification with \(notification.name)")
                 if let height = notification.userInfo!["targetHeight"] as? Int {
-                    self.animatePlayerHeight(to: height, withDuration: 0.5)
+                    self.animatePlayerHeight(to: height, withDuration: 2)
                 }
             }
         )

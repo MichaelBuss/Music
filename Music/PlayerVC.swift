@@ -11,11 +11,11 @@ import MediaPlayer
 
 class PlayerVC: UIViewController {
     @IBOutlet weak var playerQueueCollectionView: UICollectionView!
-    @IBOutlet weak var headerStackView: UIView!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var scrubber: UISlider!
     @IBOutlet weak var dragHandle: UIButton!
     
-    @IBOutlet weak var playbackButtonsStackView: UIStackView!
+    @IBOutlet weak var fullPlayerStack: UIStackView!
     // MARK: - Player buttons
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
@@ -25,7 +25,7 @@ class PlayerVC: UIViewController {
     
     var musicPlayer = MPMusicPlayerController.applicationMusicPlayer
     
-    var targetHeight = 64
+    var targetHeight = 58
 
     
     override func viewDidLoad() {
@@ -74,7 +74,7 @@ class PlayerVC: UIViewController {
         print(parentNavigationBarHeight)
             // MARK: - Bad implementation, needs fixing
             if targetHeight == parentViewHeight + Int(parentNavigationBarHeight) {
-                targetHeight = 64
+                targetHeight = 58
                 controlsVisibility(isHidden: true)
             } else {
                 targetHeight = parentViewHeight + Int(parentNavigationBarHeight)
@@ -91,16 +91,18 @@ class PlayerVC: UIViewController {
     }
     
     private func controlsVisibility(isHidden hidden : Bool) {
-//        if hidden == true {
-//            playbackButtonsStackView.alignment = .trailing
-//        } else {
-//            playbackButtonsStackView.alignment = .center
-//        }
+        if hidden == true {
+            parent?.navigationController?.setNavigationBarHidden(false, animated: true)
+            fullPlayerStack.alignment = .trailing
+        } else {
+            parent?.navigationController?.setNavigationBarHidden(true, animated: true)
+            fullPlayerStack.alignment = .center
+        }
         shuffleButton.isHidden = hidden
         previousButton.isHidden = hidden
         repeatButton.isHidden = hidden
         playerQueueCollectionView.isHidden = hidden
-        headerStackView.isHidden = hidden
+        headerView.isHidden = hidden
         scrubber.isHidden = hidden
         dragHandle.isHidden = hidden
     }
