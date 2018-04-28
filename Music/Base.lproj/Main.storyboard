@@ -93,7 +93,7 @@
                                     <constraint firstAttribute="height" constant="64" id="snp-8h-15W"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="Cx8-X7-fjG" kind="embed" id="fLr-5K-lgM"/>
+                                    <segue destination="Cx8-X7-fjG" kind="embed" id="p0R-ay-AUu"/>
                                 </connections>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O9D-91-mY4">
@@ -289,13 +289,27 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8LV-Ho-FQu" userLabel="Full Player Stack">
                                 <rect key="frame" x="0.0" y="44" width="374.33333333333331" height="722"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVl-Z6-Thq" userLabel="Drag Handle">
-                                        <rect key="frame" x="168.66666666666666" y="0.0" width="37" height="11"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLS-u0-sq9" userLabel="Drag Handle View">
+                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="11"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVl-Z6-Thq" userLabel="Drag Handle">
+                                                <rect key="frame" x="169.33333333333334" y="0.0" width="37" height="11"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="11" id="tdC-pa-iPF"/>
+                                                </constraints>
+                                                <state key="normal" image="Handle Retract"/>
+                                                <connections>
+                                                    <action selector="dragHandle:" destination="Cx8-X7-fjG" eventType="touchUpInside" id="E3M-5z-B9o"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="11" id="tdC-pa-iPF"/>
+                                            <constraint firstItem="YVl-Z6-Thq" firstAttribute="centerX" secondItem="KLS-u0-sq9" secondAttribute="centerX" id="AFg-fB-Ufs"/>
+                                            <constraint firstAttribute="bottom" secondItem="YVl-Z6-Thq" secondAttribute="bottom" id="SSX-30-126"/>
+                                            <constraint firstItem="YVl-Z6-Thq" firstAttribute="top" secondItem="KLS-u0-sq9" secondAttribute="top" id="ozr-Pj-Fg9"/>
                                         </constraints>
-                                        <state key="normal" image="Handle Retract"/>
-                                    </button>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqg-cB-6sz" userLabel="Header View">
                                         <rect key="frame" x="0.0" y="11" width="374.33333333333331" height="49"/>
                                         <subviews>
@@ -351,7 +365,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="41v-5k-VaT" secondAttribute="bottom" id="4TC-Xe-3eI"/>
                                             <constraint firstItem="41v-5k-VaT" firstAttribute="leading" secondItem="nqg-cB-6sz" secondAttribute="leading" constant="16" id="TUh-2X-QI7"/>
@@ -360,8 +374,8 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pl7-fb-WGK" userLabel="Player Queue Collection View">
-                                        <rect key="frame" x="0.0" y="60" width="374.33333333333331" height="558.33333333333337"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <rect key="frame" x="0.0" y="60" width="374.33333333333331" height="550.33333333333337"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7l3-Gz-Xv1">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -379,14 +393,25 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="34Y-LH-SA4" customClass="Scrubber" customModule="Music" customModuleProvider="target">
-                                        <rect key="frame" x="5.3333333333333428" y="618.33333333333337" width="363.66666666666663" height="46.666666666666629"/>
-                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDA-hv-tc7" userLabel="Scrubber View">
+                                        <rect key="frame" x="0.0" y="610.33333333333337" width="374.33333333333331" height="53.666666666666629"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="34Y-LH-SA4" customClass="Scrubber" customModule="Music" customModuleProvider="target">
+                                                <rect key="frame" x="5" y="0.0" width="363.66666666666669" height="46.666666666666664"/>
+                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="359" id="TzK-Jc-Rgx"/>
+                                                    <constraint firstAttribute="height" constant="46" id="dUo-mh-qTp"/>
+                                                </constraints>
+                                            </slider>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="359" id="TzK-Jc-Rgx"/>
-                                            <constraint firstAttribute="height" constant="46" id="dUo-mh-qTp"/>
+                                            <constraint firstAttribute="bottom" secondItem="34Y-LH-SA4" secondAttribute="bottom" constant="8" id="3ld-Zc-LBN"/>
+                                            <constraint firstItem="34Y-LH-SA4" firstAttribute="centerX" secondItem="gDA-hv-tc7" secondAttribute="centerX" id="WfD-P0-KCY"/>
+                                            <constraint firstItem="34Y-LH-SA4" firstAttribute="top" secondItem="gDA-hv-tc7" secondAttribute="top" id="u3e-Vd-Mph"/>
                                         </constraints>
-                                    </slider>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YV4-X0-QMp" userLabel="Playback Buttons View">
                                         <rect key="frame" x="22" y="664" width="330.33333333333331" height="58"/>
                                         <subviews>
@@ -449,7 +474,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="AMt-76-Kr0" secondAttribute="trailing" constant="8" id="29Q-jn-TnQ"/>
                                             <constraint firstItem="AMt-76-Kr0" firstAttribute="top" secondItem="YV4-X0-QMp" secondAttribute="top" constant="4" id="7v8-A2-WKv"/>
@@ -460,11 +485,15 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="nqg-cB-6sz" firstAttribute="leading" secondItem="8LV-Ho-FQu" secondAttribute="leading" id="9b6-A1-YnC"/>
+                                    <constraint firstAttribute="trailing" secondItem="KLS-u0-sq9" secondAttribute="trailing" id="Bgp-xs-zpA"/>
+                                    <constraint firstItem="KLS-u0-sq9" firstAttribute="leading" secondItem="8LV-Ho-FQu" secondAttribute="leading" id="Vnm-Pa-udU"/>
+                                    <constraint firstAttribute="trailing" secondItem="gDA-hv-tc7" secondAttribute="trailing" id="dpv-Vq-50y"/>
+                                    <constraint firstItem="gDA-hv-tc7" firstAttribute="leading" secondItem="8LV-Ho-FQu" secondAttribute="leading" id="l7E-2A-3bD"/>
                                     <constraint firstAttribute="trailing" secondItem="nqg-cB-6sz" secondAttribute="trailing" id="xQt-5i-Cz6"/>
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tim-gl-vJl" firstAttribute="bottom" secondItem="8LV-Ho-FQu" secondAttribute="bottom" id="3iu-k6-xSa"/>
                             <constraint firstItem="tim-gl-vJl" firstAttribute="trailing" secondItem="8LV-Ho-FQu" secondAttribute="trailing" id="JLO-WA-MtH"/>
@@ -476,6 +505,7 @@
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
                         <outlet property="dragHandle" destination="YVl-Z6-Thq" id="3g7-mW-KVN"/>
+                        <outlet property="dragHandleView" destination="KLS-u0-sq9" id="Fqt-Ki-pvW"/>
                         <outlet property="fullPlayerStack" destination="8LV-Ho-FQu" id="P1V-8x-IMS"/>
                         <outlet property="headerView" destination="nqg-cB-6sz" id="oVl-g3-Y7B"/>
                         <outlet property="playButton" destination="Msq-Lm-Jti" id="F2D-wE-Zr4"/>
@@ -483,6 +513,7 @@
                         <outlet property="previousButton" destination="0bS-lN-Pkn" id="mxM-fL-Gcb"/>
                         <outlet property="repeatButton" destination="aq3-Do-Lcp" id="Uve-WB-Zff"/>
                         <outlet property="scrubber" destination="34Y-LH-SA4" id="Ggk-dZ-Nfo"/>
+                        <outlet property="scrubberView" destination="gDA-hv-tc7" id="sFK-n2-9oW"/>
                         <outlet property="shuffleButton" destination="L7C-Iu-AJk" id="KCe-2J-0Jy"/>
                         <outlet property="skipButton" destination="yAo-qT-Gub" id="eV2-uo-YdH"/>
                     </connections>

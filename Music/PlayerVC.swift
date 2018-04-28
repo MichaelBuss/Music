@@ -12,7 +12,9 @@ import MediaPlayer
 class PlayerVC: UIViewController {
     @IBOutlet weak var playerQueueCollectionView: UICollectionView!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var scrubberView: UIView!
     @IBOutlet weak var scrubber: UISlider!
+    @IBOutlet weak var dragHandleView: UIView!
     @IBOutlet weak var dragHandle: UIButton!
     
     @IBOutlet weak var fullPlayerStack: UIStackView!
@@ -63,15 +65,48 @@ class PlayerVC: UIViewController {
         }
     }
     
+    
+    @IBAction func dragHandle(_ sender: UIButton) {
+        calculatAndSendPlayerHeightNotification()
+    }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         print("Touches ended on Player View")
-        
-        let parentViewHeight = Int((parent?.view.frame.height)!)
+        calculatAndSendPlayerHeightNotification()
+    }
+    
+    private func controlsVisibility(isHidden hidden : Bool) {
+        if hidden == true {
+            parent?.navigationController?.setNavigationBarHidden(false, animated: true)
+            fullPlayerStack.alignment = .trailing
+            UIView.animate(withDuration: 2) {
+                self.dragHandleView.alpha = 0
+                self.scrubberView.alpha = 0
+            }
+        } else {
+            parent?.navigationController?.setNavigationBarHidden(true, animated: true)
+            fullPlayerStack.alignment = .center
+            UIView.animate(withDuration: 2) {
+                self.dragHandleView.alpha = 1
+                self.scrubberView.alpha = 1
+            }
+        }
 
-        if let parentNavigationBarHeight = parent?.navigationController?.navigationBar.frame.height {
+        shuffleButton.isHidden = hidden
+        previousButton.isHidden = hidden
+        repeatButton.isHidden = hidden
+        playerQueueCollectionView.isHidden = hidden
+        headerView.isHidden = hidden
+//        scrubberView.isHidden = hidden
+//        dragHandle.isHidden = hidden
+    }
+    
+    private func calculatAndSendPlayerHeightNotification() {
+        let parentViewHeight = Int((parent?.view.frame.height)!)
         
-        print(parentNavigationBarHeight)
+        if let parentNavigationBarHeight = parent?.navigationController?.navigationBar.frame.height {
+            
+            print(parentNavigationBarHeight)
             // MARK: - Bad implementation, needs fixing
             if targetHeight == parentViewHeight + Int(parentNavigationBarHeight) {
                 targetHeight = 58
@@ -87,24 +122,6 @@ class PlayerVC: UIViewController {
             name: Notification.Name("ExpandPlayer"),
             object: self,
             userInfo: playerStateNotification)
-
-    }
-    
-    private func controlsVisibility(isHidden hidden : Bool) {
-        if hidden == true {
-            parent?.navigationController?.setNavigationBarHidden(false, animated: true)
-            fullPlayerStack.alignment = .trailing
-        } else {
-            parent?.navigationController?.setNavigationBarHidden(true, animated: true)
-            fullPlayerStack.alignment = .center
-        }
-        shuffleButton.isHidden = hidden
-        previousButton.isHidden = hidden
-        repeatButton.isHidden = hidden
-        playerQueueCollectionView.isHidden = hidden
-        headerView.isHidden = hidden
-        scrubber.isHidden = hidden
-        dragHandle.isHidden = hidden
     }
     
     private func playMusic(withTitle title: String) {
