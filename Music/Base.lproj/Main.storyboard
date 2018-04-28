@@ -43,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wg2-ob-veL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713" y="-85"/>
+            <point key="canvasLocation" x="1846" y="-71"/>
         </scene>
         <!--For You-->
         <scene sceneID="RzB-9s-Rqb">
@@ -93,7 +93,7 @@
                                     <constraint firstAttribute="height" constant="64" id="snp-8h-15W"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="Cx8-X7-fjG" kind="embed" id="p0R-ay-AUu"/>
+                                    <segue destination="Cx8-X7-fjG" kind="embed" id="S5y-gB-8KE"/>
                                 </connections>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O9D-91-mY4">
@@ -282,7 +282,7 @@
         <scene sceneID="MGX-SH-ZiF">
             <objects>
                 <viewController id="Cx8-X7-fjG" customClass="PlayerVC" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="o9W-2q-BcU">
+                    <view key="view" contentMode="scaleToFill" id="o9W-2q-BcU" userLabel="Player View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -510,6 +510,7 @@
                         <outlet property="headerView" destination="nqg-cB-6sz" id="oVl-g3-Y7B"/>
                         <outlet property="playButton" destination="Msq-Lm-Jti" id="F2D-wE-Zr4"/>
                         <outlet property="playerQueueCollectionView" destination="pl7-fb-WGK" id="eR4-j1-9av"/>
+                        <outlet property="playerView" destination="o9W-2q-BcU" id="gpc-pY-b4B"/>
                         <outlet property="previousButton" destination="0bS-lN-Pkn" id="mxM-fL-Gcb"/>
                         <outlet property="repeatButton" destination="aq3-Do-Lcp" id="Uve-WB-Zff"/>
                         <outlet property="scrubber" destination="34Y-LH-SA4" id="Ggk-dZ-Nfo"/>
@@ -520,7 +521,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qpc-76-HNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3562" y="825"/>
+            <point key="canvasLocation" x="3295" y="825"/>
         </scene>
     </scenes>
     <resources>

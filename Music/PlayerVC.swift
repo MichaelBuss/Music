@@ -10,6 +10,7 @@ import UIKit
 import MediaPlayer
 
 class PlayerVC: UIViewController {
+    @IBOutlet var playerView: UIView!
     @IBOutlet weak var playerQueueCollectionView: UICollectionView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var scrubberView: UIView!
@@ -75,30 +76,36 @@ class PlayerVC: UIViewController {
         calculatAndSendPlayerHeightNotification()
     }
     
-    private func controlsVisibility(isHidden hidden : Bool) {
-        if hidden == true {
+    private func controlsVisibility(isHidden hide : Bool) {
+        if hide == true { // Hide elements
             parent?.navigationController?.setNavigationBarHidden(false, animated: true)
             fullPlayerStack.alignment = .trailing
-            UIView.animate(withDuration: 2) {
-                self.dragHandleView.alpha = 0
-                self.scrubberView.alpha = 0
-            }
-        } else {
+            UIView.animate(withDuration: 2, animations: {
+//                self.dragHandleView.alpha = 0
+//                self.scrubberView.alpha = 0
+                self.playerView.backgroundColor = UIColor.darkGray
+            }, completion: { _ in // Runs when the animation has finished
+                print("Finished animating OUT")
+            })
+        } else { // Show elements
             parent?.navigationController?.setNavigationBarHidden(true, animated: true)
             fullPlayerStack.alignment = .center
-            UIView.animate(withDuration: 2) {
-                self.dragHandleView.alpha = 1
-                self.scrubberView.alpha = 1
-            }
+            UIView.animate(withDuration: 2, animations: {
+//                self.dragHandleView.alpha = 1
+//                self.scrubberView.alpha = 1
+                self.playerView.backgroundColor = UIColor.black
+            }, completion: { _ in // Runs when the animation has finished
+                print("Finished animating IN")
+            })
         }
 
-        shuffleButton.isHidden = hidden
-        previousButton.isHidden = hidden
-        repeatButton.isHidden = hidden
-        playerQueueCollectionView.isHidden = hidden
-        headerView.isHidden = hidden
-//        scrubberView.isHidden = hidden
-//        dragHandle.isHidden = hidden
+        shuffleButton.isHidden = hide
+        previousButton.isHidden = hide
+        repeatButton.isHidden = hide
+        playerQueueCollectionView.isHidden = hide
+        headerView.isHidden = hide
+        dragHandleView.isHidden = hide
+        scrubberView.isHidden = hide
     }
     
     private func calculatAndSendPlayerHeightNotification() {
