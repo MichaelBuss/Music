@@ -67,12 +67,12 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LibraryCell", for: indexPath)
         if let libraryCell = cell as? LibraryTableViewCell {
-            switch sortSegmentedControl.selectedSegmentIndex{ // Not a good place for this!
-                case 0: print("Artists")
-                case 1: print("Albums")
-                case 2: print("Songs")
-            default: break
-            }
+//            switch sortSegmentedControl.selectedSegmentIndex{ // Not a good place for this!
+//                case 0: print("Artists")
+//                case 1: print("Albums")
+//                case 2: print("Songs")
+//            default: break
+//            }
             
             libraryCell.label.text = musicLibrary.songs[indexPath.item].artist
             libraryCell.imageArt.image = musicLibrary.songs[indexPath.item].coverArt

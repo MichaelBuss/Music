@@ -73,15 +73,16 @@ class PlayerVC: UIViewController {
         if let parentNavigationBarHeight = parent?.navigationController?.navigationBar.frame.height {
         
         print(parentNavigationBarHeight)
-        // MARK: - Bad implementation, needs fixing
-        if targetHeight == parentViewHeight + Int(parentNavigationBarHeight) {
-            targetHeight = 64
-            controlsVisibility(isHidden: true)
-        } else {
-            targetHeight = parentViewHeight + Int(parentNavigationBarHeight)
-            controlsVisibility(isHidden: false)
+            // MARK: - Bad implementation, needs fixing
+            if targetHeight == parentViewHeight + Int(parentNavigationBarHeight) {
+                targetHeight = 64
+                controlsVisibility(isHidden: true)
+            } else {
+                targetHeight = parentViewHeight + Int(parentNavigationBarHeight)
+                controlsVisibility(isHidden: false)
+            }
         }
-        }
+        
         let playerStateNotification: [String : Int] = ["targetHeight" : targetHeight]
 
         NotificationCenter.default.post(
@@ -92,6 +93,7 @@ class PlayerVC: UIViewController {
     }
     
     private func controlsVisibility(isHidden hidden : Bool) {
+        print("heklo")
         if hidden == true {
             queueCollectionViewSpacingConstraint.constant = 0
             playerStackView.alignment = .trailing
