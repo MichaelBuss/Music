@@ -10,12 +10,14 @@ import UIKit
 
 class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var playerContainerView: UIView!
     let musicLibrary = MusicLibrary()
     
     private var playerObserver: NSObjectProtocol?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         print("View will appear")
         playerObserver = NotificationCenter.default.addObserver(
             forName: Notification.Name("ExpandPlayer"),

@@ -10,6 +10,8 @@ import UIKit
 
 class PlaylistsVC: UIViewController {
 
+    @IBOutlet weak var playerViewHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

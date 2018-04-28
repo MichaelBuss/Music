@@ -10,19 +10,18 @@ import UIKit
 import MediaPlayer
 
 class PlayerVC: UIViewController {
-    @IBOutlet weak var queueCollectionView: UICollectionView!
-    @IBOutlet weak var topStackView: UIView!
+    @IBOutlet weak var playerQueueCollectionView: UICollectionView!
+    @IBOutlet weak var headerStackView: UIView!
     @IBOutlet weak var scrubber: UISlider!
+    @IBOutlet weak var dragHandle: UIButton!
     
-    @IBOutlet weak var playerStackView: UIStackView!
+    @IBOutlet weak var playbackButtonsStackView: UIStackView!
     // MARK: - Player buttons
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var repeatButton: UIButton!
-    
-    @IBOutlet weak var queueCollectionViewSpacingConstraint: NSLayoutConstraint!
     
     var musicPlayer = MPMusicPlayerController.applicationMusicPlayer
     
@@ -32,7 +31,7 @@ class PlayerVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        scrubber.translatesAutoresizingMaskIntoConstraints = true
+//        scrubber.translatesAutoresizingMaskIntoConstraints = true
         scrubber.setThumbImage(#imageLiteral(resourceName: "Thumb"), for: .normal) // Sets Thumb image on scrubber
         controlsVisibility(isHidden: true)
         // Do any additional setup after loading the view.
@@ -58,15 +57,15 @@ class PlayerVC: UIViewController {
             
         case repeatButton:
             print("Repeat Pressed")
-            
+
         default:
-            print("did you just press me?")
+            print("Sender button did not match any case")
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        print("Touches began on Player View")
+        print("Touches ended on Player View")
         
         let parentViewHeight = Int((parent?.view.frame.height)!)
 
@@ -84,7 +83,6 @@ class PlayerVC: UIViewController {
         }
         
         let playerStateNotification: [String : Int] = ["targetHeight" : targetHeight]
-
         NotificationCenter.default.post(
             name: Notification.Name("ExpandPlayer"),
             object: self,
@@ -93,20 +91,18 @@ class PlayerVC: UIViewController {
     }
     
     private func controlsVisibility(isHidden hidden : Bool) {
-        print("heklo")
-        if hidden == true {
-            queueCollectionViewSpacingConstraint.constant = 0
-            playerStackView.alignment = .trailing
-        } else {
-            queueCollectionViewSpacingConstraint.constant = 8
-            playerStackView.alignment = .center
-        }
+//        if hidden == true {
+//            playbackButtonsStackView.alignment = .trailing
+//        } else {
+//            playbackButtonsStackView.alignment = .center
+//        }
         shuffleButton.isHidden = hidden
         previousButton.isHidden = hidden
         repeatButton.isHidden = hidden
-        queueCollectionView.isHidden = hidden
-        topStackView.isHidden = hidden
+        playerQueueCollectionView.isHidden = hidden
+        headerStackView.isHidden = hidden
         scrubber.isHidden = hidden
+        dragHandle.isHidden = hidden
     }
     
     private func playMusic(withTitle title: String) {
