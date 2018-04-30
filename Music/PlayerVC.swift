@@ -68,12 +68,13 @@ class PlayerVC: UIViewController {
     
     
     @IBAction func dragHandle(_ sender: UIButton) {
-        calculatAndSendPlayerHeightNotification()
+        print("dragHandle touched")
+        calculateAndSendPlayerHeightNotification()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("Touches ended on Player View")
-        calculatAndSendPlayerHeightNotification()
+        calculateAndSendPlayerHeightNotification()
     }
     
     private func controlsVisibility(isHidden hide : Bool) {
@@ -81,9 +82,9 @@ class PlayerVC: UIViewController {
             parent?.navigationController?.setNavigationBarHidden(false, animated: true)
             fullPlayerStack.alignment = .trailing
             UIView.animate(withDuration: 2, animations: {
-//                self.dragHandleView.alpha = 0
-//                self.scrubberView.alpha = 0
-                self.playerView.backgroundColor = UIColor.darkGray
+                self.dragHandleView.alpha = 0
+                self.scrubberView.alpha = 0
+                self.playerView.backgroundColor = UIColor(named: "UI Color Dark")
             }, completion: { _ in // Runs when the animation has finished
                 print("Finished animating OUT")
             })
@@ -91,8 +92,8 @@ class PlayerVC: UIViewController {
             parent?.navigationController?.setNavigationBarHidden(true, animated: true)
             fullPlayerStack.alignment = .center
             UIView.animate(withDuration: 2, animations: {
-//                self.dragHandleView.alpha = 1
-//                self.scrubberView.alpha = 1
+                self.dragHandleView.alpha = 1
+                self.scrubberView.alpha = 1
                 self.playerView.backgroundColor = UIColor.black
             }, completion: { _ in // Runs when the animation has finished
                 print("Finished animating IN")
@@ -104,11 +105,11 @@ class PlayerVC: UIViewController {
         repeatButton.isHidden = hide
         playerQueueCollectionView.isHidden = hide
         headerView.isHidden = hide
-        dragHandleView.isHidden = hide
-        scrubberView.isHidden = hide
+//        dragHandleView.isHidden = hide
+//        scrubberView.isHidden = hide
     }
     
-    private func calculatAndSendPlayerHeightNotification() {
+    private func calculateAndSendPlayerHeightNotification() {
         let parentViewHeight = Int((parent?.view.frame.height)!)
         
         if let parentNavigationBarHeight = parent?.navigationController?.navigationBar.frame.height {

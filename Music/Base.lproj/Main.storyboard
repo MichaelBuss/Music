@@ -290,12 +290,13 @@
                                 <rect key="frame" x="0.0" y="44" width="374.33333333333331" height="722"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLS-u0-sq9" userLabel="Drag Handle View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="11"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="21"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVl-Z6-Thq" userLabel="Drag Handle">
-                                                <rect key="frame" x="169.33333333333334" y="0.0" width="37" height="11"/>
+                                                <rect key="frame" x="159.33333333333334" y="0.0" width="57" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="11" id="tdC-pa-iPF"/>
+                                                    <constraint firstAttribute="width" constant="57" id="nUV-g8-nb4"/>
+                                                    <constraint firstAttribute="height" constant="21" id="tdC-pa-iPF"/>
                                                 </constraints>
                                                 <state key="normal" image="Handle Retract"/>
                                                 <connections>
@@ -311,7 +312,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqg-cB-6sz" userLabel="Header View">
-                                        <rect key="frame" x="0.0" y="11" width="374.33333333333331" height="49"/>
+                                        <rect key="frame" x="0.0" y="21" width="374.33333333333331" height="49"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="41v-5k-VaT" userLabel="Header Stack">
                                                 <rect key="frame" x="16" y="0.0" width="348.33333333333331" height="49"/>
@@ -374,7 +375,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pl7-fb-WGK" userLabel="Player Queue Collection View">
-                                        <rect key="frame" x="0.0" y="60" width="374.33333333333331" height="550.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="70" width="374.33333333333331" height="540.33333333333337"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7l3-Gz-Xv1">
                                             <size key="itemSize" width="50" height="50"/>
@@ -485,8 +486,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="nqg-cB-6sz" firstAttribute="leading" secondItem="8LV-Ho-FQu" secondAttribute="leading" id="9b6-A1-YnC"/>
-                                    <constraint firstAttribute="trailing" secondItem="KLS-u0-sq9" secondAttribute="trailing" id="Bgp-xs-zpA"/>
-                                    <constraint firstItem="KLS-u0-sq9" firstAttribute="leading" secondItem="8LV-Ho-FQu" secondAttribute="leading" id="Vnm-Pa-udU"/>
                                     <constraint firstAttribute="trailing" secondItem="gDA-hv-tc7" secondAttribute="trailing" id="dpv-Vq-50y"/>
                                     <constraint firstItem="gDA-hv-tc7" firstAttribute="leading" secondItem="8LV-Ho-FQu" secondAttribute="leading" id="l7E-2A-3bD"/>
                                     <constraint firstAttribute="trailing" secondItem="nqg-cB-6sz" secondAttribute="trailing" id="xQt-5i-Cz6"/>
@@ -539,7 +538,7 @@
         <image name="Shuffle" width="50" height="50"/>
         <image name="Skip" width="50" height="50"/>
         <namedColor name="UI Color Dark">
-            <color red="0.039000000804662704" green="0.039000000804662704" blue="0.039000000804662704" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.10000000149011612" green="0.10000000149011612" blue="0.10000000149011612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="UI Color Tint">
             <color red="1" green="0.58399999141693115" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
