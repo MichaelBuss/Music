@@ -287,16 +287,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8LV-Ho-FQu" userLabel="Full Player Stack">
-                                <rect key="frame" x="0.0" y="44" width="374.33333333333331" height="722"/>
+                                <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="800"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLS-u0-sq9" userLabel="Drag Handle View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="21"/>
+                                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLS-u0-sq9" userLabel="Drag Handle View">
+                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVl-Z6-Thq" userLabel="Drag Handle">
-                                                <rect key="frame" x="159.33333333333334" y="0.0" width="57" height="21"/>
+                                                <rect key="frame" x="148" y="0.0" width="77" height="31"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="57" id="nUV-g8-nb4"/>
-                                                    <constraint firstAttribute="height" constant="21" id="tdC-pa-iPF"/>
+                                                    <constraint firstAttribute="width" constant="77" id="nUV-g8-nb4"/>
+                                                    <constraint firstAttribute="height" constant="31" id="tdC-pa-iPF"/>
                                                 </constraints>
                                                 <state key="normal" image="Handle Retract"/>
                                                 <connections>
@@ -306,13 +306,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="YVl-Z6-Thq" firstAttribute="centerX" secondItem="KLS-u0-sq9" secondAttribute="centerX" id="AFg-fB-Ufs"/>
                                             <constraint firstAttribute="bottom" secondItem="YVl-Z6-Thq" secondAttribute="bottom" id="SSX-30-126"/>
                                             <constraint firstItem="YVl-Z6-Thq" firstAttribute="top" secondItem="KLS-u0-sq9" secondAttribute="top" id="ozr-Pj-Fg9"/>
+                                            <constraint firstItem="YVl-Z6-Thq" firstAttribute="centerX" secondItem="KLS-u0-sq9" secondAttribute="centerX" id="xMO-vF-aWH"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqg-cB-6sz" userLabel="Header View">
-                                        <rect key="frame" x="0.0" y="21" width="374.33333333333331" height="49"/>
+                                        <rect key="frame" x="0.0" y="31" width="374.33333333333331" height="49"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="41v-5k-VaT" userLabel="Header Stack">
                                                 <rect key="frame" x="16" y="0.0" width="348.33333333333331" height="49"/>
@@ -374,8 +374,8 @@
                                             <constraint firstAttribute="trailing" secondItem="41v-5k-VaT" secondAttribute="trailing" constant="10" id="hjz-NZ-9N0"/>
                                         </constraints>
                                     </view>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pl7-fb-WGK" userLabel="Player Queue Collection View">
-                                        <rect key="frame" x="0.0" y="70" width="374.33333333333331" height="540.33333333333337"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pl7-fb-WGK" userLabel="Player Queue Collection View">
+                                        <rect key="frame" x="0.0" y="80" width="374.33333333333331" height="608.33333333333337"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7l3-Gz-Xv1">
                                             <size key="itemSize" width="50" height="50"/>
@@ -383,19 +383,10 @@
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="albumArtCell" id="cu5-AU-viN">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </view>
-                                            </collectionViewCell>
-                                        </cells>
+                                        <cells/>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDA-hv-tc7" userLabel="Scrubber View">
-                                        <rect key="frame" x="0.0" y="610.33333333333337" width="374.33333333333331" height="53.666666666666629"/>
+                                        <rect key="frame" x="0.0" y="688.33333333333337" width="374.33333333333331" height="53.666666666666629"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="34Y-LH-SA4" customClass="Scrubber" customModule="Music" customModuleProvider="target">
                                                 <rect key="frame" x="5" y="0.0" width="363.66666666666669" height="46.666666666666664"/>
@@ -414,7 +405,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YV4-X0-QMp" userLabel="Playback Buttons View">
-                                        <rect key="frame" x="22" y="664" width="330.33333333333331" height="58"/>
+                                        <rect key="frame" x="22" y="742" width="330.33333333333331" height="58"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AMt-76-Kr0" userLabel="Playback Buttons Stack">
                                                 <rect key="frame" x="8" y="4" width="314.33333333333331" height="50"/>
@@ -486,6 +477,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="nqg-cB-6sz" firstAttribute="leading" secondItem="8LV-Ho-FQu" secondAttribute="leading" id="9b6-A1-YnC"/>
+                                    <constraint firstAttribute="trailing" secondItem="KLS-u0-sq9" secondAttribute="trailing" id="RqV-ne-Ky7"/>
+                                    <constraint firstItem="KLS-u0-sq9" firstAttribute="leading" secondItem="8LV-Ho-FQu" secondAttribute="leading" id="dab-vA-Ohe"/>
                                     <constraint firstAttribute="trailing" secondItem="gDA-hv-tc7" secondAttribute="trailing" id="dpv-Vq-50y"/>
                                     <constraint firstItem="gDA-hv-tc7" firstAttribute="leading" secondItem="8LV-Ho-FQu" secondAttribute="leading" id="l7E-2A-3bD"/>
                                     <constraint firstAttribute="trailing" secondItem="nqg-cB-6sz" secondAttribute="trailing" id="xQt-5i-Cz6"/>
@@ -494,12 +487,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tim-gl-vJl" firstAttribute="bottom" secondItem="8LV-Ho-FQu" secondAttribute="bottom" id="3iu-k6-xSa"/>
-                            <constraint firstItem="tim-gl-vJl" firstAttribute="trailing" secondItem="8LV-Ho-FQu" secondAttribute="trailing" id="JLO-WA-MtH"/>
-                            <constraint firstItem="8LV-Ho-FQu" firstAttribute="leading" secondItem="tim-gl-vJl" secondAttribute="leading" id="gTF-rK-Nhy"/>
-                            <constraint firstItem="8LV-Ho-FQu" firstAttribute="top" secondItem="tim-gl-vJl" secondAttribute="top" id="htJ-lA-7VH"/>
+                            <constraint firstAttribute="bottom" secondItem="8LV-Ho-FQu" secondAttribute="bottom" id="3iu-k6-xSa"/>
+                            <constraint firstAttribute="trailing" secondItem="8LV-Ho-FQu" secondAttribute="trailing" id="JLO-WA-MtH"/>
+                            <constraint firstItem="8LV-Ho-FQu" firstAttribute="leading" secondItem="o9W-2q-BcU" secondAttribute="leading" id="gTF-rK-Nhy"/>
+                            <constraint firstItem="8LV-Ho-FQu" firstAttribute="top" secondItem="o9W-2q-BcU" secondAttribute="top" id="htJ-lA-7VH"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tim-gl-vJl"/>
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
