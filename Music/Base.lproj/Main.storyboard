@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14111" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SXi-hq-a9d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14112" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SXi-hq-a9d">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -492,6 +492,7 @@
                             <constraint firstItem="8LV-Ho-FQu" firstAttribute="leading" secondItem="o9W-2q-BcU" secondAttribute="leading" id="gTF-rK-Nhy"/>
                             <constraint firstItem="8LV-Ho-FQu" firstAttribute="top" secondItem="o9W-2q-BcU" secondAttribute="top" id="htJ-lA-7VH"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="frX-QP-NW3"/>
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
@@ -505,6 +506,7 @@
                         <outlet property="previousButton" destination="0bS-lN-Pkn" id="mxM-fL-Gcb"/>
                         <outlet property="repeatButton" destination="aq3-Do-Lcp" id="Uve-WB-Zff"/>
                         <outlet property="scrubber" destination="34Y-LH-SA4" id="Ggk-dZ-Nfo"/>
+                        <outlet property="scrubberHeight" destination="dUo-mh-qTp" id="RRE-2t-RUu"/>
                         <outlet property="scrubberView" destination="gDA-hv-tc7" id="sFK-n2-9oW"/>
                         <outlet property="shuffleButton" destination="L7C-Iu-AJk" id="KCe-2J-0Jy"/>
                         <outlet property="skipButton" destination="yAo-qT-Gub" id="eV2-uo-YdH"/>

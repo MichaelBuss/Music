@@ -15,6 +15,7 @@ class PlayerVC: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var scrubberView: UIView!
     @IBOutlet weak var scrubber: UISlider!
+    @IBOutlet weak var scrubberHeight: NSLayoutConstraint!
     @IBOutlet weak var dragHandleView: UIView!
     @IBOutlet weak var dragHandle: UIButton!
     
@@ -78,33 +79,59 @@ class PlayerVC: UIViewController {
     }
     
     private func controlsVisibility(isHidden hide : Bool) {
+        let duration = 2.0
         if hide == true { // Hide elements
-            parent?.navigationController?.setNavigationBarHidden(false, animated: true)
-            fullPlayerStack.alignment = .trailing
-            UIView.animate(withDuration: 2, animations: {
-                self.dragHandleView.alpha = 0
-                self.scrubberView.alpha = 0
+//            parent?.navigationController?.setNavigationBarHidden(false, animated: true)
+            self.headerView.isHidden = true
+            self.scrubberView.isHidden = true
+            self.dragHandleView.isHidden = true
+            UIView.animate(withDuration: duration) {
                 self.playerView.backgroundColor = UIColor(named: "UI Color Dark")
-            }, completion: { _ in // Runs when the animation has finished
-                print("Finished animating OUT")
-            })
-        } else { // Show elements
-            parent?.navigationController?.setNavigationBarHidden(true, animated: true)
-            fullPlayerStack.alignment = .center
-            UIView.animate(withDuration: 2, animations: {
-                self.dragHandleView.alpha = 1
-                self.scrubberView.alpha = 1
-                self.playerView.backgroundColor = UIColor.black
-            }, completion: { _ in // Runs when the animation has finished
-                print("Finished animating IN")
-            })
-        }
+                self.shuffleButton.isHidden = true
+                self.previousButton.isHidden = true
+                self.repeatButton.isHidden = true
+                self.playerQueueCollectionView.isHidden = true
+                self.fullPlayerStack.alignment = .trailing
+            }
 
-        shuffleButton.isHidden = hide
-        previousButton.isHidden = hide
-        repeatButton.isHidden = hide
-        playerQueueCollectionView.isHidden = hide
-        headerView.isHidden = hide
+        } else { // Show elements
+//            parent?.navigationController?.setNavigationBarHidden(true, animated: true)
+            UIView.animate(
+                withDuration: duration,
+                animations: {
+                    self.playerView.backgroundColor = UIColor.black
+                    self.shuffleButton.isHidden = false
+                    self.previousButton.isHidden = false
+                    self.repeatButton.isHidden = false
+                    self.playerQueueCollectionView.isHidden = false
+                    self.fullPlayerStack.alignment = .center
+                },
+                completion: { _ in
+                    self.headerView.isHidden = false
+                    self.scrubberView.isHidden = false
+                    self.dragHandleView.isHidden = false
+                }
+            )
+            
+//            UIView.animate(
+//                withDuration: duration/2,
+//                delay: duration/2,
+//                animations: {
+//                self.scrubberView.isHidden = false
+//                }
+//            )
+        }
+        
+//        UIView.animate(withDuration: 2) {
+//            self.dragHandleView.isHidden = hide
+//            self.scrubberView.isHidden = hide
+//            self.shuffleButton.isHidden = hide
+//            self.previousButton.isHidden = hide
+//            self.repeatButton.isHidden = hide
+//            self.playerQueueCollectionView.isHidden = hide
+//            self.headerView.isHidden = hide
+//        }
+        
 //        dragHandleView.isHidden = hide
 //        scrubberView.isHidden = hide
     }
