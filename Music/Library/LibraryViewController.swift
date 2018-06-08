@@ -32,7 +32,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         )
     }
     @IBAction func dotsMenu(_ sender: Any) {
-        let alertController = UIAlertController(title: "Hey!", message: "That's pretty good!", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Hey!", message: "That's pretty good!", preferredStyle: .alert)
         
         // add Queue action
         let queuAction = UIAlertAction(title: "Queue", style: .default) { action in
@@ -60,10 +60,18 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // present the viewController
         self.present(alertController, animated: true) {
+            // enables the controller to detect if the background is tabbed
+            alertController.view.superview?.isUserInteractionEnabled = true
+            alertController.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
             // ...
         }
     }
     
+    // fundtion to dismiss the alerController if the background is tabbed
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
