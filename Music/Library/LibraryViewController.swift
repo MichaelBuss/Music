@@ -126,8 +126,9 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     // swipe action for trailing part of tableView
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let deleteAction = UIContextualAction(style: .normal, title: "Queu") { (action, view, handler) in
+        let deleteAction = UIContextualAction(style: .normal, title: "Queu") { (action, view, completionHandler) in
             print("Queu Action Tapped")
+            completionHandler(true)
         }
         deleteAction.backgroundColor = .green
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
@@ -137,8 +138,9 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     // swipe action for trailing part of tableView
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
             print("Delete Action Tapped")
+            completionHandler(true)
         }
         deleteAction.backgroundColor = .red
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])

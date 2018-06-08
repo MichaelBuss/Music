@@ -45,7 +45,15 @@ class PlayerVC: UIViewController {
         switch sender {
         case playButton:
             print("Play Pressed")
-            playMusic(withTitle: "Burn (Gryffin Remix)")
+
+            if (AVAudioSession.sharedInstance().secondaryAudioShouldBeSilencedHint) {
+                print("another application with a non-mixable audio session is playing audio")
+                musicPlayer.pause()
+            }
+            else {
+                playMusic(withTitle: "Burn (Gryffin Remix)")
+                musicPlayer.play()
+            }
             
         case skipButton:
             print("Skip Pressed")
