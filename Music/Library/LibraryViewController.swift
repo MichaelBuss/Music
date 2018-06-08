@@ -34,12 +34,6 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func dotsMenu(_ sender: Any) {
         let alertController = UIAlertController(title: "Hey!", message: "That's pretty good!", preferredStyle: .actionSheet)
         
-        // add Cancel action
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            // ...
-        }
-        alertController.addAction(cancelAction)
-        
         // add Queue action
         let queuAction = UIAlertAction(title: "Queue", style: .default) { action in
             // ...
@@ -52,7 +46,19 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         alertController.addAction(loveAction)
         
+        // add Dislike Action
+        let dislikeAction = UIAlertAction(title: "💔 Dislike!", style: .destructive) { action in
+            // ...
+        }
+        alertController.addAction(dislikeAction)
         
+        // add Cancel Action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            print(action)
+        }
+        alertController.addAction(cancelAction)
+        
+        // present the viewController
         self.present(alertController, animated: true) {
             // ...
         }
