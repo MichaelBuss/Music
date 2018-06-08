@@ -92,7 +92,7 @@ class PlayerVC: UIViewController {
     }
     
     private func controlsVisibility(isHidden hide : Bool) {
-        let duration = 2.0
+        let duration = 0.5
         if hide == true { // Hide elements
 //            parent?.navigationController?.setNavigationBarHidden(false, animated: true)
             self.headerView.isHidden = true

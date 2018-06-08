@@ -31,7 +31,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             using: {notification in
                 print("Recieved Notification with \(notification.name)")
                 if let height = notification.userInfo!["targetHeight"] as? Int {
-                    self.animatePlayerHeight(to: height, withDuration: 2)
+                    self.animatePlayerHeight(to: height, withDuration: 0.5)
                 }
             }
         )
@@ -111,7 +111,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return (musicLibrary.mediaItems?.count)!
-        return (everything.items?.count)!
+        return (allAlbums?.count)!
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
