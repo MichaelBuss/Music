@@ -82,6 +82,28 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    // swipe action for trailing part of tableView
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let deleteAction = UIContextualAction(style: .normal, title: "Queu") { (action, view, handler) in
+            print("Queu Action Tapped")
+        }
+        deleteAction.backgroundColor = .green
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
+    
+    // swipe action for trailing part of tableView
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
+            print("Delete Action Tapped")
+        }
+        deleteAction.backgroundColor = .red
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
+    
     // MARK: - Actions
     @IBAction func sortSegmentedControlDidChange(_ sender: UISegmentedControl) {
         updateTable()
