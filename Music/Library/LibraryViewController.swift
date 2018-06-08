@@ -31,6 +31,33 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         )
     }
+    @IBAction func dotsMenu(_ sender: Any) {
+        let alertController = UIAlertController(title: "Hey!", message: "That's pretty good!", preferredStyle: .actionSheet)
+        
+        // add Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            // ...
+        }
+        alertController.addAction(cancelAction)
+        
+        // add Queue action
+        let queuAction = UIAlertAction(title: "Queue", style: .default) { action in
+            // ...
+        }
+        alertController.addAction(queuAction)
+        
+        // add Heart Action
+        let loveAction = UIAlertAction(title: "❤️ Love!", style: .default) { action in
+            // ...
+        }
+        alertController.addAction(loveAction)
+        
+        
+        self.present(alertController, animated: true) {
+            // ...
+        }
+    }
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
