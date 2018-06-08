@@ -36,6 +36,47 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         )
     }
+    @IBAction func dotsMenu(_ sender: Any) {
+        let alertController = UIAlertController(title: "Hey!", message: "That's pretty good!", preferredStyle: .alert)
+        
+        // add Queue action
+        let queuAction = UIAlertAction(title: "Queue", style: .default) { action in
+            // ...
+        }
+        alertController.addAction(queuAction)
+        
+        // add Heart Action
+        let loveAction = UIAlertAction(title: "❤️ Love!", style: .default) { action in
+            // ...
+        }
+        alertController.addAction(loveAction)
+        
+        // add Dislike Action
+        let dislikeAction = UIAlertAction(title: "💔 Dislike!", style: .destructive) { action in
+            // ...
+        }
+        alertController.addAction(dislikeAction)
+        
+        // add Cancel Action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            print(action)
+        }
+        alertController.addAction(cancelAction)
+        
+        // present the viewController
+        self.present(alertController, animated: true) {
+            // enables the controller to detect if the background is tabbed
+            alertController.view.superview?.isUserInteractionEnabled = true
+            alertController.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+            // ...
+        }
+    }
+    
+    // fundtion to dismiss the alerController if the background is tabbed
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -89,6 +130,30 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             libraryCell.imageArt.image = allAlbums?[indexPath.row].representativeItem?.artwork?.image(at: imageSize)
         }
         return cell
+    }
+    
+    // swipe action for trailing part of tableView
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let deleteAction = UIContextualAction(style: .normal, title: "Queu") { (action, view, completionHandler) in
+            print("Queu Action Tapped")
+            completionHandler(true)
+        }
+        deleteAction.backgroundColor = .green
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
+    
+    // swipe action for trailing part of tableView
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            print("Delete Action Tapped")
+            completionHandler(true)
+        }
+        deleteAction.backgroundColor = .red
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
     }
     
     // MARK: - Actions

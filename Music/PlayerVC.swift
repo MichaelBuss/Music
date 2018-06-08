@@ -45,7 +45,19 @@ class PlayerVC: UIViewController {
         switch sender {
         case playButton:
             print("Play Pressed")
-            playMusic(withTitle: "Burn (Gryffin Remix)")
+
+            // if audio is playing
+            if (AVAudioSession.sharedInstance().secondaryAudioShouldBeSilencedHint) {
+                print("another application with a non-mixable audio session is playing audio")
+                musicPlayer.pause()
+                playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
+            }
+            // if audio is not playing
+            else {
+                playMusic(withTitle: "Burn (Gryffin Remix)")
+                musicPlayer.play()
+                playButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
+            }
             
         case skipButton:
             print("Skip Pressed")
@@ -73,6 +85,7 @@ class PlayerVC: UIViewController {
         calculateAndSendPlayerHeightNotification()
     }
     
+    // respond to touch inside the playerVC
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("Touches ended on Player View")
         calculateAndSendPlayerHeightNotification()
