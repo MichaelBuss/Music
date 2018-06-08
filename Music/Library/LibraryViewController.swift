@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let everything = MPMediaQuery()
+    var allAlbums: [MPMediaItemCollection]?
+    
     
     @IBOutlet weak var playerContainerView: UIView!
     let musicLibrary = MusicLibrary()
@@ -43,6 +48,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sortMusicByAlbum()
         print("loaded")
     }
 
@@ -63,7 +69,8 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return musicLibrary.songs.count
+//        return (musicLibrary.mediaItems?.count)!
+        return (everything.items?.count)!
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,8 +83,10 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
 //            default: break
 //            }
             
-            libraryCell.label.text = musicLibrary.songs[indexPath.item].artist
-            libraryCell.imageArt.image = musicLibrary.songs[indexPath.item].coverArt
+            // Populates table view cells with data
+            let imageSize = libraryCell.imageArt.bounds.size
+            libraryCell.label.text = allAlbums?[indexPath.row].representativeItem?.albumTitle
+            libraryCell.imageArt.image = allAlbums?[indexPath.row].representativeItem?.artwork?.image(at: imageSize)
         }
         return cell
     }
@@ -91,7 +100,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do what you want
     }
     
-    // MARK: - Mathods
+    // MARK: - Methods
     
     private func updateTable() {
         print("Updating table")
@@ -105,5 +114,9 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 
-
+    func sortMusicByAlbum(){ // Sorts by album
+        everything.groupingType = MPMediaGrouping.album
+        allAlbums = everything.collections
+    }
+    
 }

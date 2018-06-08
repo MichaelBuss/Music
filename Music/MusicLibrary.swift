@@ -24,4 +24,6 @@ class MusicLibrary: MPMediaLibrary {
     
     lazy var songs = [song]
     
+    
+    let mediaItems = MPMediaQuery.songs().items    
 }
