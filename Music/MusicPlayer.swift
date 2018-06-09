@@ -25,4 +25,8 @@ class MusicPlayer {
     func pauseMusic(){
         player.pause()
     }
+    
+    func resumeMusic(){
+        player.play()
+    }
 }

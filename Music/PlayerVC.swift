@@ -45,18 +45,43 @@ class PlayerVC: UIViewController {
         switch sender {
         case playButton:
             print("Play Pressed")
-
-            // if audio is playing
-            if (AVAudioSession.sharedInstance().secondaryAudioShouldBeSilencedHint) {
-                print("another application with a non-mixable audio session is playing audio")
-//                musicPlayer.pause()
+            
+            switch MPMusicPlayerController.systemMusicPlayer.playbackState {
+  
+            case .playing:
+                print("music is playing")
+                musicPlayer.pauseMusic()
                 playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
-            }
-            // if audio is not playing
-            else {
-//                musicPlayer.play()
+
+            case .paused:
+                print("music is paused")
+                musicPlayer.resumeMusic()
                 playButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
+                
+            case .stopped:
+                print("music is stopped")
+
+            case .seekingBackward:
+                print("music is seeking back")
+
+            case .seekingForward:
+                print("music is seeking forward")
+
+            case .interrupted:
+                print("music is interrupted")
+                
             }
+
+//            // if audio is playing
+//            if MPMusicPlayerController.systemMusicPlayer.playbackState = {
+//                print(MPMusicPlayerController.systemMusicPlayer.nowPlayingItem.persistentID)
+//                print("another application with a non-mixable audio session is playing audio")
+//                musicPlayer.pauseMusic()
+//                playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
+//            } else {
+////                musicPlayer.playMusic(withPersistentID: )
+//                playButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
+//            }
             
         case skipButton:
             print("Skip Pressed")
