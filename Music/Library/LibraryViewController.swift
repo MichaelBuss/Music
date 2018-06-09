@@ -86,8 +86,12 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let cell = (tableView.cellForRow(at: indexPath) as? LibraryTableViewCell)?.label{
             print(cell)
         }
+        tableView.deselectRow(at: indexPath, animated: true) // Un-highlights selected row
         print(indexPath.row)
-        musicPlayer.playMusic(withPersistentID: (allMediaItems?[indexPath.row].persistentID)!)
+        
+        if let tappedItemID = allMediaItems?[indexPath.row].persistentID {
+            musicPlayer.playMusic(withPersistentID: tappedItemID)
+        }
     }
     
     // MARK: - Actions

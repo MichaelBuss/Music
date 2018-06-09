@@ -11,13 +11,15 @@ import MediaPlayer
 
 class MusicPlayer {
     
+    let player = MPMusicPlayerController.applicationMusicPlayer
+    
     func playMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
-        MPMusicPlayerController.systemMusicPlayer.stop()
+    
         let query = MPMediaQuery()
         let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
         query.addFilterPredicate(predicate)
-        MPMusicPlayerController.systemMusicPlayer.setQueue(with: query)
-        MPMusicPlayerController.systemMusicPlayer.play()
+        player.setQueue(with: query)
+        player.play()
     }
     
 }
