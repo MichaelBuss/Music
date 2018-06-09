@@ -27,8 +27,8 @@ class PlayerVC: UIViewController {
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var repeatButton: UIButton!
     
-    var musicPlayer = MPMusicPlayerController.applicationMusicPlayer
-    
+    let musicPlayer = MusicPlayer()
+
     var targetHeight = 58
 
     
@@ -49,27 +49,27 @@ class PlayerVC: UIViewController {
             // if audio is playing
             if (AVAudioSession.sharedInstance().secondaryAudioShouldBeSilencedHint) {
                 print("another application with a non-mixable audio session is playing audio")
-                musicPlayer.pause()
+//                musicPlayer.pause()
                 playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
             }
             // if audio is not playing
             else {
-                playMusic(withTitle: "Burn (Gryffin Remix)")
-                musicPlayer.play()
+//                musicPlayer.play()
                 playButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
             }
             
         case skipButton:
             print("Skip Pressed")
-            musicPlayer.skipToNextItem()
+//            musicPlayer.skipToNextItem()
+            musicPlayer.pauseMusic()
             
         case previousButton:
             print("Previous Pressed")
-            musicPlayer.skipToPreviousItem()
+//            musicPlayer.skipToPreviousItem()
             
         case shuffleButton:
             print("Shuffle Pressed")
-            musicPlayer.shuffleMode = .songs
+//            musicPlayer.shuffleMode = .songs
             
         case repeatButton:
             print("Repeat Pressed")
@@ -151,14 +151,6 @@ class PlayerVC: UIViewController {
             userInfo: playerStateNotification)
     }
     
-    private func playMusic(withTitle title: String) {
-        musicPlayer.stop()
-        let query = MPMediaQuery()
-        let predicate = MPMediaPropertyPredicate(value: title, forProperty: MPMediaItemPropertyTitle)
-        query.addFilterPredicate(predicate)
-        musicPlayer.setQueue(with: query)
-        musicPlayer.play()
-    }
 
     
     /*

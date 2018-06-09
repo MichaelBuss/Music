@@ -11,7 +11,7 @@ import MediaPlayer
 
 class MusicPlayer {
     
-    let player = MPMusicPlayerController.applicationMusicPlayer
+    let player = MPMusicPlayerController.systemMusicPlayer
     
     func playMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
     
@@ -22,4 +22,7 @@ class MusicPlayer {
         player.play()
     }
     
+    func pauseMusic(){
+        player.pause()
+    }
 }
