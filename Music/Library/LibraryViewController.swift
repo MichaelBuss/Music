@@ -117,6 +117,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LibraryCell", for: indexPath)
         if let libraryCell = cell as? LibraryTableViewCell {
+        tableView.indicatorStyle = UIScrollViewIndicatorStyle.white
 //            switch sortSegmentedControl.selectedSegmentIndex{ // Not a good place for this!
 //                case 0: print("Artists")
 //                case 1: print("Albums")
