@@ -12,7 +12,7 @@ import MediaPlayer
 class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Variables
-//    let musicPlayer = MusicPlayer()
+    let musicPlayer = MusicPlayer()
     let query = MPMediaQuery()
     var allMediaItems: [MPMediaItemCollection]?
     private let libraryCell = LibraryTableViewCell()
@@ -87,8 +87,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             print(cell)
         }
         print(indexPath.row)
-        let something = allMediaItems?[indexPath.row].persistentID
-        
+        musicPlayer.playMusic(withPersistentID: (allMediaItems?[indexPath.row].persistentID)!)
     }
     
     // MARK: - Actions

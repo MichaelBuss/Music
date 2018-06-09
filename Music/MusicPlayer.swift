@@ -9,17 +9,15 @@
 import Foundation
 import MediaPlayer
 
-class MusicPlayer: MPMusicPlayerController {
-    
-    let musicPlayer = applicationMusicPlayer
+class MusicPlayer {
     
     func playMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
-        musicPlayer.stop()
+        MPMusicPlayerController.systemMusicPlayer.stop()
         let query = MPMediaQuery()
         let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
         query.addFilterPredicate(predicate)
-        musicPlayer.setQueue(with: query)
-        musicPlayer.play()
+        MPMusicPlayerController.systemMusicPlayer.setQueue(with: query)
+        MPMusicPlayerController.systemMusicPlayer.play()
     }
     
 }
