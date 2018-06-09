@@ -25,4 +25,14 @@ class MusicPlayer {
     func pauseMusic(){
         player.pause()
     }
+    func queueMusic(withPersistentID persistentID: MPMediaEntityPersistentID){
+        
+        let query = MPMediaQuery()
+        let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
+        query.addFilterPredicate(predicate)
+        player.setQueue(with: query)
+    }
+    func skipMusic(){
+        player.skipToNextItem()
+    }
 }

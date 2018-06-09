@@ -188,27 +188,32 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    // swipe action for trailing part of tableView
+    // swipe action for leading part of tableView
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let deleteAction = UIContextualAction(style: .normal, title: "Queue") { (action, view, completionHandler) in
+        let queueAction = UIContextualAction(style: .normal, title: "Queue") { (action, view, completionHandler) in
             print("Queue Action Tapped")
+            
+            if let tappedItemID = self.allMediaItems?[indexPath.row].persistentID {
+                self.musicPlayer.queueMusic(withPersistentID: tappedItemID)
+            }
             completionHandler(true)
+            
         }
-        deleteAction.backgroundColor = .green
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        queueAction.backgroundColor = .green
+        let configuration = UISwipeActionsConfiguration(actions: [queueAction])
         return configuration
     }
     
     // swipe action for trailing part of tableView
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-            print("Delete Action Tapped")
+        let loveAction = UIContextualAction(style: .normal, title: "❤️ Love!") { (action, view, completionHandler) in
+            print("Love Action Tapped")
             completionHandler(true)
         }
-        deleteAction.backgroundColor = .red
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        loveAction.backgroundColor = .red
+        let configuration = UISwipeActionsConfiguration(actions: [loveAction])
         return configuration
     }
     
