@@ -11,15 +11,22 @@ import MediaPlayer
 
 class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let everything = MPMediaQuery()
-    var allAlbums: [MPMediaItemCollection]?
-    
-    
-    @IBOutlet weak var playerContainerView: UIView!
+    // MARK: - Variables
+    let query = MPMediaQuery()
+    var allMediaItems: [MPMediaItemCollection]?
     let musicLibrary = MusicLibrary()
-    
+    private let libraryCell = LibraryTableViewCell()
     private var playerObserver: NSObjectProtocol?
+    private var currentSorting = "Artists"
     
+    // MARK: - Outlets
+    @IBOutlet weak var playerContainerView: UIView!
+    @IBOutlet weak var sortSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var libraryTableView: UITableView!
+    @IBOutlet weak var playerView: UIView!
+    @IBOutlet weak var playerViewHeight: NSLayoutConstraint!
+    
+    // MARK: - Life cycle methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -36,46 +43,11 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         )
     }
-    @IBAction func dotsMenu(_ sender: Any) {
-        let alertController = UIAlertController(title: "Hey!", message: "That's pretty good!", preferredStyle: .actionSheet)
-        
-        // add Queue action
-        let queuAction = UIAlertAction(title: "Queue", style: .default) { action in
-            // ...
-        }
-        alertController.addAction(queuAction)
-        
-        // add Heart Action
-        let loveAction = UIAlertAction(title: "❤️ Love!", style: .default) { action in
-            // ...
-        }
-        alertController.addAction(loveAction)
-        
-        // add Dislike Action
-        let dislikeAction = UIAlertAction(title: "💔 Dislike!", style: .destructive) { action in
-            // ...
-        }
-        alertController.addAction(dislikeAction)
-        
-        // add Cancel Action
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            print(action)
-        }
-        alertController.addAction(cancelAction)
-        
-        // present the viewController
-        self.present(alertController, animated: true) {
-            // enables the controller to detect if the background is tabbed
-            alertController.view.superview?.isUserInteractionEnabled = true
-            alertController.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
-            // ...
-        }
-    }
     
-    // fundtion to dismiss the alerController if the background is tabbed
-    @objc func alertControllerBackgroundTapped()
-    {
-        self.dismiss(animated: true, completion: nil)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sortMusic(by: currentSorting)
+        print("loaded")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -87,56 +59,111 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        sortMusicByAlbum()
-        print("loaded")
-    }
-
-    // MARK: - Outlets
-    @IBOutlet weak var sortSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var libraryTableView: UITableView!
-    @IBOutlet weak var playerView: UIView!
-    @IBOutlet weak var playerViewHeight: NSLayoutConstraint!
-    
-    // MARK: - Variables
-    private let libraryCell = LibraryTableViewCell()
-    
-
-    
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return (musicLibrary.mediaItems?.count)!
-        return (allAlbums?.count)!
+        return (allMediaItems?.count)!
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LibraryCell", for: indexPath)
         if let libraryCell = cell as? LibraryTableViewCell {
-//            switch sortSegmentedControl.selectedSegmentIndex{ // Not a good place for this!
-//                case 0: print("Artists")
-//                case 1: print("Albums")
-//                case 2: print("Songs")
-//            default: break
-//            }
             
             // Populates table view cells with data
             let imageSize = libraryCell.imageArt.bounds.size
-            libraryCell.label.text = allAlbums?[indexPath.row].representativeItem?.albumTitle
-            libraryCell.imageArt.image = allAlbums?[indexPath.row].representativeItem?.artwork?.image(at: imageSize)
+            libraryCell.label.text = getItemName(at: indexPath.row)
+            libraryCell.imageArt.image = allMediaItems?[indexPath.row].representativeItem?.artwork?.image(at: imageSize)
         }
         return cell
+    }
+    
+
+    
+    // MARK: - Actions
+    @IBAction func sortSegmentedControlDidChange(_ sender: UISegmentedControl) {
+        switch sortSegmentedControl.selectedSegmentIndex{
+            case 0:
+                currentSorting = "Artists"
+            case 1:
+                currentSorting = "Albums"
+            case 2:
+                currentSorting = "Songs"
+            default: break
+        }
+        sortMusic(by: currentSorting)
+        updateTable()
+    }
+    
+    private func getItemName(at indexPath: Int) -> String {
+        switch currentSorting {
+        case "Artists":
+            return (allMediaItems?[indexPath].representativeItem?.artist)!
+        case "Albums":
+            return (allMediaItems?[indexPath].representativeItem?.albumTitle)!
+        case "Songs":
+            return (allMediaItems?[indexPath].representativeItem?.title)!
+        default:
+            print("Case \(currentSorting) was not matched")
+            return "Case \(currentSorting) was not matched"
+        }
+        
+    }
+    
+    @IBAction func dotsMenu(_ sender: Any) {
+        presentActionSheet(forTitle: "Song Name")
+    }
+    
+    // fundtion to dismiss the alerController if the background is tabbed
+    @objc func alertControllerBackgroundTapped() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Methods
+    
+    private func presentActionSheet(forTitle title: String){
+        let actionSheetController = UIAlertController(title: title, message: "That's pretty good!", preferredStyle: .actionSheet)
+        
+        // add Queue action
+        let queuAction = UIAlertAction(title: "Queue", style: .default) { action in
+            // ...
+        }
+        actionSheetController.addAction(queuAction)
+        
+        // add Heart Action
+        let loveAction = UIAlertAction(title: "❤️ Love!", style: .default) { action in
+            // ...
+        }
+        actionSheetController.addAction(loveAction)
+        
+        // add Dislike Action
+        let dislikeAction = UIAlertAction(title: "💔 Dislike!", style: .destructive) { action in
+            // ...
+        }
+        actionSheetController.addAction(dislikeAction)
+        
+        // add Cancel Action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            print(action)
+        }
+        actionSheetController.addAction(cancelAction)
+        
+        // present the viewController
+        self.present(actionSheetController, animated: true) {
+            // enables the controller to detect if the background is tabbed
+            actionSheetController.view.superview?.isUserInteractionEnabled = true
+            actionSheetController.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+            // ...
+        }
     }
     
     // swipe action for trailing part of tableView
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let deleteAction = UIContextualAction(style: .normal, title: "Queu") { (action, view, completionHandler) in
-            print("Queu Action Tapped")
+        let deleteAction = UIContextualAction(style: .normal, title: "Queue") { (action, view, completionHandler) in
+            print("Queue Action Tapped")
             completionHandler(true)
         }
         deleteAction.backgroundColor = .green
@@ -156,32 +183,33 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         return configuration
     }
     
-    // MARK: - Actions
-    @IBAction func sortSegmentedControlDidChange(_ sender: UISegmentedControl) {
-        updateTable()
-    }
-    
-    @objc func checkAction(sender : UITapGestureRecognizer) {
-        // Do what you want
-    }
-    
-    // MARK: - Methods
-    
     private func updateTable() {
         print("Updating table")
         libraryTableView.reloadData()
     }
     
-    func animatePlayerHeight(to height: Int, withDuration duration: Double) {
+    private func animatePlayerHeight(to height: Int, withDuration duration: Double) {
         UIView.animate(withDuration: duration) {
             self.playerViewHeight.constant = CGFloat(height)
             self.view.layoutIfNeeded()
         }
     }
 
-    func sortMusicByAlbum(){ // Sorts by album
-        everything.groupingType = MPMediaGrouping.album
-        allAlbums = everything.collections
+    private func sortMusic(by category: String){
+        switch category {
+        case "Artists":
+            query.groupingType = MPMediaGrouping.artist
+            print("Sorts music by artists")
+        case "Albums":
+            query.groupingType = MPMediaGrouping.album
+            print("Sorts music by albums")
+        case "Songs":
+            query.groupingType = MPMediaGrouping.title
+            print("Sorts music by songs")
+        default:
+            print("Sorting went wrong because case was not met")
+        }
+        allMediaItems = query.collections
     }
     
 }
