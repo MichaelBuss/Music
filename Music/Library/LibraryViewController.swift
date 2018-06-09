@@ -12,9 +12,9 @@ import MediaPlayer
 class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Variables
+//    let musicPlayer = MusicPlayer()
     let query = MPMediaQuery()
     var allMediaItems: [MPMediaItemCollection]?
-    let musicLibrary = MusicLibrary()
     private let libraryCell = LibraryTableViewCell()
     private var playerObserver: NSObjectProtocol?
     private var currentSorting = "Artists"
@@ -80,8 +80,16 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         return cell
     }
-    
 
+    // MARK: - Table view delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = (tableView.cellForRow(at: indexPath) as? LibraryTableViewCell)?.label{
+            print(cell)
+        }
+        print(indexPath.row)
+        let something = allMediaItems?[indexPath.row].persistentID
+        
+    }
     
     // MARK: - Actions
     @IBAction func sortSegmentedControlDidChange(_ sender: UISegmentedControl) {
@@ -111,6 +119,23 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             return "Case \(currentSorting) was not matched"
         }
         
+    }
+    
+    private func sortMusic(by category: String){
+        switch category {
+        case "Artists":
+            query.groupingType = MPMediaGrouping.artist
+            print("Sorts music by artists")
+        case "Albums":
+            query.groupingType = MPMediaGrouping.album
+            print("Sorts music by albums")
+        case "Songs":
+            query.groupingType = MPMediaGrouping.title
+            print("Sorts music by songs")
+        default:
+            print("Sorting went wrong because case was not met")
+        }
+        allMediaItems = query.collections
     }
     
     @IBAction func dotsMenu(_ sender: Any) {
@@ -196,21 +221,6 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 
-    private func sortMusic(by category: String){
-        switch category {
-        case "Artists":
-            query.groupingType = MPMediaGrouping.artist
-            print("Sorts music by artists")
-        case "Albums":
-            query.groupingType = MPMediaGrouping.album
-            print("Sorts music by albums")
-        case "Songs":
-            query.groupingType = MPMediaGrouping.title
-            print("Sorts music by songs")
-        default:
-            print("Sorting went wrong because case was not met")
-        }
-        allMediaItems = query.collections
-    }
+    
     
 }

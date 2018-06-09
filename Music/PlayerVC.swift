@@ -125,28 +125,7 @@ class PlayerVC: UIViewController {
                     self.dragHandleView.isHidden = false
                 }
             )
-            
-//            UIView.animate(
-//                withDuration: duration/2,
-//                delay: duration/2,
-//                animations: {
-//                self.scrubberView.isHidden = false
-//                }
-//            )
         }
-        
-//        UIView.animate(withDuration: 2) {
-//            self.dragHandleView.isHidden = hide
-//            self.scrubberView.isHidden = hide
-//            self.shuffleButton.isHidden = hide
-//            self.previousButton.isHidden = hide
-//            self.repeatButton.isHidden = hide
-//            self.playerQueueCollectionView.isHidden = hide
-//            self.headerView.isHidden = hide
-//        }
-        
-//        dragHandleView.isHidden = hide
-//        scrubberView.isHidden = hide
     }
     
     private func calculateAndSendPlayerHeightNotification() {
@@ -173,14 +152,10 @@ class PlayerVC: UIViewController {
     }
     
     private func playMusic(withTitle title: String) {
-        
         musicPlayer.stop()
-        
         let query = MPMediaQuery()
         let predicate = MPMediaPropertyPredicate(value: title, forProperty: MPMediaItemPropertyTitle)
-        
         query.addFilterPredicate(predicate)
-        
         musicPlayer.setQueue(with: query)
         musicPlayer.play()
     }
