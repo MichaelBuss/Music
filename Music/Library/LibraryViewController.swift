@@ -71,6 +71,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LibraryCell", for: indexPath)
         if let libraryCell = cell as? LibraryTableViewCell {
+            tableView.indicatorStyle = UIScrollViewIndicatorStyle.white
             
             // Populates table view cells with data
             let imageSize = libraryCell.imageArt.bounds.size
