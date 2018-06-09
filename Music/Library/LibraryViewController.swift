@@ -37,7 +37,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         )
     }
     @IBAction func dotsMenu(_ sender: Any) {
-        let alertController = UIAlertController(title: "Hey!", message: "That's pretty good!", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Hey!", message: "That's pretty good!", preferredStyle: .actionSheet)
         
         // add Queue action
         let queuAction = UIAlertAction(title: "Queue", style: .default) { action in
