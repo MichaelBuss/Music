@@ -14,6 +14,7 @@
 		4C3670E12083783E007AC15C /* ArtistsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3670E02083783E007AC15C /* ArtistsVC.swift */; };
 		4C3670E42083786A007AC15C /* AlbumsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3670E32083786A007AC15C /* AlbumsVC.swift */; };
 		4C3670E62083787C007AC15C /* SongsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3670E52083787C007AC15C /* SongsVC.swift */; };
+		4C45A49920CADFB600297409 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C519E1320665A7500ADF48F /* Main.storyboard */; };
 		4C509BE82083AAA4009094DC /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C509BE72083AAA4009094DC /* LibraryViewController.swift */; };
 		4C519E1020665A7400ADF48F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C519E0F20665A7400ADF48F /* AppDelegate.swift */; };
 		4C519E1720665A7500ADF48F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C519E1620665A7500ADF48F /* Assets.xcassets */; };
@@ -21,7 +22,6 @@
 		4C519E2220665FE800ADF48F /* Scrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C519E2120665FE800ADF48F /* Scrubber.swift */; };
 		4CA982F12091C1B900BACE5D /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA982F02091C1B900BACE5D /* PlayerVC.swift */; };
 		4CA982F320920F0B00BACE5D /* MusicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA982F220920F0B00BACE5D /* MusicLibrary.swift */; };
-		4CDD4FD720B72B9900C8C754 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C519E1320665A7500ADF48F /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,7 +169,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CDD4FD720B72B9900C8C754 /* Main.storyboard in Resources */,
+				4C45A49920CADFB600297409 /* Main.storyboard in Resources */,
 				4C519E1A20665A7500ADF48F /* LaunchScreen.storyboard in Resources */,
 				4C519E1720665A7500ADF48F /* Assets.xcassets in Resources */,
 			);
@@ -335,11 +335,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F4S8P4FQ7C;
+				DEVELOPMENT_TEAM = FQ4T4QU544;
 				INFOPLIST_FILE = Music/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = .com.kaae;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nooblabs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -351,11 +351,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F4S8P4FQ7C;
+				DEVELOPMENT_TEAM = FQ4T4QU544;
 				INFOPLIST_FILE = Music/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = .com.kaae;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nooblabs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
