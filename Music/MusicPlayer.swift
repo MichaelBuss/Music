@@ -11,15 +11,19 @@ import MediaPlayer
 
 class MusicPlayer {
     
-    let player = MPMusicPlayerController.systemMusicPlayer
+    let player = MPMusicPlayerApplicationController.applicationQueuePlayer
     
     func playMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
     
-        let query = MPMediaQuery()
-        let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
-        query.addFilterPredicate(predicate)
-        player.setQueue(with: query)
+//        let query = MPMediaQuery()
+//        let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
+//        query.addFilterPredicate(predicate)
+        player.setQueue(with: MPMediaQuery.songs())
         player.play()
+    }
+    
+    func queueMusic() {
+//        player.append(<#T##descriptor: MPMusicPlayerQueueDescriptor##MPMusicPlayerQueueDescriptor#>)
     }
     
     func pauseMusic(){
@@ -29,9 +33,11 @@ class MusicPlayer {
     func resumeMusic(){
         player.play()
     }
+    
     func skipToNext(){
         player.skipToNextItem()
     }
+    
     func skipToPrevious(){
         player.skipToPreviousItem()
     }

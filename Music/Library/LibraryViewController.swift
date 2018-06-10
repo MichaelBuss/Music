@@ -191,12 +191,19 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     // swipe action for leading part of tableView
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
+        
+//        if let cell = (tableView.cellForRow(at: indexPath) as? LibraryTableViewCell)?.label{ //output song name, can be removed
+//            print((cell.text)!)
+//        }
+//        if let tappedItemID = allMediaItems?[indexPath.row].persistentID {
+//            musicPlayer.playMusic(withPersistentID: tappedItemID)
+//        }
         let queueAction = UIContextualAction(style: .normal, title: "Queue") { (action, view, completionHandler) in
             print("Queue Action Tapped")
-            
 //            if let tappedItemID = self.allMediaItems?[indexPath.row].persistentID {
 //                self.musicPlayer.queueMusic(withPersistentID: tappedItemID)
 //            }
+
             completionHandler(true)
             
         }
