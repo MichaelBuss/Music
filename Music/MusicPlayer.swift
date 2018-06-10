@@ -21,7 +21,7 @@ class MusicPlayer {
         query.addFilterPredicate(predicate)
         player.setQueue(with: query)
         player.play()
-        sendCurrentPlayerStateNotification()
+//        sendCurrentPlayerStateNotification()
     }
     
     func queueMusic(fromIndex: Int, finalIndex: Int) {
@@ -35,27 +35,33 @@ class MusicPlayer {
             player.
         }
         player.play()
-        sendCurrentPlayerStateNotification()
+
+
+//        sendCurrentPlayerStateNotification()
     }
     
     func pauseMusic(){
         player.pause()
-        sendCurrentPlayerStateNotification()
+//        sendCurrentPlayerStateNotification()
     }
     
     func resumeMusic(){
         player.play()
-        sendCurrentPlayerStateNotification()
+//        sendCurrentPlayerStateNotification()
     }
     
     func skipToNext(){
         player.skipToNextItem()
-        sendCurrentPlayerStateNotification()
+
+//        sendCurrentPlayerStateNotification()
+
     }
     
     func skipToPrevious(){
         player.skipToPreviousItem()
-        sendCurrentPlayerStateNotification()
+
+//        sendCurrentPlayerStateNotification()
+
     }
     
     func sendCurrentPlayerStateNotification(){
