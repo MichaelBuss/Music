@@ -25,10 +25,17 @@ class MusicPlayer {
     }
     
     func queueMusic(withSet set: Set<MPMediaEntityPersistentID>) {
+        
         myMediaQuery.filterPredicates = NSSet(object: set) as? Set<MPMediaPredicate>
+        
         player.setQueue(with: myMediaQuery)
         player.play()
+
         sendCurrentPlayerStateNotification()
+
+        print("Number of songs in set \(String(describing: set.count))")
+        print("Number of songs in query \(String(describing: myMediaQuery.items?.count))")
+
     }
     
     func pauseMusic(){
