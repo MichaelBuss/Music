@@ -29,4 +29,11 @@ class MusicPlayer {
     func resumeMusic(){
         player.play()
     }
+    func skipToNext(){
+        player.skipToNextItem()
+    }
+    func skipToPrevious(){
+        player.skipToPreviousItem()
+    }
+    
 }

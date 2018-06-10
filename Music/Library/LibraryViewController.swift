@@ -194,9 +194,9 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let queueAction = UIContextualAction(style: .normal, title: "Queue") { (action, view, completionHandler) in
             print("Queue Action Tapped")
             
-            if let tappedItemID = self.allMediaItems?[indexPath.row].persistentID {
-                self.musicPlayer.queueMusic(withPersistentID: tappedItemID)
-            }
+//            if let tappedItemID = self.allMediaItems?[indexPath.row].persistentID {
+//                self.musicPlayer.queueMusic(withPersistentID: tappedItemID)
+//            }
             completionHandler(true)
             
         }
