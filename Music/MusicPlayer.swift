@@ -32,7 +32,6 @@ class MusicPlayer {
         
         toQueue.removeFirst(finalIndex-fromIndex)
         for elements in toQueue {
-            player.
         }
         player.play()
 
