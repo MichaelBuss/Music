@@ -11,7 +11,7 @@ import MediaPlayer
 
 class MusicPlayer {
     
-    let player = MPMusicPlayerApplicationController.applicationQueuePlayer
+    let player = MPMusicPlayerApplicationController.systemMusicPlayer
     var myMediaQuery = MPMediaQuery.songs()
     
     func playMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
