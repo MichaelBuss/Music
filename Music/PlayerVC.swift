@@ -33,21 +33,19 @@ class PlayerVC: UIViewController {
 
     var targetHeight = 58
 
-    private var playerObserver: NSObjectProtocol?
-    private var observer: NSObjectProtocol?
+    private var playbackStateObserver: NSObjectProtocol?
+    private var nowPlayingItemDidChange: NSObjectProtocol?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         musicPlayer.player.beginGeneratingPlaybackNotifications()
-        
-        print("View will appear")
-        
-        
-        playerObserver = NotificationCenter.default.addObserver(
+
+        playbackStateObserver = NotificationCenter.default.addObserver( // Update player controlls accordingly
             forName: Notification.Name.MPMusicPlayerControllerPlaybackStateDidChange,
             object: nil,
             queue: OperationQueue.main,
-            using: {notification in
+            using:
+            { notification in
                 print("Recieved Notification with \(notification.name)")
                     switch self.musicPlayer.player.playbackState {
                     case .playing:
@@ -66,10 +64,19 @@ class PlayerVC: UIViewController {
                     case .interrupted:
                         print("music is interrupted")
                     }
-                    self.updatePlayerLabels()
-            }
-        )
+            })
+        
+        nowPlayingItemDidChange = NotificationCenter.default.addObserver( // Update player labels accordingly
+            forName: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
+            object: nil,
+            queue: OperationQueue.main,
+            using:
+            { notification in
+                print("Recieved Notification with \(notification.name)")
+                self.updatePlayerLabels()
+        })
     }
+
     
     override func viewDidLoad() {
         
@@ -84,7 +91,7 @@ class PlayerVC: UIViewController {
         super.viewDidDisappear(animated)
         musicPlayer.player.endGeneratingPlaybackNotifications()
         print("View did disappear")
-        if let observer = self.playerObserver {
+        if let observer = self.playbackStateObserver {
             NotificationCenter.default.removeObserver(observer)
         }
     }
