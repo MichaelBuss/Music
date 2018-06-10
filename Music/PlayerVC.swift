@@ -181,6 +181,7 @@ class PlayerVC: UIViewController {
                 self.shuffleButton.isHidden = true
                 self.previousButton.isHidden = true
                 self.repeatButton.isHidden = true
+                self.albumArt.isHidden = true
                 self.playerQueueCollectionView.isHidden = true
                 self.fullPlayerStack.alignment = .trailing
             }
@@ -195,6 +196,7 @@ class PlayerVC: UIViewController {
                     self.previousButton.isHidden = false
                     self.repeatButton.isHidden = false
                     self.playerQueueCollectionView.isHidden = false
+                    self.albumArt.isHidden = false
                     self.fullPlayerStack.alignment = .center
                 },
                 completion: { _ in
