@@ -34,19 +34,22 @@ class PlayerVC: UIViewController {
     var targetHeight = 58
 
     private var playerObserver: NSObjectProtocol?
+    private var observer: NSObjectProtocol?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        musicPlayer.player.beginGeneratingPlaybackNotifications()
         
         print("View will appear")
+        
+        
         playerObserver = NotificationCenter.default.addObserver(
-            forName: Notification.Name("currentPlayerState"),
+            forName: Notification.Name.MPMusicPlayerControllerPlaybackStateDidChange,
             object: nil,
             queue: OperationQueue.main,
             using: {notification in
                 print("Recieved Notification with \(notification.name)")
-                if let currentPlayerState = notification.userInfo!["currentPlayerState"] as? MPMusicPlaybackState {
-                    switch currentPlayerState {
+                    switch self.musicPlayer.player.playbackState {
                     case .playing:
                         print("music is playing")
                         self.playButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
@@ -64,8 +67,7 @@ class PlayerVC: UIViewController {
                         print("music is interrupted")
                     }
                     self.updatePlayerLabels()
-                }
-        }
+            }
         )
     }
     
@@ -80,6 +82,7 @@ class PlayerVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        musicPlayer.player.endGeneratingPlaybackNotifications()
         print("View did disappear")
         if let observer = self.playerObserver {
             NotificationCenter.default.removeObserver(observer)
