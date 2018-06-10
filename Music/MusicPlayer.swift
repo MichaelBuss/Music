@@ -11,7 +11,7 @@ import MediaPlayer
 
 class MusicPlayer {
     
-    let player = MPMusicPlayerApplicationController.systemMusicPlayer
+    let player = MPMusicPlayerApplicationController.systemMusicPlayer.
     var myMediaQuery = MPMediaQuery.songs()
     
     func playMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
@@ -19,21 +19,21 @@ class MusicPlayer {
         let query = MPMediaQuery()
         let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
         query.addFilterPredicate(predicate)
-        player.setQueue(with: query)
+        player.setQueue(with: myMediaQuery)
         player.play()
 //        sendCurrentPlayerStateNotification()
     }
     
     func queueMusic(fromIndex: Int, finalIndex: Int) {
         
-        var toQueue = myMediaQuery.collections!
+//        var toQueue = myMediaQuery.collections!
         
-        print(toQueue)
-        
-        toQueue.removeFirst(finalIndex-fromIndex)
-        for elements in toQueue {
-        }
-        player.play()
+//        print(toQueue)
+//
+//        toQueue.removeFirst(finalIndex-fromIndex)
+//        for elements in toQueue {
+//        }
+//        player.play()
 
 
 //        sendCurrentPlayerStateNotification()
