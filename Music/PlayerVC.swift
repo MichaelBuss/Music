@@ -31,6 +31,40 @@ class PlayerVC: UIViewController {
 
     var targetHeight = 58
 
+    private var playerObserver: NSObjectProtocol?
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("View will appear")
+        playerObserver = NotificationCenter.default.addObserver(
+            forName: Notification.Name("currentPlayerState"),
+            object: nil,
+            queue: OperationQueue.main,
+            using: {notification in
+                print("Recieved Notification with \(notification.name)")
+                if let currentPlayerState = notification.userInfo!["currentPlayerState"] as? MPMusicPlaybackState {
+                    switch currentPlayerState {
+                    case .playing:
+                        print("music is playing")
+                        self.playButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
+                    case .paused:
+                        print("music is paused")
+                        self.playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
+                    case .stopped:
+                        print("music is stopped")
+                    case .seekingBackward:
+                        print("music is seeking back")
+                    case .seekingForward:
+                        print("music is seeking forward")
+                    case .interrupted:
+                        print("music is interrupted")
+                    }
+                    
+                }
+        }
+        )
+    }
     
     override func viewDidLoad() {
         
@@ -41,47 +75,35 @@ class PlayerVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("View did disappear")
+        if let observer = self.playerObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+    }
+    
     @IBAction func playerControls(_ sender: UIButton) {
         switch sender {
         case playButton:
             print("Play Pressed")
-            
+
             switch MPMusicPlayerController.systemMusicPlayer.playbackState {
-  
             case .playing:
                 print("music is playing")
                 musicPlayer.pauseMusic()
-                playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
-
             case .paused:
                 print("music is paused")
                 musicPlayer.resumeMusic()
-                playButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
-                
             case .stopped:
                 print("music is stopped")
-
             case .seekingBackward:
                 print("music is seeking back")
-
             case .seekingForward:
                 print("music is seeking forward")
-
             case .interrupted:
                 print("music is interrupted")
-                
             }
-
-//            // if audio is playing
-//            if MPMusicPlayerController.systemMusicPlayer.playbackState = {
-//                print(MPMusicPlayerController.systemMusicPlayer.nowPlayingItem.persistentID)
-//                print("another application with a non-mixable audio session is playing audio")
-//                musicPlayer.pauseMusic()
-//                playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
-//            } else {
-////                musicPlayer.playMusic(withPersistentID: )
-//                playButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
-//            }
             
         case skipButton:
             print("Skip Pressed")

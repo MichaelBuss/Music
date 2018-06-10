@@ -21,20 +21,24 @@ class MusicPlayer {
 //        query.addFilterPredicate(predicate)
         player.setQueue(with: MPMediaQuery.songs())
         player.play()
+        sendCurrentPlayerStateNotification()
     }
     
     func queueMusic(withSet set: Set<MPMediaEntityPersistentID>) {
         myMediaQuery.filterPredicates = NSSet(object: set) as? Set<MPMediaPredicate>
         player.setQueue(with: myMediaQuery)
         player.play()
+        sendCurrentPlayerStateNotification()
     }
     
     func pauseMusic(){
         player.pause()
+        sendCurrentPlayerStateNotification()
     }
     
     func resumeMusic(){
         player.play()
+        sendCurrentPlayerStateNotification()
     }
     
     func skipToNext(){
@@ -43,6 +47,14 @@ class MusicPlayer {
     
     func skipToPrevious(){
         player.skipToPreviousItem()
+    }
+    
+    func sendCurrentPlayerStateNotification(){
+        let playerStateNotification: [String : MPMusicPlaybackState] = ["currentPlayerState" : player.playbackState]
+        NotificationCenter.default.post(
+        name: Notification.Name("currentPlayerState"),
+        object: self,
+        userInfo: playerStateNotification)
     }
     
 }
