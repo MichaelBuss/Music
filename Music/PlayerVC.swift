@@ -85,12 +85,11 @@ class PlayerVC: UIViewController {
             
         case skipButton:
             print("Skip Pressed")
-//            musicPlayer.skipToNextItem()
-            musicPlayer.pauseMusic()
+            musicPlayer.skipToNext()
             
         case previousButton:
             print("Previous Pressed")
-//            musicPlayer.skipToPreviousItem()
+            musicPlayer.skipToPrevious()
             
         case shuffleButton:
             print("Shuffle Pressed")
