@@ -64,6 +64,7 @@ class PlayerVC: UIViewController {
                     case .interrupted:
                         print("music is interrupted")
                     }
+                self.updatePlayerLabels()
             })
         
         nowPlayingItemDidChange = NotificationCenter.default.addObserver( // Update player labels accordingly
@@ -76,7 +77,17 @@ class PlayerVC: UIViewController {
                 self.updatePlayerLabels()
         })
     }
-
+    
+        var myProperty: Int = 0 {
+            didSet {
+                print("The value of myProperty changed from \(oldValue) to \(myProperty)")
+                scrubber.maximumValue = Float((musicPlayer.player.nowPlayingItem?.playbackDuration)! )
+                scrubber.value = Float(musicPlayer.player.currentPlaybackTime)
+            }
+            
+        }
+        
+    
     
     override func viewDidLoad() {
         
