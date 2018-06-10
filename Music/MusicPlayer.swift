@@ -12,6 +12,7 @@ import MediaPlayer
 class MusicPlayer {
     
     let player = MPMusicPlayerApplicationController.applicationQueuePlayer
+    var myMediaQuery = MPMediaQuery.songs()
     
     func playMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
     
@@ -22,8 +23,10 @@ class MusicPlayer {
         player.play()
     }
     
-    func queueMusic() {
-//        player.append(<#T##descriptor: MPMusicPlayerQueueDescriptor##MPMusicPlayerQueueDescriptor#>)
+    func queueMusic(withSet set: Set<MPMediaEntityPersistentID>) {
+        myMediaQuery.filterPredicates = NSSet(object: set) as? Set<MPMediaPredicate>
+        player.setQueue(with: myMediaQuery)
+        player.play()
     }
     
     func pauseMusic(){

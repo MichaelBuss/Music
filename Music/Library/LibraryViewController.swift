@@ -191,18 +191,13 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     // swipe action for leading part of tableView
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        
-//        if let cell = (tableView.cellForRow(at: indexPath) as? LibraryTableViewCell)?.label{ //output song name, can be removed
-//            print((cell.text)!)
-//        }
-//        if let tappedItemID = allMediaItems?[indexPath.row].persistentID {
-//            musicPlayer.playMusic(withPersistentID: tappedItemID)
-//        }
         let queueAction = UIContextualAction(style: .normal, title: "Queue") { (action, view, completionHandler) in
             print("Queue Action Tapped")
 //            if let tappedItemID = self.allMediaItems?[indexPath.row].persistentID {
 //                self.musicPlayer.queueMusic(withPersistentID: tappedItemID)
 //            }
+            
+            self.musicPlayer.queueMusic(withSet: self.makeSetFromTappedIndexToButtomOfList(indexPath: indexPath, numberOfRows: tableView.numberOfRows(inSection: 0)))
 
             completionHandler(true)
             
@@ -210,6 +205,14 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         queueAction.backgroundColor = .green
         let configuration = UISwipeActionsConfiguration(actions: [queueAction])
         return configuration
+    }
+    
+    func makeSetFromTappedIndexToButtomOfList(indexPath: IndexPath, numberOfRows: Int) -> Set<MPMediaEntityPersistentID> {
+        var querySet = Set<MPMediaEntityPersistentID>()
+        for item in indexPath.row..<numberOfRows{
+            querySet.insert((allMediaItems?[item].persistentID)!)
+        }
+        return querySet
     }
     
     // swipe action for trailing part of tableView
