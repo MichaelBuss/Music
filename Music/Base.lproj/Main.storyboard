@@ -290,13 +290,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8LV-Ho-FQu" userLabel="Full Player Stack">
-                                <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="800"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLS-u0-sq9" userLabel="Drag Handle View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVl-Z6-Thq" userLabel="Drag Handle">
-                                                <rect key="frame" x="148" y="0.0" width="77" height="31"/>
+                                                <rect key="frame" x="149" y="0.0" width="77" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="77" id="nUV-g8-nb4"/>
                                                     <constraint firstAttribute="height" constant="31" id="tdC-pa-iPF"/>
@@ -315,13 +315,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqg-cB-6sz" userLabel="Header View">
-                                        <rect key="frame" x="0.0" y="31" width="374.33333333333331" height="49"/>
+                                        <rect key="frame" x="0.0" y="31" width="375" height="49"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="41v-5k-VaT" userLabel="Header Stack">
-                                                <rect key="frame" x="16" y="0.0" width="348.33333333333331" height="49"/>
+                                                <rect key="frame" x="16" y="0.0" width="349" height="49"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="31O-Zp-dre" userLabel="Labels">
-                                                        <rect key="frame" x="0.0" y="0.0" width="281.33333333333331" height="49"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="282" height="49"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlT-09-muc" userLabel="Title Label">
                                                                 <rect key="frame" x="0.0" y="0.0" width="69" height="28"/>
@@ -341,7 +341,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="eU2-vo-get" userLabel="Header Buttons">
-                                                        <rect key="frame" x="281.33333333333331" y="0.0" width="67" height="28"/>
+                                                        <rect key="frame" x="282" y="0.0" width="67" height="28"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxG-MD-kW9" userLabel="Show Queue">
                                                                 <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
@@ -377,8 +377,15 @@
                                             <constraint firstAttribute="trailing" secondItem="41v-5k-VaT" secondAttribute="trailing" constant="10" id="hjz-NZ-9N0"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lwr-1J-kpY">
+                                        <rect key="frame" x="0.0" y="80" width="375" height="375"/>
+                                        <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="375" id="nkK-wY-czp"/>
+                                        </constraints>
+                                    </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="700" verticalCompressionResistancePriority="700" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pl7-fb-WGK" userLabel="Player Queue Collection View">
-                                        <rect key="frame" x="0.0" y="80" width="374.33333333333331" height="608.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="455" width="375" height="233"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7l3-Gz-Xv1">
                                             <size key="itemSize" width="50" height="50"/>
@@ -389,10 +396,10 @@
                                         <cells/>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDA-hv-tc7" userLabel="Scrubber View">
-                                        <rect key="frame" x="0.0" y="688.33333333333337" width="374.33333333333331" height="53.666666666666629"/>
+                                        <rect key="frame" x="0.0" y="688" width="375" height="54"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="34Y-LH-SA4" customClass="Scrubber" customModule="Music" customModuleProvider="target">
-                                                <rect key="frame" x="5" y="0.0" width="363.66666666666669" height="46.666666666666664"/>
+                                                <rect key="frame" x="6" y="0.0" width="363" height="47"/>
                                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="359" id="TzK-Jc-Rgx"/>
@@ -408,10 +415,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YV4-X0-QMp" userLabel="Playback Buttons View">
-                                        <rect key="frame" x="22" y="742" width="330.33333333333331" height="58"/>
+                                        <rect key="frame" x="22.666666666666657" y="742" width="330" height="58"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AMt-76-Kr0" userLabel="Playback Buttons Stack">
-                                                <rect key="frame" x="8" y="4" width="314.33333333333331" height="50"/>
+                                                <rect key="frame" x="8" y="4" width="314" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7C-Iu-AJk" userLabel="Shuffle">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -434,7 +441,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Msq-Lm-Jti" userLabel="Play">
-                                                        <rect key="frame" x="132" y="0.0" width="50.333333333333343" height="50"/>
+                                                        <rect key="frame" x="132" y="0.0" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Msq-Lm-Jti" secondAttribute="height" multiplier="1:1" id="Vzl-eN-OdM"/>
                                                         </constraints>
@@ -444,7 +451,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAo-qT-Gub" userLabel="Skip">
-                                                        <rect key="frame" x="198.33333333333334" y="0.0" width="50" height="50"/>
+                                                        <rect key="frame" x="198" y="0.0" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="yAo-qT-Gub" secondAttribute="height" multiplier="1:1" id="KHG-qz-XfO"/>
                                                         </constraints>
@@ -454,7 +461,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aq3-Do-Lcp" userLabel="Repeat">
-                                                        <rect key="frame" x="264.33333333333331" y="0.0" width="50" height="50"/>
+                                                        <rect key="frame" x="264" y="0.0" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="aq3-Do-Lcp" secondAttribute="height" multiplier="1:1" id="lKF-iO-LXt"/>
                                                         </constraints>
@@ -484,6 +491,8 @@
                                     <constraint firstItem="KLS-u0-sq9" firstAttribute="leading" secondItem="8LV-Ho-FQu" secondAttribute="leading" id="dab-vA-Ohe"/>
                                     <constraint firstAttribute="trailing" secondItem="gDA-hv-tc7" secondAttribute="trailing" id="dpv-Vq-50y"/>
                                     <constraint firstItem="gDA-hv-tc7" firstAttribute="leading" secondItem="8LV-Ho-FQu" secondAttribute="leading" id="l7E-2A-3bD"/>
+                                    <constraint firstItem="lwr-1J-kpY" firstAttribute="leading" secondItem="nqg-cB-6sz" secondAttribute="leading" id="rNn-4b-TEk"/>
+                                    <constraint firstItem="lwr-1J-kpY" firstAttribute="leading" secondItem="pl7-fb-WGK" secondAttribute="leading" id="wTc-0N-Nhu"/>
                                     <constraint firstAttribute="trailing" secondItem="nqg-cB-6sz" secondAttribute="trailing" id="xQt-5i-Cz6"/>
                                 </constraints>
                             </stackView>
@@ -499,6 +508,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
+                        <outlet property="albumArt" destination="lwr-1J-kpY" id="ZSt-ze-at1"/>
                         <outlet property="artistLabel" destination="1pk-Y8-Asv" id="kP0-IY-ogN"/>
                         <outlet property="dragHandle" destination="YVl-Z6-Thq" id="3g7-mW-KVN"/>
                         <outlet property="dragHandleView" destination="KLS-u0-sq9" id="Fqt-Ki-pvW"/>

@@ -21,6 +21,7 @@ class PlayerVC: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
 
+    @IBOutlet weak var albumArt: UIImageView!
     @IBOutlet weak var fullPlayerStack: UIStackView!
     // MARK: - Player buttons
     @IBOutlet weak var shuffleButton: UIButton!
@@ -38,6 +39,7 @@ class PlayerVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        usedTimerForDelay()
         musicPlayer.player.beginGeneratingPlaybackNotifications()
 
         playbackStateObserver = NotificationCenter.default.addObserver( // Update player controlls accordingly
@@ -78,7 +80,7 @@ class PlayerVC: UIViewController {
         })
     }
     
-        var myProperty: Int = 0 {
+    var myProperty: Float = 0.0 {
             didSet {
                 print("The value of myProperty changed from \(oldValue) to \(myProperty)")
                 scrubber.maximumValue = Float((musicPlayer.player.nowPlayingItem?.playbackDuration)! )
@@ -87,6 +89,21 @@ class PlayerVC: UIViewController {
             
         }
         
+    
+    
+    func usedTimerForDelay()  {
+        print("SETTING UP TIMER")
+        Timer.scheduledTimer(timeInterval: 0.1,
+                             target: self,
+                             selector: #selector(self.run(_:)),
+                             userInfo: nil,
+                             repeats: true)
+    }
+
+    @objc func run(_ timer: AnyObject) {
+        scrubber.maximumValue = Float((musicPlayer.player.nowPlayingItem?.playbackDuration)! )
+        scrubber.value = Float(musicPlayer.player.currentPlaybackTime)
+    }
     
     
     override func viewDidLoad() {
@@ -215,6 +232,8 @@ class PlayerVC: UIViewController {
     private func updatePlayerLabels(){
         titleLabel.text = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem?.title
         artistLabel.text = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem?.artist
+        let size = CGSize(width: 500, height: 300)
+        albumArt.image = musicPlayer.player.nowPlayingItem?.artwork?.image(at: size)
     }
 
     
