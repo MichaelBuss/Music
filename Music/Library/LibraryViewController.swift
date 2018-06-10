@@ -153,7 +153,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Methods
     
     private func presentActionSheet(forTitle title: String){
-        let actionSheetController = UIAlertController(title: title, message: "That's pretty good!", preferredStyle: .actionSheet)
+        let actionSheetController = UIAlertController(title: title, message: "That's pretty good!", preferredStyle: .alert)
         
         // add Queue action
         let queuAction = UIAlertAction(title: "Queue", style: .default) { action in
@@ -197,7 +197,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
 //                self.musicPlayer.queueMusic(withPersistentID: tappedItemID)
 //            }
             
-            self.musicPlayer.queueMusic(withSet: self.makeSetFromTappedIndexToButtomOfList(indexPath: indexPath, numberOfRows: tableView.numberOfRows(inSection: 0)))
+            self.musicPlayer.queueMusic(fromIndex: indexPath.row, finalIndex: tableView.numberOfRows(inSection: 0))
 
             completionHandler(true)
             
