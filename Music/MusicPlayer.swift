@@ -16,26 +16,27 @@ class MusicPlayer {
     
     func playMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
     
-//        let query = MPMediaQuery()
-//        let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
-//        query.addFilterPredicate(predicate)
-        player.setQueue(with: MPMediaQuery.songs())
+        let query = MPMediaQuery()
+        let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
+        query.addFilterPredicate(predicate)
+        player.setQueue(with: query)
         player.play()
 //        sendCurrentPlayerStateNotification()
     }
     
-    func queueMusic(withSet set: Set<MPMediaEntityPersistentID>) {
+    func queueMusic(fromIndex: Int, finalIndex: Int) {
         
-        myMediaQuery.filterPredicates = NSSet(object: set) as? Set<MPMediaPredicate>
+        var toQueue = myMediaQuery.collections!
         
-        player.setQueue(with: myMediaQuery)
+        print(toQueue)
+        
+        toQueue.removeFirst(finalIndex-fromIndex)
+        for elements in toQueue {
+        }
         player.play()
 
+
 //        sendCurrentPlayerStateNotification()
-
-        print("Number of songs in set \(String(describing: set.count))")
-        print("Number of songs in query \(String(describing: myMediaQuery.items?.count))")
-
     }
     
     func pauseMusic(){
@@ -50,12 +51,14 @@ class MusicPlayer {
     
     func skipToNext(){
         player.skipToNextItem()
+
 //        sendCurrentPlayerStateNotification()
 
     }
     
     func skipToPrevious(){
         player.skipToPreviousItem()
+
 //        sendCurrentPlayerStateNotification()
 
     }
