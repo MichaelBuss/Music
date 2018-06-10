@@ -50,10 +50,14 @@ class MusicPlayer {
     
     func skipToNext(){
         player.skipToNextItem()
+        sendCurrentPlayerStateNotification()
+
     }
     
     func skipToPrevious(){
         player.skipToPreviousItem()
+        sendCurrentPlayerStateNotification()
+
     }
     
     func sendCurrentPlayerStateNotification(){

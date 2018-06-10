@@ -18,7 +18,9 @@ class PlayerVC: UIViewController {
     @IBOutlet weak var scrubberHeight: NSLayoutConstraint!
     @IBOutlet weak var dragHandleView: UIView!
     @IBOutlet weak var dragHandle: UIButton!
-    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
+
     @IBOutlet weak var fullPlayerStack: UIStackView!
     // MARK: - Player buttons
     @IBOutlet weak var shuffleButton: UIButton!
@@ -53,6 +55,7 @@ class PlayerVC: UIViewController {
                         self.playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
                     case .stopped:
                         print("music is stopped")
+                        self.playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
                     case .seekingBackward:
                         print("music is seeking back")
                     case .seekingForward:
@@ -60,7 +63,7 @@ class PlayerVC: UIViewController {
                     case .interrupted:
                         print("music is interrupted")
                     }
-                    
+                    self.updatePlayerLabels()
                 }
         }
         )
@@ -87,22 +90,13 @@ class PlayerVC: UIViewController {
         switch sender {
         case playButton:
             print("Play Pressed")
-
-            switch MPMusicPlayerController.systemMusicPlayer.playbackState {
-            case .playing:
+            
+            if MPMusicPlayerController.systemMusicPlayer.playbackState == .playing {
                 print("music is playing")
                 musicPlayer.pauseMusic()
-            case .paused:
+            } else {
                 print("music is paused")
                 musicPlayer.resumeMusic()
-            case .stopped:
-                print("music is stopped")
-            case .seekingBackward:
-                print("music is seeking back")
-            case .seekingForward:
-                print("music is seeking forward")
-            case .interrupted:
-                print("music is interrupted")
             }
             
         case skipButton:
@@ -197,6 +191,10 @@ class PlayerVC: UIViewController {
             userInfo: playerStateNotification)
     }
     
+    private func updatePlayerLabels(){
+        titleLabel.text = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem?.title
+        artistLabel.text = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem?.artist
+    }
 
     
     /*

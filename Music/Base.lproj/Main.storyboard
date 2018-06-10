@@ -499,6 +499,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
+                        <outlet property="artistLabel" destination="1pk-Y8-Asv" id="kP0-IY-ogN"/>
                         <outlet property="dragHandle" destination="YVl-Z6-Thq" id="3g7-mW-KVN"/>
                         <outlet property="dragHandleView" destination="KLS-u0-sq9" id="Fqt-Ki-pvW"/>
                         <outlet property="fullPlayerStack" destination="8LV-Ho-FQu" id="P1V-8x-IMS"/>
@@ -513,6 +514,7 @@
                         <outlet property="scrubberView" destination="gDA-hv-tc7" id="sFK-n2-9oW"/>
                         <outlet property="shuffleButton" destination="L7C-Iu-AJk" id="KCe-2J-0Jy"/>
                         <outlet property="skipButton" destination="yAo-qT-Gub" id="eV2-uo-YdH"/>
+                        <outlet property="titleLabel" destination="QlT-09-muc" id="dyh-Fb-V6v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qpc-76-HNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
