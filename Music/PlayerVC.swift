@@ -20,7 +20,6 @@ class PlayerVC: UIViewController {
     @IBOutlet weak var dragHandle: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
-
     @IBOutlet weak var fullPlayerStack: UIStackView!
     // MARK: - Player buttons
     @IBOutlet weak var shuffleButton: UIButton!
@@ -33,53 +32,26 @@ class PlayerVC: UIViewController {
 
     var targetHeight = 58
 
-    private var playbackStateObserver: NSObjectProtocol?
-    private var nowPlayingItemDidChange: NSObjectProtocol?
+    private var playbackStateDidChangeObserver: NSObjectProtocol?
+    private var nowPlayingItemDidChangeObserver: NSObjectProtocol?
 
+    // MARK: - Life cycle methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         musicPlayer.player.beginGeneratingPlaybackNotifications()
-
-        playbackStateObserver = NotificationCenter.default.addObserver( // Update player controlls accordingly
-            forName: Notification.Name.MPMusicPlayerControllerPlaybackStateDidChange,
-            object: nil,
-            queue: OperationQueue.main,
-            using:
-            { notification in
-                print("Recieved Notification with \(notification.name)")
-                    switch self.musicPlayer.player.playbackState {
-                    case .playing:
-                        print("music is playing")
-                        self.playButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
-                    case .paused:
-                        print("music is paused")
-                        self.playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
-                    case .stopped:
-                        print("music is stopped")
-                        self.playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
-                    case .seekingBackward:
-                        print("music is seeking back")
-                    case .seekingForward:
-                        print("music is seeking forward")
-                    case .interrupted:
-                        print("music is interrupted")
-                    }
-            })
-        
-        nowPlayingItemDidChange = NotificationCenter.default.addObserver( // Update player labels accordingly
-            forName: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
-            object: nil,
-            queue: OperationQueue.main,
-            using:
-            { notification in
-                print("Recieved Notification with \(notification.name)")
-                self.updatePlayerLabels()
-        })
+        initiatePlaybackStateDidChangeObserver() //Begins listening for notifications
+        initaiteNowPlayingItemDidChangeObserver() //Begins listening for notifications
     }
-
+    
+        var myProperty: Int = 0 {
+            didSet {
+                print("The value of myProperty changed from \(oldValue) to \(myProperty)")
+                scrubber.maximumValue = Float((musicPlayer.player.nowPlayingItem?.playbackDuration)! )
+                scrubber.value = Float(musicPlayer.player.currentPlaybackTime)
+            }
+        }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
 //        scrubber.translatesAutoresizingMaskIntoConstraints = true
         scrubber.setThumbImage(#imageLiteral(resourceName: "Thumb"), for: .normal) // Sets Thumb image on scrubber
@@ -91,7 +63,7 @@ class PlayerVC: UIViewController {
         super.viewDidDisappear(animated)
         musicPlayer.player.endGeneratingPlaybackNotifications()
         print("View did disappear")
-        if let observer = self.playbackStateObserver {
+        if let observer = self.playbackStateDidChangeObserver {
             NotificationCenter.default.removeObserver(observer)
         }
     }
@@ -135,12 +107,13 @@ class PlayerVC: UIViewController {
         calculateAndSendPlayerHeightNotification()
     }
     
-    // respond to touch inside the playerVC
+    // Respond to touch inside the playerVC
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("Touches ended on Player View")
         calculateAndSendPlayerHeightNotification()
     }
     
+    // Toggels the viibility of controlls
     private func controlsVisibility(isHidden hide : Bool) {
         let duration = 0.5
         if hide == true { // Hide elements
@@ -204,6 +177,49 @@ class PlayerVC: UIViewController {
     private func updatePlayerLabels(){
         titleLabel.text = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem?.title
         artistLabel.text = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem?.artist
+    }
+    
+    
+    // MARK: - Notification observer instantiation functions
+    private func initiatePlaybackStateDidChangeObserver(){
+        playbackStateDidChangeObserver = NotificationCenter.default.addObserver( // Update player controlls accordingly
+            forName: Notification.Name.MPMusicPlayerControllerPlaybackStateDidChange,
+            object: nil,
+            queue: OperationQueue.main,
+            using:
+            { notification in
+                print("Recieved Notification with \(notification.name)")
+                switch self.musicPlayer.player.playbackState {
+                case .playing:
+                    print("music is playing")
+                    self.playButton.setImage(#imageLiteral(resourceName: "Pause"), for: .normal)
+                case .paused:
+                    print("music is paused")
+                    self.playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
+                case .stopped:
+                    print("music is stopped")
+                    self.playButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
+                case .seekingBackward:
+                    print("music is seeking back")
+                case .seekingForward:
+                    print("music is seeking forward")
+                case .interrupted:
+                    print("music is interrupted")
+                }
+                self.updatePlayerLabels()
+        })
+    }
+    
+    private func initaiteNowPlayingItemDidChangeObserver(){
+        nowPlayingItemDidChangeObserver = NotificationCenter.default.addObserver( // Update player labels accordingly
+            forName: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
+            object: nil,
+            queue: OperationQueue.main,
+            using:
+            { notification in
+                print("Recieved Notification with \(notification.name)")
+                self.updatePlayerLabels()
+        })
     }
 
     
