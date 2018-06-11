@@ -24,7 +24,7 @@ class MusicPlayer {
         player.play()
         
         for items in 0...query.items!.count {
-            print(items)
+//            player.append(----the current song index + items----)
         }
         
     }
@@ -63,4 +63,20 @@ class MusicPlayer {
         player.skipToPreviousItem()
     }
     
+    func cycleRepeatMode(){
+        let currentMode = player.repeatMode
+        switch currentMode {
+        case .default:
+            player.repeatMode = .none
+        case .none:
+            player.repeatMode = .one
+        case .one:
+            player.repeatMode = .all
+        case .all:
+            player.repeatMode = .none
+        }
+        
+        
+        
+    }
 }
