@@ -7,30 +7,48 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class ArtistAndAlbumDetailTableViewController: UITableViewController {
 
+    // MARK: - Properties
+    
+    let albumSongTableViewCell = AlbumSongTableViewCell()
+    var data : [String] = []
+    var header : [String] = []
+    var query = MPMediaQuery()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        if let numberOfSongs = query.items?.count {
+            return numberOfSongs
+        } else {
+            print("Could not extract query items count")
+            return 1
+        }
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumSongCell", for: indexPath) as! AlbumSongTableViewCell
+        
+        if let songTitle = query.items?[indexPath.row].title {
+            cell.songTitle.text = songTitle
+        }
+        cell.songNumber.text = String(indexPath.row+1)
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

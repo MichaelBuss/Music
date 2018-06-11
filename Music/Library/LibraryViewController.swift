@@ -15,7 +15,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     let musicPlayer = MusicPlayer()
     let query = MPMediaQuery()
     var allMediaItems: [MPMediaItemCollection]?
-    private let libraryCell = LibraryTableViewCell()
+    private let libraryTableViewCell = LibraryTableViewCell()
     private var playerObserver: NSObjectProtocol?
     private var currentSorting = "Artists"
     
@@ -87,11 +87,30 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             print(cell)
         }
         tableView.deselectRow(at: indexPath, animated: true) // Un-highlights selected row
-        print(indexPath.row)
+        print("Tapped tableView cell indexPath is \(indexPath.row)")
         
-        if let tappedItemID = allMediaItems?[indexPath.row].persistentID {
-            musicPlayer.playMusic(withPersistentID: tappedItemID)
+        switch sortSegmentedControl.selectedSegmentIndex {
+        case 0: // Artists
+            print("Pressed an item in Artists sorted segmented control")
+//            let secondVC = storyboard?.instantiateViewController(withIdentifier: "ArtistAndAlbumDetailTableViewControllerID") as! UITableViewController
+//            present(secondVC, animated: true, completion: nil)
+//            performSegue(withIdentifier: "ArtistAndAlbumDetailTableViewControllerID", sender: self)
+        case 1: // Albums
+            print("Pressed an item in Artists sorted segmented control")
+        case 2: // Songs
+            print("Pressed an item in Songs sorted segmented control")
+            if let tappedItemID = allMediaItems?[indexPath.row].persistentID {
+                musicPlayer.playMusic(withPersistentID: tappedItemID)
+            }
+        default: break
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let artistAndAlbumDetailTableViewController = segue.destination as? ArtistAndAlbumDetailTableViewController else { return }
+        artistAndAlbumDetailTableViewController.data = ["one", "two"]
+        artistAndAlbumDetailTableViewController.header = ["hone", "htwo"]
+        artistAndAlbumDetailTableViewController.query = MPMediaQuery.songs()
     }
     
     // MARK: - Actions
@@ -127,7 +146,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     private func sortMusic(by category: String){
         switch category {
         case "Artists":
-            query.groupingType = MPMediaGrouping.artist
+            query.groupingType = MPMediaGrouping.albumArtist
             print("Sorts music by artists")
         case "Albums":
             query.groupingType = MPMediaGrouping.album
