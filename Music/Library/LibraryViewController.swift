@@ -92,9 +92,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch sortSegmentedControl.selectedSegmentIndex {
         case 0: // Artists
             print("Pressed an item in Artists sorted segmented control")
-//            let secondVC = storyboard?.instantiateViewController(withIdentifier: "ArtistAndAlbumDetailTableViewControllerID") as! UITableViewController
-//            present(secondVC, animated: true, completion: nil)
-//            performSegue(withIdentifier: "ArtistAndAlbumDetailTableViewControllerID", sender: self)
+            performSegue(withIdentifier: "MusicCollectionDetailSegue", sender: self)
         case 1: // Albums
             print("Pressed an item in Artists sorted segmented control")
         case 2: // Songs
@@ -107,10 +105,9 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let artistAndAlbumDetailTableViewController = segue.destination as? ArtistAndAlbumDetailTableViewController else { return }
-        artistAndAlbumDetailTableViewController.data = ["one", "two"]
-        artistAndAlbumDetailTableViewController.header = ["hone", "htwo"]
-        artistAndAlbumDetailTableViewController.query = MPMediaQuery.songs()
+        if let musicCollectionDetailViewController = segue.destination as? MusicCollectionDetailViewController {
+            musicCollectionDetailViewController.query = MPMediaQuery.songs()
+        }
     }
     
     // MARK: - Actions
