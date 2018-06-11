@@ -41,6 +41,8 @@ class PlayerVC: UIViewController {
         musicPlayer.player.beginGeneratingPlaybackNotifications()
         initiatePlaybackStateDidChangeObserver() //Begins listening for notifications
         initaiteNowPlayingItemDidChangeObserver() //Begins listening for notifications
+        updateRepeatModeIcon()
+        updatePlayerLabels()
     }
     
         var myProperty: Int = 0 {
