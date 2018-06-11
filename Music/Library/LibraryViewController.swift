@@ -85,28 +85,51 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = (tableView.cellForRow(at: indexPath) as? LibraryTableViewCell)?.label{
             print(cell)
-        }
-        tableView.deselectRow(at: indexPath, animated: true) // Un-highlights selected row
-        print("Tapped tableView cell indexPath is \(indexPath.row)")
+            var predicate = MPMediaPropertyPredicate()
         
-        switch sortSegmentedControl.selectedSegmentIndex {
-        case 0: // Artists
-            print("Pressed an item in Artists sorted segmented control")
-            performSegue(withIdentifier: "MusicCollectionDetailSegue", sender: self)
-        case 1: // Albums
-            print("Pressed an item in Artists sorted segmented control")
-        case 2: // Songs
-            print("Pressed an item in Songs sorted segmented control")
-            if let tappedItemID = allMediaItems?[indexPath.row].persistentID {
-                musicPlayer.playMusic(withPersistentID: tappedItemID)
+            tableView.deselectRow(at: indexPath, animated: true) // Un-highlights selected row
+            print("Tapped tableView cell indexPath is \(indexPath.row)")
+            
+            switch sortSegmentedControl.selectedSegmentIndex {
+            case 0: // Artists
+                print("Pressed an item in Artists sorted segmented control")
+                predicate = MPMediaPropertyPredicate(
+                    value: query.items?[indexPath.row].artistPersistentID,
+                    forProperty: MPMediaItemPropertyArtistPersistentID,
+                    comparisonType:MPMediaPredicateComparison.equalTo)
+                query.addFilterPredicate(predicate)
+                performSegue(withIdentifier: "MusicCollectionDetailSegue", sender: self)
+            case 1: // Albums
+                print("Pressed an item in Albums sorted segmented control")
+                predicate = MPMediaPropertyPredicate(
+                    value: query.items?[indexPath.row].albumPersistentID,
+                    forProperty: MPMediaItemPropertyAlbumPersistentID,
+                    comparisonType:MPMediaPredicateComparison.equalTo)
+                query.addFilterPredicate(predicate)
+                performSegue(withIdentifier: "MusicCollectionDetailSegue", sender: self)
+            case 2: // Songs
+                print("Pressed an item in Songs sorted segmented control")
+                if let tappedItemID = allMediaItems?[indexPath.row].persistentID {
+                    musicPlayer.playMusic(withPersistentID: tappedItemID)
+                }
+            default: break
             }
-        default: break
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let musicCollectionDetailViewController = segue.destination as? MusicCollectionDetailViewController {
-            musicCollectionDetailViewController.query = MPMediaQuery.songs()
+            switch sortSegmentedControl.selectedSegmentIndex {
+            case 0: // Artists
+                print("Pressed an item in Artists sorted segmented control")
+                musicCollectionDetailViewController.query = query
+            case 1: // Albums
+                print("Pressed an item in Albums sorted segmented control")
+                musicCollectionDetailViewController.query = query
+            case 2: // Songs
+                print("Pressed an item in Songs sorted segmented control")
+            default: break
+            }
         }
     }
     

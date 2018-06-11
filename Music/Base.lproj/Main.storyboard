@@ -25,6 +25,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="NgD-Nc-Xa2"/>
                                 </constraints>
+                                <connections>
+                                    <segue destination="Cx8-X7-fjG" kind="embed" id="0nj-BS-RFn"/>
+                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -209,7 +212,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N2M-3J-JCb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumSongCell" id="ZtW-7A-1Lx" customClass="AlbumSongTableViewCell" customModule="Music" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -280,7 +283,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="UI Color Black"/>
                         <constraints>
                             <constraint firstItem="Nxf-kl-iCw" firstAttribute="trailing" secondItem="bcW-uT-lIF" secondAttribute="trailing" id="5jr-oi-0eB"/>
                             <constraint firstItem="Nxf-kl-iCw" firstAttribute="top" secondItem="N2M-3J-JCb" secondAttribute="bottom" id="FNs-0M-Rnm"/>
@@ -311,6 +314,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="9nL-GL-cDc"/>
                                 </constraints>
+                                <connections>
+                                    <segue destination="Cx8-X7-fjG" kind="embed" id="z7k-wq-Sqm"/>
+                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -619,7 +625,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qpc-76-HNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4359" y="412"/>
+            <point key="canvasLocation" x="4362" y="327"/>
         </scene>
     </scenes>
     <resources>
@@ -636,6 +642,9 @@
         <image name="Search" width="48" height="32"/>
         <image name="Shuffle" width="50" height="50"/>
         <image name="Skip" width="50" height="50"/>
+        <namedColor name="UI Color Black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="UI Color Dark">
             <color red="0.10000000149011612" green="0.10000000149011612" blue="0.10000000149011612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
@@ -644,6 +653,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="od6-mD-sdi"/>
+        <segue reference="z7k-wq-Sqm"/>
     </inferredMetricsTieBreakers>
 </document>
