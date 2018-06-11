@@ -15,29 +15,36 @@ class MusicPlayer {
     
     func playMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
     
+        //creates a query containing only the one chosen song
         let query = MPMediaQuery.songs()
         let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
         query.addFilterPredicate(predicate)
+        
         player.setQueue(with: query)
         player.play()
         
-        
+        for items in 0...query.items!.count {
+            print(items)
+        }
         
     }
     
     func queueMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
         
+        //creates a query containing only the one chosen song
         let query = MPMediaQuery.songs()
         let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
         query.addFilterPredicate(predicate)
+        
+        //puts the one song from query into a format that can be queued
         let toQueue = MPMusicPlayerMediaItemQueueDescriptor.init(query: query)
         
-        let queuedSongTitle = toQueue.startItem?.title ?? "cant convert to string!?"
+        //print the name of the song
+//        let queuedSongTitle: String = query.items![0].title!
+//        print(queuedSongTitle)
         
-        print(queuedSongTitle)
-
+        //appends the song to the queue
         player.append(toQueue)
-
     }
     
     func pauseMusic(){
