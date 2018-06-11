@@ -20,16 +20,21 @@ class MusicPlayer {
         query.addFilterPredicate(predicate)
         player.setQueue(with: query)
         player.play()
+        
+        
+        
     }
     
-    func queueMusic(fromIndex: Int, finalIndex: Int, withPersistentID persistentID: MPMediaEntityPersistentID) {
+    func queueMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
         
         let query = MPMediaQuery.songs()
         let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
         query.addFilterPredicate(predicate)
         let toQueue = MPMusicPlayerMediaItemQueueDescriptor.init(query: query)
         
-//        print(toQueue.startItem?.title)
+        let queuedSongTitle = toQueue.startItem?.title ?? "cant convert to string!?"
+        
+        print(queuedSongTitle)
 
         player.append(toQueue)
 
