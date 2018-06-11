@@ -94,8 +94,9 @@ class PlayerVC: UIViewController {
 //            musicPlayer.shuffleMode = .songs
             
         case repeatButton:
+            musicPlayer.cycleRepeatMode()
             print("Repeat Pressed")
-
+            updateRepeatModeIcon()
         default:
             print("Sender button did not match any case")
         }
@@ -177,6 +178,23 @@ class PlayerVC: UIViewController {
     private func updatePlayerLabels(){
         titleLabel.text = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem?.title
         artistLabel.text = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem?.artist
+    }
+    
+    private func updateRepeatModeIcon(){
+        switch musicPlayer.player.repeatMode {
+        case .default:
+            repeatButton.setImage(#imageLiteral(resourceName: "Repeat"), for: .normal)
+
+        case .none:
+            repeatButton.setImage(#imageLiteral(resourceName: "Repeat"), for: .normal)
+
+        case .one:
+            repeatButton.setImage(#imageLiteral(resourceName: "Repeat Active Once"), for: .normal)
+
+        case .all:
+            repeatButton.setImage(#imageLiteral(resourceName: "Repeat Active"), for: .normal)
+            
+        }
     }
     
     
