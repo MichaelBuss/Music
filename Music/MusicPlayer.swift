@@ -12,63 +12,43 @@ import MediaPlayer
 class MusicPlayer {
     
     let player = MPMusicPlayerApplicationController.systemMusicPlayer
-    var myMediaQuery = MPMediaQuery.songs()
     
     func playMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
     
-        let query = MPMediaQuery()
+        let query = MPMediaQuery.songs()
         let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
         query.addFilterPredicate(predicate)
         player.setQueue(with: query)
         player.play()
-//        sendCurrentPlayerStateNotification()
     }
     
-    func queueMusic(fromIndex: Int, finalIndex: Int) {
+    func queueMusic(fromIndex: Int, finalIndex: Int, withPersistentID persistentID: MPMediaEntityPersistentID) {
         
-        var toQueue = myMediaQuery.collections!
+        let query = MPMediaQuery.songs()
+        let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
+        query.addFilterPredicate(predicate)
+        let toQueue = MPMusicPlayerMediaItemQueueDescriptor.init(query: query)
         
-        print(toQueue)
-        
-        toQueue.removeFirst(finalIndex-fromIndex)
-        for elements in toQueue {
-        }
-        player.play()
+//        print(toQueue.startItem?.title)
 
+        player.append(toQueue)
 
-//        sendCurrentPlayerStateNotification()
     }
     
     func pauseMusic(){
         player.pause()
-//        sendCurrentPlayerStateNotification()
     }
     
     func resumeMusic(){
         player.play()
-//        sendCurrentPlayerStateNotification()
     }
     
     func skipToNext(){
         player.skipToNextItem()
-
-//        sendCurrentPlayerStateNotification()
-
     }
     
     func skipToPrevious(){
         player.skipToPreviousItem()
-
-//        sendCurrentPlayerStateNotification()
-
-    }
-    
-    func sendCurrentPlayerStateNotification(){
-        let playerStateNotification: [String : MPMusicPlaybackState] = ["currentPlayerState" : player.playbackState]
-        NotificationCenter.default.post(
-        name: Notification.Name("currentPlayerState"),
-        object: self,
-        userInfo: playerStateNotification)
     }
     
 }

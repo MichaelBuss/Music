@@ -197,7 +197,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
 //                self.musicPlayer.queueMusic(withPersistentID: tappedItemID)
 //            }
             
-            self.musicPlayer.queueMusic(fromIndex: indexPath.row, finalIndex: tableView.numberOfRows(inSection: 0))
+            self.musicPlayer.queueMusic(fromIndex: indexPath.row, finalIndex: tableView.numberOfRows(inSection: 0), withPersistentID: (self.allMediaItems?[indexPath.row].persistentID)!)
 
             completionHandler(true)
             
