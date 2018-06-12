@@ -164,6 +164,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     private func sortMusic(by category: String){
+        let query = MPMediaQuery()
         switch category {
         case "Artists":
             query.groupingType = MPMediaGrouping.albumArtist
