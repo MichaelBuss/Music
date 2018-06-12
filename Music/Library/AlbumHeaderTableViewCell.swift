@@ -9,8 +9,11 @@
 import UIKit
 
 class AlbumHeaderTableViewCell: UITableViewCell {
-    @IBOutlet weak var coverArt: UIImageView!
+    @IBOutlet weak var albumCoverArt: UIImageView!
     @IBOutlet weak var albumTitle: UILabel!
+    @IBOutlet weak var albumYear: UILabel!
+    @IBOutlet weak var albumNumberOfSongs: UILabel!
+    @IBOutlet weak var albumDuration: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,9 +26,17 @@ class AlbumHeaderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell(withImage image: UIImage, withText text: String){
-        coverArt.image = image
-        albumTitle.text = text
+    func setupCell(withImage image: UIImage,
+                   withAlbumTitle albumTitle: String,
+                   withAlbumYear albumYear: Int,
+                   withAlbumNumberOfSongs albumNumberOfSongs: Int,
+                   withAlbumDuration albumDuration: Double) {
+        self.albumCoverArt.layer.cornerRadius = self.albumCoverArt.frame.width/6
+        self.albumCoverArt.image = image
+        self.albumTitle.text = albumTitle
+        self.albumYear.text = String(albumYear)
+        self.albumNumberOfSongs.text = "\(String(albumNumberOfSongs)) Songs"
+        self.albumDuration.text = "\(String(Int(albumDuration))) Minutes"
     }
 
 }

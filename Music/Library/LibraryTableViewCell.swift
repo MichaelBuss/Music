@@ -21,9 +21,9 @@ class LibraryTableViewCell: UITableViewCell {
         var cornerRadius: CGFloat = 0
         switch sorting {
         case "Artists":
-            cornerRadius = (coverArt.frame.width)/2
+            cornerRadius = coverArt.frame.width/2
         case "Albums", "Songs":
-            cornerRadius = 6
+            cornerRadius = coverArt.frame.width/6
         default:
             print("Sorting did not match any case")
             break

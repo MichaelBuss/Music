@@ -50,9 +50,23 @@ class MusicCollectionDetailViewController: UIViewController, UITableViewDelegate
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let albumHeaderCell = tableView.dequeueReusableCell(withIdentifier: "AlbumHeaderCell") as! AlbumHeaderTableViewCell
         
-        if let albumName = query.items?[section].title {
-             albumHeaderCell.setupCell(withImage: #imageLiteral(resourceName: "CoverBuildARocketBoys"), withText: albumName)
+        let albumTitle = query.items?[section].title ?? ""
+        let calendar = Calendar.current
+        var albumYear = Int()
+        if let albumReleaseDate = query.items?[section].releaseDate {
+            print("Album Release before \(albumReleaseDate)")
+            albumYear = calendar.component(.year, from: albumReleaseDate)
+            print("Album Release before \(albumReleaseDate)")
         }
+        let albumNumberOfSongs = query.items?[section].albumTrackCount ?? 0
+        let albumDuration = query.items?[section].playbackDuration ?? 0
+        
+            albumHeaderCell.setupCell(withImage: #imageLiteral(resourceName: "CoverBuildARocketBoys"),
+                                      withAlbumTitle: albumTitle,
+                                      withAlbumYear: albumYear,
+                                      withAlbumNumberOfSongs: albumNumberOfSongs,
+                                      withAlbumDuration: albumDuration)
+        
 
        
         return albumHeaderCell

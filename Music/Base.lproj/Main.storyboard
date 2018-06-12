@@ -217,58 +217,86 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlbumHeaderCell" rowHeight="73" id="eZ9-Kk-u3h" customClass="AlbumHeaderTableViewCell" customModule="Music" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="73"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlbumHeaderCell" rowHeight="104" id="eZ9-Kk-u3h" customClass="AlbumHeaderTableViewCell" customModule="Music" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eZ9-Kk-u3h" id="V4M-zZ-lsA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aMs-WT-Ep7">
-                                                    <rect key="frame" x="8" y="4" width="50" height="50.666666666666664"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="aMs-WT-Ep7" secondAttribute="height" multiplier="1:1" id="3Qs-l7-0qW"/>
-                                                        <constraint firstAttribute="height" constant="50" id="8Mn-IG-DCG"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkD-me-HUv">
-                                                    <rect key="frame" x="66" y="18.666666666666668" width="265" height="21.000000000000004"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6V7-YA-wgv">
+                                                    <rect key="frame" x="8" y="8" width="323" height="88"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aMs-WT-Ep7">
+                                                            <rect key="frame" x="0.0" y="4" width="79.333333333333329" height="80"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="aMs-WT-Ep7" secondAttribute="height" multiplier="1:1" id="3Qs-l7-0qW"/>
+                                                                <constraint firstAttribute="height" constant="80" id="8Mn-IG-DCG"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="tHv-CV-S0D">
+                                                            <rect key="frame" x="87.333333333333329" y="9" width="235.66666666666669" height="70.333333333333329"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcC-CT-teU">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="235.66666666666666" height="20.333333333333332"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                    <color key="textColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkD-me-HUv">
+                                                                    <rect key="frame" x="0.0" y="21.333333333333336" width="235.66666666666666" height="15.666666666666664"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Songs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvS-Dm-sas">
+                                                                    <rect key="frame" x="0.0" y="38" width="235.66666666666666" height="15.666666666666664"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GB-pK-rw2">
+                                                                    <rect key="frame" x="0.0" y="54.666666666666671" width="235.66666666666666" height="15.666666666666671"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHd-VW-qID">
-                                                    <rect key="frame" x="339" y="15.333333333333336" width="28" height="28"/>
+                                                    <rect key="frame" x="339" y="38" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="28" id="QRs-V5-KHc"/>
                                                         <constraint firstAttribute="width" secondItem="VHd-VW-qID" secondAttribute="height" multiplier="1:1" id="S0z-ev-SKj"/>
                                                     </constraints>
-                                                    <state key="normal" image="Dots"/>
+                                                    <state key="normal" image="Dots With Background"/>
                                                     <connections>
                                                         <action selector="dotsMenu:" destination="p0J-5V-j87" eventType="touchUpInside" id="fvl-S1-r7G"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VHd-VW-qID" firstAttribute="leading" secondItem="PkD-me-HUv" secondAttribute="trailing" constant="8" id="0kn-ac-9GT"/>
-                                                <constraint firstItem="PkD-me-HUv" firstAttribute="centerY" secondItem="V4M-zZ-lsA" secondAttribute="centerY" id="4e1-3K-SNK"/>
-                                                <constraint firstItem="aMs-WT-Ep7" firstAttribute="centerY" secondItem="V4M-zZ-lsA" secondAttribute="centerY" id="B4n-SS-VgN"/>
-                                                <constraint firstItem="aMs-WT-Ep7" firstAttribute="leading" secondItem="V4M-zZ-lsA" secondAttribute="leading" constant="8" id="Lc9-xo-Cmz"/>
+                                                <constraint firstItem="6V7-YA-wgv" firstAttribute="leading" secondItem="V4M-zZ-lsA" secondAttribute="leading" constant="8" id="M7P-3E-XnM"/>
                                                 <constraint firstItem="VHd-VW-qID" firstAttribute="centerY" secondItem="V4M-zZ-lsA" secondAttribute="centerY" id="Ow2-QB-UP5"/>
-                                                <constraint firstItem="aMs-WT-Ep7" firstAttribute="top" secondItem="V4M-zZ-lsA" secondAttribute="top" constant="4" id="RKj-py-f0G"/>
-                                                <constraint firstItem="PkD-me-HUv" firstAttribute="leading" secondItem="aMs-WT-Ep7" secondAttribute="trailing" constant="8" id="Roj-HH-0vK"/>
-                                                <constraint firstAttribute="bottom" secondItem="aMs-WT-Ep7" secondAttribute="bottom" constant="4" id="ldV-KG-ZBA"/>
+                                                <constraint firstItem="6V7-YA-wgv" firstAttribute="top" secondItem="V4M-zZ-lsA" secondAttribute="top" constant="8" id="PAb-kK-Rx4"/>
+                                                <constraint firstAttribute="bottom" secondItem="6V7-YA-wgv" secondAttribute="bottom" constant="8" id="ToG-gN-lzM"/>
+                                                <constraint firstItem="VHd-VW-qID" firstAttribute="leading" secondItem="6V7-YA-wgv" secondAttribute="trailing" constant="8" id="ZMu-GM-cUF"/>
                                                 <constraint firstAttribute="trailing" secondItem="VHd-VW-qID" secondAttribute="trailing" constant="8" id="u19-TG-fzC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="UI Color Black"/>
                                         <connections>
-                                            <outlet property="albumTitle" destination="PkD-me-HUv" id="uE1-V7-clt"/>
-                                            <outlet property="coverArt" destination="aMs-WT-Ep7" id="BDO-jE-hKi"/>
+                                            <outlet property="albumCoverArt" destination="aMs-WT-Ep7" id="BDO-jE-hKi"/>
+                                            <outlet property="albumDuration" destination="0GB-pK-rw2" id="qre-0G-1YU"/>
+                                            <outlet property="albumNumberOfSongs" destination="qvS-Dm-sas" id="OcT-ev-17n"/>
+                                            <outlet property="albumTitle" destination="tcC-CT-teU" id="WYC-uY-h1b"/>
+                                            <outlet property="albumYear" destination="PkD-me-HUv" id="aZP-yh-hVC"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumSongCell" id="ZtW-7A-1Lx" customClass="AlbumSongTableViewCell" customModule="Music" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="101" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="132" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZtW-7A-1Lx" id="qdr-rC-hOP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -684,6 +712,7 @@
     <resources>
         <image name="Airplay" width="28" height="28"/>
         <image name="Dots" width="28" height="28"/>
+        <image name="Dots With Background" width="28" height="28"/>
         <image name="For You" width="48" height="32"/>
         <image name="Handle Retract" width="37" height="11"/>
         <image name="Library" width="48" height="32"/>
