@@ -14,20 +14,20 @@ class MusicPlayer {
     let player = MPMusicPlayerApplicationController.systemMusicPlayer
     
     func playMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
-    
+        
         //creates a query containing only the one chosen song
+        
         let query = MPMediaQuery.songs()
         let predicate = MPMediaPropertyPredicate(value: persistentID, forProperty: MPMediaItemPropertyPersistentID)
         query.addFilterPredicate(predicate)
         
-        player.setQueue(with: query)
+        let isolatedQuery = MPMediaQuery.songs()
+        let toQueue = MPMusicPlayerMediaItemQueueDescriptor.init(query: isolatedQuery)
+        toQueue.startItem = query.items?[0]
+        
+        player.setQueue(with: toQueue)
         player.play()
-        
-        for items in 0...query.items!.count {
-//            player.append(----the current song index + items----)
-        }
-        
-    }
+}
     
     func queueMusic(withPersistentID persistentID: MPMediaEntityPersistentID) {
         
