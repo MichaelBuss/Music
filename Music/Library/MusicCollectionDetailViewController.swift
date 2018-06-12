@@ -16,7 +16,7 @@ class MusicCollectionDetailViewController: UIViewController, UITableViewDelegate
     let albumSongTableViewCell = AlbumSongTableViewCell()
     let albumHeaderTableViewCell = AlbumHeaderTableViewCell()
     var query = MPMediaQuery()
-    let mnusicPlayer = MusicPlayer()
+    let musicPlayer = MusicPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -41,17 +41,20 @@ class MusicCollectionDetailViewController: UIViewController, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumSongCell", for: indexPath) as! AlbumSongTableViewCell
         
         if let songTitle = query.items?[indexPath.row].title {
-            cell.songTitle.text = songTitle
+            cell.setupCell(withSongNumber: String(indexPath.row+1), withText: songTitle)
         }
-        cell.songNumber.text = String(indexPath.row+1)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let albumHeaderCell = tableView.dequeueReusableCell(withIdentifier: "AlbumHeaderCell") as! AlbumHeaderTableViewCell
-        albumHeaderCell.albumTitle.text = query.items?[section].title // WRONG TITLE
-        albumHeaderCell.coverArt.image = #imageLiteral(resourceName: "CoverBuildARocketBoys") // WRONG IMAGE
+        
+        if let albumName = query.items?[section].title {
+             albumHeaderCell.setupCell(withImage: #imageLiteral(resourceName: "CoverBuildARocketBoys"), withText: albumName)
+        }
+
+       
         return albumHeaderCell
     }
 

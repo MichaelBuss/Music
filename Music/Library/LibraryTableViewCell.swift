@@ -29,7 +29,6 @@ class LibraryTableViewCell: UITableViewCell {
             break
         }
         coverArt.layer.cornerRadius = cornerRadius
-        coverArt.clipsToBounds = true
     }
 
 }

@@ -24,5 +24,10 @@ class AlbumSongTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setupCell(withSongNumber songNumber: String, withText text: String){
+        self.songNumber.text = songNumber
+        songTitle.text = text
+    }
 
 }

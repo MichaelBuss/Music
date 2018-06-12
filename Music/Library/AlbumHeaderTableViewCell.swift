@@ -22,5 +22,10 @@ class AlbumHeaderTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setupCell(withImage image: UIImage, withText text: String){
+        coverArt.image = image
+        albumTitle.text = text
+    }
 
 }
