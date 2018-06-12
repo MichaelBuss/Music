@@ -22,6 +22,7 @@
 		4C519E2220665FE800ADF48F /* Scrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C519E2120665FE800ADF48F /* Scrubber.swift */; };
 		4CA52C6020CEB1D600073419 /* AlbumSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA52C5F20CEB1D600073419 /* AlbumSongTableViewCell.swift */; };
 		4CA52C6220CECF9C00073419 /* MusicCollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA52C6120CECF9C00073419 /* MusicCollectionDetailViewController.swift */; };
+		4CA52C6820CFB2A400073419 /* AlbumHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA52C6720CFB2A400073419 /* AlbumHeaderTableViewCell.swift */; };
 		4CA982F12091C1B900BACE5D /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA982F02091C1B900BACE5D /* PlayerVC.swift */; };
 		4CA982F320920F0B00BACE5D /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA982F220920F0B00BACE5D /* MusicPlayer.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		4C519E2120665FE800ADF48F /* Scrubber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrubber.swift; sourceTree = "<group>"; };
 		4CA52C5F20CEB1D600073419 /* AlbumSongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSongTableViewCell.swift; sourceTree = "<group>"; };
 		4CA52C6120CECF9C00073419 /* MusicCollectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCollectionDetailViewController.swift; sourceTree = "<group>"; };
+		4CA52C6720CFB2A400073419 /* AlbumHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		4CA982F02091C1B900BACE5D /* PlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
 		4CA982F220920F0B00BACE5D /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,9 +65,10 @@
 			isa = PBXGroup;
 			children = (
 				4CA52C6120CECF9C00073419 /* MusicCollectionDetailViewController.swift */,
+				4CA52C6720CFB2A400073419 /* AlbumHeaderTableViewCell.swift */,
 				4CA52C5F20CEB1D600073419 /* AlbumSongTableViewCell.swift */,
-				4C509BE72083AAA4009094DC /* LibraryViewController.swift */,
 				4C30F3E420839E020011BCCD /* LibraryTableViewCell.swift */,
+				4C509BE72083AAA4009094DC /* LibraryViewController.swift */,
 				4C3670E02083783E007AC15C /* ArtistsVC.swift */,
 				4C3670E32083786A007AC15C /* AlbumsVC.swift */,
 				4C3670E52083787C007AC15C /* SongsVC.swift */,
@@ -197,6 +200,7 @@
 				4C34FDDE2072C818001A3E01 /* PlaylistsVC.swift in Sources */,
 				4C509BE82083AAA4009094DC /* LibraryViewController.swift in Sources */,
 				4C3670E42083786A007AC15C /* AlbumsVC.swift in Sources */,
+				4CA52C6820CFB2A400073419 /* AlbumHeaderTableViewCell.swift in Sources */,
 				4CA52C6220CECF9C00073419 /* MusicCollectionDetailViewController.swift in Sources */,
 				4C30F3E520839E020011BCCD /* LibraryTableViewCell.swift in Sources */,
 				4C519E2220665FE800ADF48F /* Scrubber.swift in Sources */,

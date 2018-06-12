@@ -14,8 +14,9 @@ class MusicCollectionDetailViewController: UIViewController, UITableViewDelegate
     // MARK: - Properties
     
     let albumSongTableViewCell = AlbumSongTableViewCell()
+    let albumHeaderTableViewCell = AlbumHeaderTableViewCell()
     var query = MPMediaQuery()
-    
+    let mnusicPlayer = MusicPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -30,7 +31,7 @@ class MusicCollectionDetailViewController: UIViewController, UITableViewDelegate
         if let numberOfSongs = query.items?.count {
             return numberOfSongs
         } else {
-            print("Could not extract query items count")
+            print("Could not extract query items count, returning 1 instead")
             return 1
         }
     }
@@ -45,6 +46,13 @@ class MusicCollectionDetailViewController: UIViewController, UITableViewDelegate
         cell.songNumber.text = String(indexPath.row+1)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let albumHeaderCell = tableView.dequeueReusableCell(withIdentifier: "AlbumHeaderCell") as! AlbumHeaderTableViewCell
+        albumHeaderCell.albumTitle.text = query.items?[section].title // WRONG TITLE
+        albumHeaderCell.coverArt.image = #imageLiteral(resourceName: "CoverBuildARocketBoys") // WRONG IMAGE
+        return albumHeaderCell
     }
 
 }

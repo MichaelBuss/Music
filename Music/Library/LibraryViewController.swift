@@ -74,16 +74,16 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.indicatorStyle = UIScrollViewIndicatorStyle.white
             
             // Populates table view cells with data
-            let imageSize = libraryCell.imageArt.bounds.size
-            libraryCell.label.text = getItemName(at: indexPath.row)
-            libraryCell.imageArt.image = allMediaItems?[indexPath.row].representativeItem?.artwork?.image(at: imageSize)
+            let imageSize = libraryCell.coverArt.bounds.size
+            libraryCell.itemTitle.text = getItemName(at: indexPath.row)
+            libraryCell.coverArt.image = allMediaItems?[indexPath.row].representativeItem?.artwork?.image(at: imageSize)
         }
         return cell
     }
 
     // MARK: - Table view delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = (tableView.cellForRow(at: indexPath) as? LibraryTableViewCell)?.label{
+        if let cell = (tableView.cellForRow(at: indexPath) as? LibraryTableViewCell)?.itemTitle{
             print(cell)
             var predicate = MPMediaPropertyPredicate()
         

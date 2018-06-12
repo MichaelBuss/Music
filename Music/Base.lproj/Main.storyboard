@@ -61,6 +61,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="QG9-xY-hbH"/>
                                 </constraints>
+                                <connections>
+                                    <segue destination="Cx8-X7-fjG" kind="embed" id="dIi-ou-Yeb"/>
+                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -149,8 +152,8 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
-                                            <outlet property="imageArt" destination="tyB-BC-9Us" id="IJ9-31-jya"/>
-                                            <outlet property="label" destination="EMg-XI-eOO" id="CT0-vF-RI0"/>
+                                            <outlet property="coverArt" destination="tyB-BC-9Us" id="IJ9-31-jya"/>
+                                            <outlet property="itemTitle" destination="EMg-XI-eOO" id="CT0-vF-RI0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -214,8 +217,56 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumSongCell" id="ZtW-7A-1Lx" customClass="AlbumSongTableViewCell" customModule="Music" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumHeaderCell" id="S3M-rJ-gB2" userLabel="AlbumHeaderCell" customClass="AlbumHeaderTableViewCell" customModule="Music" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S3M-rJ-gB2" id="2ud-74-k9V">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZp-7D-bo4">
+                                                    <rect key="frame" x="339" y="8" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="sGZ-h9-tuS"/>
+                                                        <constraint firstAttribute="width" secondItem="EZp-7D-bo4" secondAttribute="height" multiplier="1:1" id="zbE-XO-94R"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Dots With Background"/>
+                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XhB-r9-F2V">
+                                                    <rect key="frame" x="8" y="4" width="331" height="35.666666666666664"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-Cy-iGY">
+                                                            <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="35.666666666666664"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="bWA-Cy-iGY" secondAttribute="height" multiplier="1:1" id="yYH-g0-H5v"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4q-Pu-llF">
+                                                            <rect key="frame" x="43.666666666666657" y="0.0" width="287.33333333333337" height="35.666666666666664"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XhB-r9-F2V" firstAttribute="leading" secondItem="2ud-74-k9V" secondAttribute="leading" constant="8" id="0UL-Su-OJD"/>
+                                                <constraint firstAttribute="trailing" secondItem="EZp-7D-bo4" secondAttribute="trailing" constant="8" id="2JN-2h-pQR"/>
+                                                <constraint firstAttribute="bottom" secondItem="XhB-r9-F2V" secondAttribute="bottom" constant="4" id="4Np-EL-PKt"/>
+                                                <constraint firstItem="EZp-7D-bo4" firstAttribute="leading" secondItem="XhB-r9-F2V" secondAttribute="trailing" id="M1k-Rz-Vw2"/>
+                                                <constraint firstItem="EZp-7D-bo4" firstAttribute="centerY" secondItem="2ud-74-k9V" secondAttribute="centerY" id="TMt-fj-Ppr"/>
+                                                <constraint firstItem="XhB-r9-F2V" firstAttribute="top" secondItem="2ud-74-k9V" secondAttribute="top" constant="4" id="eyC-kW-rqS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="albumTitle" destination="O4q-Pu-llF" id="Kmx-Qi-VBo"/>
+                                            <outlet property="coverArt" destination="bWA-Cy-iGY" id="PsI-5S-eE4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumSongCell" id="ZtW-7A-1Lx" customClass="AlbumSongTableViewCell" customModule="Music" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZtW-7A-1Lx" id="qdr-rC-hOP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
@@ -299,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDV-Zq-7ax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3574" y="1055"/>
+            <point key="canvasLocation" x="3302" y="825"/>
         </scene>
         <!--Search-->
         <scene sceneID="APj-tA-QBd">
@@ -625,12 +676,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qpc-76-HNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4362" y="327"/>
+            <point key="canvasLocation" x="4767" y="682"/>
         </scene>
     </scenes>
     <resources>
         <image name="Airplay" width="28" height="28"/>
         <image name="Dots" width="28" height="28"/>
+        <image name="Dots With Background" width="28" height="28"/>
         <image name="For You" width="48" height="32"/>
         <image name="Handle Retract" width="37" height="11"/>
         <image name="Library" width="48" height="32"/>
@@ -653,6 +705,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z7k-wq-Sqm"/>
+        <segue reference="od6-mD-sdi"/>
     </inferredMetricsTieBreakers>
 </document>
