@@ -13,22 +13,24 @@ class LibraryTableViewCell: UITableViewCell {
     @IBOutlet weak var coverArt: UIImageView!
     @IBOutlet weak var itemTitle: UILabel!
     
-    override func layoutSubviews() {
-        configureCell(from: "Albums") // TODO: - Replace temporary variable "Album". Should be passed from prior VC
+    func setupCell(withImage image: UIImage, withItemTitle itemTitle: String, withStyle style: style){
+        self.coverArt.image = image
+        self.itemTitle.text = itemTitle
+        var cornerRadius = CGFloat()
+        
+        switch style {
+        case .albums, .songs:
+            cornerRadius = self.coverArt.frame.width/6
+        case .artists:
+            cornerRadius = self.coverArt.frame.width/2
+        }
+        self.coverArt.layer.cornerRadius = cornerRadius
     }
     
-    private func configureCell(from sorting: String) {
-        var cornerRadius: CGFloat = 0
-        switch sorting {
-        case "Artists":
-            cornerRadius = coverArt.frame.width/2
-        case "Albums", "Songs":
-            cornerRadius = coverArt.frame.width/6
-        default:
-            print("Sorting did not match any case")
-            break
-        }
-        coverArt.layer.cornerRadius = cornerRadius
+    enum style {
+        case albums
+        case artists
+        case songs
     }
 
 }

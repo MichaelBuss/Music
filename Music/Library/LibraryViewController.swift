@@ -13,11 +13,11 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - Variables
     let musicPlayer = MusicPlayer()
-    let query = MPMediaQuery()
+    var query = MPMediaQuery()
     var allMediaItems: [MPMediaItemCollection]?
     private let libraryTableViewCell = LibraryTableViewCell()
     private var playerObserver: NSObjectProtocol?
-    private var currentSorting = "Artists"
+    private var style: LibraryTableViewCell.style = .artists
     
     // MARK: - Outlets
     @IBOutlet weak var playerContainerView: UIView!
@@ -46,7 +46,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sortMusic(by: currentSorting)
+        sortMusic(byStyle: style)
         print("loaded")
     }
     
@@ -74,9 +74,12 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.indicatorStyle = UIScrollViewIndicatorStyle.white
             
             // Populates table view cells with data
+            
             let imageSize = libraryCell.coverArt.bounds.size
-            libraryCell.itemTitle.text = getItemName(at: indexPath.row)
-            libraryCell.coverArt.image = allMediaItems?[indexPath.row].representativeItem?.artwork?.image(at: imageSize)
+            let itemTitle = getItemName(at: indexPath.row)
+            let coverArt = allMediaItems?[indexPath.row].representativeItem?.artwork?.image(at: imageSize) ?? #imageLiteral(resourceName: "Missing Artwork")
+            
+            libraryCell.setupCell(withImage: coverArt, withItemTitle: itemTitle, withStyle: style)
         }
         return cell
     }
@@ -93,6 +96,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
             switch sortSegmentedControl.selectedSegmentIndex {
             case 0: // Artists
                 print("Pressed an item in Artists sorted segmented control")
+                query = .artists()
                 predicate = MPMediaPropertyPredicate(
                     value: query.items?[indexPath.row].artistPersistentID,
                     forProperty: MPMediaItemPropertyArtistPersistentID,
@@ -101,6 +105,7 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 performSegue(withIdentifier: "MusicCollectionDetailSegue", sender: self)
             case 1: // Albums
                 print("Pressed an item in Albums sorted segmented control")
+                query = .albums()
                 predicate = MPMediaPropertyPredicate(
                     value: query.items?[indexPath.row].albumPersistentID,
                     forProperty: MPMediaItemPropertyAlbumPersistentID,
@@ -137,47 +142,40 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func sortSegmentedControlDidChange(_ sender: UISegmentedControl) {
         switch sortSegmentedControl.selectedSegmentIndex{
             case 0:
-                currentSorting = "Artists"
+                self.style = .artists
             case 1:
-                currentSorting = "Albums"
+                self.style = .albums
             case 2:
-                currentSorting = "Songs"
+                self.style = .songs
             default: break
         }
-        sortMusic(by: currentSorting)
+        sortMusic(byStyle: style)
         updateTable()
     }
     
     private func getItemName(at indexPath: Int) -> String {
-        switch currentSorting {
-        case "Artists":
-            return (allMediaItems?[indexPath].representativeItem?.artist)!
-        case "Albums":
+        switch style {
+        case .artists:
+            return (allMediaItems?[indexPath].representativeItem?.albumArtist)!
+        case .albums:
             return (allMediaItems?[indexPath].representativeItem?.albumTitle)!
-        case "Songs":
+        case .songs:
             return (allMediaItems?[indexPath].representativeItem?.title)!
-        default:
-            print("Case \(currentSorting) was not matched")
-            return "Case \(currentSorting) was not matched"
         }
         
     }
     
-    private func sortMusic(by category: String){
+    private func sortMusic(byStyle style: LibraryTableViewCell.style){
         let query = MPMediaQuery()
-        switch category {
-        case "Artists":
+        switch style {
+        case .artists:
             query.groupingType = MPMediaGrouping.albumArtist
-            print("Sorts music by artists")
-        case "Albums":
+        case .albums:
             query.groupingType = MPMediaGrouping.album
-            print("Sorts music by albums")
-        case "Songs":
+        case .songs:
             query.groupingType = MPMediaGrouping.title
-            print("Sorts music by songs")
-        default:
-            print("Sorting went wrong because case was not met")
         }
+        print("Sorts music by \(style)")
         allMediaItems = query.collections
     }
     
