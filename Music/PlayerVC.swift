@@ -30,7 +30,7 @@ class PlayerVC: UIViewController {
     
     let musicPlayer = MusicPlayer()
 
-    var targetHeight = 58
+    var targetHeight: CGFloat = 58
 
     private var playbackStateDidChangeObserver: NSObjectProtocol?
     private var nowPlayingItemDidChangeObserver: NSObjectProtocol?
@@ -155,22 +155,21 @@ class PlayerVC: UIViewController {
     }
     
     private func calculateAndSendPlayerHeightNotification() {
-        let parentViewHeight = Int((parent?.view.frame.height)!)
-        
-        if let parentNavigationBarHeight = parent?.navigationController?.navigationBar.frame.height {
-            
-            print(parentNavigationBarHeight)
-            // MARK: - Bad implementation, needs fixing
-            if targetHeight == parentViewHeight {
-                targetHeight = 58
-                controlsVisibility(isHidden: true)
-            } else {
-                targetHeight = parentViewHeight
-                controlsVisibility(isHidden: false)
+        if let parentViewHeight = parent?.view.frame.height {
+            if (parent?.navigationController?.navigationBar.frame.height) != nil {
+                
+                // TODO: - Bad implementation, needs fixing
+                if targetHeight == parentViewHeight {
+                    targetHeight = 58
+                    controlsVisibility(isHidden: true)
+                } else {
+                    targetHeight = parentViewHeight
+                    controlsVisibility(isHidden: false)
+                }
             }
         }
         
-        let playerStateNotification: [String : Int] = ["targetHeight" : targetHeight]
+        let playerStateNotification: [String : CGFloat] = ["targetHeight" : targetHeight]
         NotificationCenter.default.post(
             name: Notification.Name("ExpandPlayer"),
             object: self,

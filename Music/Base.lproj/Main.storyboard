@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wg2-ob-veL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1846" y="-71"/>
+            <point key="canvasLocation" x="1845.5999999999999" y="-71.674876847290648"/>
         </scene>
         <!--For You-->
         <scene sceneID="RzB-9s-Rqb">
@@ -410,6 +410,9 @@
                         <viewLayoutGuide key="safeArea" id="G4U-NA-4bd"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="Search" id="DH2-UT-Vjg" userLabel="Search"/>
+                    <connections>
+                        <outlet property="playerViewHeight" destination="9nL-GL-cDc" id="fzT-Ur-eX4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UhI-bK-idE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -738,6 +741,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="S5y-gB-8KE"/>
+        <segue reference="dIi-ou-Yeb"/>
     </inferredMetricsTieBreakers>
 </document>
