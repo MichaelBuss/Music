@@ -9,14 +9,13 @@
 import UIKit
 import MediaPlayer
 
-class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LibraryViewController: MainViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Variables
     let musicPlayer = MusicPlayer()
     var query = MPMediaQuery()
     var allMediaItems: [MPMediaItemCollection]?
     private let libraryTableViewCell = LibraryTableViewCell()
-    private var playerObserver: NSObjectProtocol?
     private var style: LibraryTableViewCell.style = .artists
     
     // MARK: - Outlets
@@ -27,26 +26,13 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var playerViewHeight: NSLayoutConstraint!
     
     // MARK: - Life cycle methods
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        addPlayerObserver()
-        print("View will appear")
 
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sortMusic(byStyle: style)
         print("loaded")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("View did disappear")
-        if let observer = self.playerObserver {
-            NotificationCenter.default.removeObserver(observer)
-        }
-        
+        playerViewHeightGeneric = playerViewHeight
     }
     
     // MARK: - Table view data source
@@ -256,29 +242,5 @@ class LibraryViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("Updating table")
         libraryTableView.reloadData()
     }
-    
-    // MARK: - Animate Player Height. Copied to other VCs as well
-    private func addPlayerObserver(){
-        playerObserver = NotificationCenter.default.addObserver(
-            forName: Notification.Name("ExpandPlayer"),
-            object: nil,
-            queue: OperationQueue.main,
-            using: {notification in
-                print("Recieved Notification with \(notification.name)")
-                if let height = notification.userInfo!["targetHeight"] as? CGFloat {
-                    self.animatePlayerHeight(to: height, withDuration: 0.5)
-                }
-            }
-        )
-    }
-    
-    private func animatePlayerHeight(to height: CGFloat, withDuration duration: Double) {
-        UIView.animate(withDuration: duration) {
-            self.playerViewHeight.constant = CGFloat(height)
-            self.view.layoutIfNeeded()
-        }
-    }
-
-    
     
 }
